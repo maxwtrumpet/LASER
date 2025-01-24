@@ -2,16 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class ShootEvent
+{
+    public int damage = 0;
+    public ShootEvent(int _new_damage) { damage = _new_damage; }
+}
+
 public class Controller : MonoBehaviour
 {
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject charger;
     [SerializeField] float EASE_FACTOR = 0.2f;
-    [SerializeField] Sprite black;
-    [SerializeField] Sprite green;
-    [SerializeField] Sprite yellow;
-    [SerializeField] Sprite orange;
-    [SerializeField] Sprite red;
+    Color black = new Color(0.102f, 0.102f, 0.102f);
+    Color green = new Color(0.298f, 0.749f, 0.380f);
+    Color yellow = new Color(1.0f, 0.776f, 0.0f);
+    Color orange = new Color(0.906f, 0.549f, 0.133f);
+    Color red = new Color(0.922f, 0.098f, 0.098f);
     Transform tf;
     SpriteRenderer charger_sr;
     SpriteRenderer sr;
@@ -22,6 +28,7 @@ public class Controller : MonoBehaviour
     Vector2 cur_triggers = new Vector2(0, 0);
     Vector4 buttons_down = new Vector4(0, 0, 0, 0);
     float cur_tint = 1.0f;
+    public int fire_power = 0;
 
     // Buttons:
     // 1 - Down (A)
@@ -55,7 +62,7 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        fire_power = 0;
         left_stick.x = Input.GetAxis("Horizontal");
         left_stick.y = Input.GetAxis("Vertical");
         if (!(left_stick.x == 0 && right_stick.y == 0) && !(prev_left_stick.x == 0 && prev_left_stick.y == 0))
@@ -72,10 +79,10 @@ public class Controller : MonoBehaviour
                 cur_tint -= angle_delta / 50.0f;
                 if (cur_tint < 0.0f) cur_tint = 0.0f;
 
-                if (cur_tint == 0.0f) sr.sprite = red;
-                else if (cur_tint < 0.3f) sr.sprite = orange;
-                else if (cur_tint < 0.6f) sr.sprite = yellow;
-                else if (cur_tint < 0.9f) sr.sprite = green;
+                if (cur_tint == 0.0f) sr.color = red;
+                else if (cur_tint < 0.3f) sr.color = orange;
+                else if (cur_tint < 0.6f) sr.color = yellow;
+                else if (cur_tint < 0.9f) sr.color = green;
             }
         }
 
@@ -88,7 +95,7 @@ public class Controller : MonoBehaviour
             float desired_angle = Mathf.Atan(right_stick.y / right_stick.x);
             float current_angle = Mathf.Atan(tf.position.y / tf.position.x);
             float final_angle = current_angle + (desired_angle - current_angle) * EASE_FACTOR;
-            tf.position = new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0);
+            tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
         cur_triggers.x = Input.GetAxis("Fire1");
@@ -130,10 +137,9 @@ public class Controller : MonoBehaviour
         
         bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > 0.6f) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > 0.3f);
         if (fire && cur_tint < 0.9f) {
-            GameObject new_proj = Instantiate(projectilePrefab);
-            new_proj.GetComponent<Rigidbody2D>().velocity = new Vector2(tf.position.x * (1.0f - cur_tint) * 3.0f, tf.position.y * (1.0f - cur_tint) * 3.0f);
+            EventBus.Publish<ShootEvent>(new ShootEvent(Mathf.RoundToInt((0.9f - cur_tint) * 10.0f) / 3 + 1));
             cur_tint = 1.0f;
-            sr.sprite = black;
+            sr.color = black;
         }
     }
 
