@@ -238,7 +238,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6711762563863972715, guid: e60a3e02cbe604b6cadb44871358220f, type: 3}
+  charger: {fileID: 24889527}
   EASE_FACTOR: 0.01
+  black: {fileID: 21300000, guid: ec609e415209e48e8a90dcbd58a35cee, type: 3}
+  green: {fileID: 21300000, guid: 7f5a1af86dac24344ad4b5c327b83be1, type: 3}
+  yellow: {fileID: 21300000, guid: 9716348a3147047a38e44ddc6c5f8a7a, type: 3}
+  orange: {fileID: 21300000, guid: e94c7e51185bf47d6a8962db08eb31cb, type: 3}
+  red: {fileID: 21300000, guid: a643319f477844d07bc52f45d038a803, type: 3}
 --- !u!4 &480315880
 Transform:
   m_ObjectHideFlags: 0
@@ -295,7 +301,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a643319f477844d07bc52f45d038a803, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ec609e415209e48e8a90dcbd58a35cee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
