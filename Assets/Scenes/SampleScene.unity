@@ -514,10 +514,20 @@ MonoBehaviour:
   - {fileID: 8924717671439100743, guid: f17c803c2839444c0be6672b4a307d58, type: 3}
   - {fileID: 849984150533376911, guid: 53deaac708a3b489f87bb46f00c7eaec, type: 3}
   - {fileID: 8390530900887867425, guid: 55d60a15f37c842128b59e903fc99546, type: 3}
+  - {fileID: 8858166000572483983, guid: 33289ff3cb81a4a5591f05703f2fcb69, type: 3}
+  - {fileID: 7147868496008041985, guid: 0ce5a5aeb35ce46259b8f9059b137e65, type: 3}
   frequencies:
-  - 5.4
-  - 3.6
-  - 1
+  - 14
+  - 10
+  - 1.5
+  - 3
+  - 0
+  first_appearances:
+  - 0
+  - 15
+  - 30
+  - 45
+  - 60
 --- !u!4 &483534493
 Transform:
   m_ObjectHideFlags: 0

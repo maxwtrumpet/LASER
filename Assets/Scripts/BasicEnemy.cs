@@ -12,9 +12,4 @@ public class BasicEnemy : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = new Vector2(-vel.x, -vel.y);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -9,6 +9,8 @@ public class EggEnemy : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        if (transform.position.x == 18.0f) GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);
+        else GetComponent<MoveWithEase>().desired_dest = new Vector3(transform.position.x, 8.0f);
         yield return new WaitForSeconds(10.0f);
         yield return SpawnGnats();
     }

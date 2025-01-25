@@ -12,7 +12,8 @@ public class GnatEnemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         float angle = Random.Range(0.0f, Mathf.PI*2);
-        rb.velocity = new Vector2(Mathf.Cos(angle) * 0.8f, Mathf.Sin(angle) * 0.8f);
+        rb.velocity = new Vector2(Mathf.Cos(angle) * 2.0f, Mathf.Sin(angle) * 2.0f);
+        rb.drag = 0.1f;
     }
 
     // Update is called once per frame

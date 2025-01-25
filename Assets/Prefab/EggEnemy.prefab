@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2654327928896090397}
   - component: {fileID: 3294044029130982893}
   - component: {fileID: 1302274318503065553}
+  - component: {fileID: 2924002234732479555}
   m_Layer: 0
   m_Name: EggEnemy
   m_TagString: Untagged
@@ -186,3 +187,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gnat_prefab: {fileID: 7292155192222903409, guid: 83d69d8ab476249f993e7163c25777ab, type: 3}
+--- !u!114 &2924002234732479555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390530900887867425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edccd451561a94c7caa416108909f0fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ease_factor: 0.01
+  desired_dest: {x: 0, y: 0, z: 0}
