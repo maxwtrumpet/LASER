@@ -2,12 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShootEvent
-{
-    public int damage = 0;
-    public ShootEvent(int _new_damage) { damage = _new_damage; }
-}
-
 public class Controller : MonoBehaviour
 {
     [SerializeField] GameObject beam_prefab;
@@ -31,6 +25,8 @@ public class Controller : MonoBehaviour
     Vector2 cur_triggers = new Vector2(0, 0);
     Vector4 buttons_down = new Vector4(0, 0, 0, 0);
     float cur_tint = 1.0f;
+    private FMOD.Studio.EventInstance instance;
+    FMOD.Studio.EventInstance[,] gun_sounds = new FMOD.Studio.EventInstance[4,3];
 
     // Buttons:
     // 1 - Down (A)
@@ -50,6 +46,33 @@ public class Controller : MonoBehaviour
     {
         tf = GetComponent<Transform>();
         guides = GetComponentsInChildren<SpriteRenderer>();
+        instance = FMODUnity.RuntimeManager.CreateInstance("event:/effects/cannon");
+        gun_sounds[0, 0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun0-0");
+        gun_sounds[0, 0].setVolume(0.25f);
+        gun_sounds[0, 1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun0-1");
+        gun_sounds[0, 1].setVolume(0.25f);
+        gun_sounds[0, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun0-2");
+        gun_sounds[0, 2].setVolume(0.25f);
+        gun_sounds[1, 0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun1-0");
+        gun_sounds[1, 0].setVolume(0.25f);
+        gun_sounds[1, 1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun1-1");
+        gun_sounds[1, 1].setVolume(0.25f);
+        gun_sounds[1, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun1-2");
+        gun_sounds[1, 2].setVolume(0.25f);
+        gun_sounds[2, 0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun2-0");
+        gun_sounds[2, 0].setVolume(0.25f);
+        gun_sounds[2, 1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun2-1");
+        gun_sounds[2, 1].setVolume(0.25f);
+        gun_sounds[2, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun2-2");
+        gun_sounds[2, 2].setVolume(0.25f);
+        gun_sounds[3, 0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun3-0");
+        gun_sounds[3, 0].setVolume(0.1f);
+        gun_sounds[3, 1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun3-1");
+        gun_sounds[3, 1].setVolume(0.1f);
+        gun_sounds[3, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun3-2");
+        gun_sounds[3, 2].setVolume(0.1f);
+        instance.start();
+        instance.setVolume(0.25f);
     }
 
     float to2Pi(float x, float y)
@@ -157,10 +180,18 @@ public class Controller : MonoBehaviour
             cur_beam.transform.SetPositionAndRotation(transform.position, transform.rotation);
             cur_beam.transform.localScale = new Vector3(2.4f, guides[0].transform.localPosition.y * 11.0f, 1.0f);
             AutoDestroy ad = cur_beam.GetComponent<AutoDestroy>();
+
             if (cur_tint == 0.0f) ad.damage = 7;
             else if (cur_tint < charge_3) ad.damage = 4;
             else if (cur_tint < charge_2) ad.damage = 2;
             else ad.damage = 1;
+
+            int main_idx = 0;
+            int rand_idx = Mathf.RoundToInt(Random.Range(-0.499f, 2.499f));
+            if (cur_tint == 0.0f) main_idx = 3;
+            else if (cur_tint < charge_3) main_idx = 2;
+            else if (cur_tint < charge_2) main_idx = 1;
+            gun_sounds[main_idx, rand_idx].start();
 
             ad.lifetime = (charge_1 - cur_tint) / charge_1 * 0.325f + 0.075f;
             cur_tint = 1.0f;
@@ -187,6 +218,8 @@ public class Controller : MonoBehaviour
         float ease_tint = guides[2].transform.localScale.x + (1.0f - cur_tint - guides[2].transform.localScale.x) * charge_ease_factor;
         guides[2].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
         guides[3].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
+
+        instance.setParameterByName("power", 1.0f - cur_tint);
         
     }
 }

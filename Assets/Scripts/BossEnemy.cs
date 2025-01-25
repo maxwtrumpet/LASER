@@ -11,6 +11,12 @@ public class BossEnemy : MonoBehaviour
         transform.position = vel;
         vel.Normalize();
         GetComponent<Rigidbody2D>().velocity = new Vector2(-vel.x / 2.5f, -vel.y / 2.5f);
+        EventBus.Publish<MusicEvent>(new MusicEvent("Drum 3", 1.0f));
+    }
+
+    private void OnDestroy()
+    {
+        if (GameObject.FindGameObjectsWithTag("boss").Length == 0) EventBus.Publish<MusicEvent>(new MusicEvent("Drum 3", 0.0f));
     }
 
 }

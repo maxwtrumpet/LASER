@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a7cfded0-c84f-431b-b6fe-5274de568759}">
+		<property name="name">
+			<value>Bb Low</value>
+		</property>
+		<relationship name="folder">
+			<destination>{31af3d31-8262-4065-9588-109e6ef2886d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{9d73c4ce-5631-4624-9ab7-20fec2a1cebf}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{9d73c4ce-5631-4624-9ab7-20fec2a1cebf}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.33000001311302185</value>
+		</property>
+	</object>
+</objects>

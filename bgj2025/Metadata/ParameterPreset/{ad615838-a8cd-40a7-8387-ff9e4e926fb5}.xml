@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{ad615838-a8cd-40a7-8387-ff9e4e926fb5}">
+		<property name="name">
+			<value>Ostinato Fast</value>
+		</property>
+		<relationship name="folder">
+			<destination>{31af3d31-8262-4065-9588-109e6ef2886d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{a08b9201-6fcd-4caa-bc77-da879058dd34}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{a08b9201-6fcd-4caa-bc77-da879058dd34}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.33000001311302185</value>
+		</property>
+	</object>
+</objects>

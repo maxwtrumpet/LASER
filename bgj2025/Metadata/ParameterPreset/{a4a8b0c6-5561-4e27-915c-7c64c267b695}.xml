@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{a4a8b0c6-5561-4e27-915c-7c64c267b695}">
+		<property name="name">
+			<value>Ab Stay</value>
+		</property>
+		<relationship name="folder">
+			<destination>{31af3d31-8262-4065-9588-109e6ef2886d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{3a695289-22a1-4baa-999f-1440312ad61f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{3a695289-22a1-4baa-999f-1440312ad61f}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.33000001311302185</value>
+		</property>
+	</object>
+</objects>

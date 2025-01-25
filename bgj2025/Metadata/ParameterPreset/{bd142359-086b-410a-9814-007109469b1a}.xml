@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{bd142359-086b-410a-9814-007109469b1a}">
+		<property name="name">
+			<value>Melody High</value>
+		</property>
+		<relationship name="folder">
+			<destination>{31af3d31-8262-4065-9588-109e6ef2886d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{c1b453e2-00a3-43a3-ae75-340c25a809ee}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{c1b453e2-00a3-43a3-ae75-340c25a809ee}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.33000001311302185</value>
+		</property>
+	</object>
+</objects>

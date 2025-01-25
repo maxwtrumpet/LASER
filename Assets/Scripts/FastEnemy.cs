@@ -12,6 +12,7 @@ public class FastEnemy : MonoBehaviour
     IEnumerator Start()
     {
         cur_dest = transform.position;
+        EventBus.Publish<MusicEvent>(new MusicEvent("Ostinato Slow", 1.0f));
         yield return Move();
     }
 
@@ -40,5 +41,10 @@ public class FastEnemy : MonoBehaviour
         transform.position = new Vector3(transform.position.x + (cur_dest.x - transform.position.x) * ease_factor,
                                          transform.position.y + (cur_dest.y - transform.position.y) * ease_factor,
                                          0.0f);
+    }
+
+    private void OnDestroy()
+    {
+        if (GameObject.FindGameObjectsWithTag("fast").Length == 0) EventBus.Publish<MusicEvent>(new MusicEvent("Ostinato Slow", 0.0f));
     }
 }

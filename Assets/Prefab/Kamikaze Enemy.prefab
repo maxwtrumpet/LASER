@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7697093566887860171}
   m_Layer: 0
   m_Name: Kamikaze Enemy
-  m_TagString: Untagged
+  m_TagString: kamikaze
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

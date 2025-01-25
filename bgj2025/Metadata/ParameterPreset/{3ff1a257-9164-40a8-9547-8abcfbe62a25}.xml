@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{3ff1a257-9164-40a8-9547-8abcfbe62a25}">
+		<property name="name">
+			<value>Ab Resolve</value>
+		</property>
+		<relationship name="folder">
+			<destination>{31af3d31-8262-4065-9588-109e6ef2886d}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ddda2326-78de-4cc3-91bd-38643fc2ccbe}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ddda2326-78de-4cc3-91bd-38643fc2ccbe}">
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+		<property name="seekSpeed">
+			<value>0.33000001311302185</value>
+		</property>
+	</object>
+</objects>
