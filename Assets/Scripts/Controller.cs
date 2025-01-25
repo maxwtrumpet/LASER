@@ -10,17 +10,20 @@ public class ShootEvent
 
 public class Controller : MonoBehaviour
 {
-    [SerializeField] GameObject projectilePrefab;
-    [SerializeField] GameObject charger;
-    [SerializeField] float EASE_FACTOR = 0.2f;
-    Color black = new Color(0.102f, 0.102f, 0.102f);
-    Color green = new Color(0.298f, 0.749f, 0.380f);
-    Color yellow = new Color(1.0f, 0.776f, 0.0f);
-    Color orange = new Color(0.906f, 0.549f, 0.133f);
-    Color red = new Color(0.922f, 0.098f, 0.098f);
+    [SerializeField] GameObject beam_prefab;
+    [SerializeField] Sprite black;
+    [SerializeField] Sprite green;
+    [SerializeField] Sprite yellow;
+    [SerializeField] Sprite orange;
+    [SerializeField] Sprite red;
+    [SerializeField] float aim_ease_factor = 0.01f;
+    [SerializeField] float shoot_ease_factor = 0.2f;
+    [SerializeField] float charge_ease_factor = 0.025f;
+    [SerializeField] float charge_1 = 0.9f;
+    [SerializeField] float charge_2 = 0.6f;
+    [SerializeField] float charge_3 = 0.3f;
     Transform tf;
-    SpriteRenderer charger_sr;
-    SpriteRenderer sr;
+    SpriteRenderer[] guides;
     Vector3 prev_left_stick = new Vector3(0, 0, 0);
     Vector3 left_stick = new Vector3(0,0,0);
     Vector3 right_stick = new Vector3(0, 0, 0);
@@ -28,7 +31,6 @@ public class Controller : MonoBehaviour
     Vector2 cur_triggers = new Vector2(0, 0);
     Vector4 buttons_down = new Vector4(0, 0, 0, 0);
     float cur_tint = 1.0f;
-    public int fire_power = 0;
 
     // Buttons:
     // 1 - Down (A)
@@ -47,8 +49,7 @@ public class Controller : MonoBehaviour
     void Start()
     {
         tf = GetComponent<Transform>();
-        charger_sr = charger.GetComponent<SpriteRenderer>();
-        sr = GetComponent<SpriteRenderer>();
+        guides = GetComponentsInChildren<SpriteRenderer>();
     }
 
     float to2Pi(float x, float y)
@@ -62,7 +63,6 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        fire_power = 0;
         left_stick.x = Input.GetAxis("Horizontal");
         left_stick.y = Input.GetAxis("Vertical");
         if (!(left_stick.x == 0 && right_stick.y == 0) && !(prev_left_stick.x == 0 && prev_left_stick.y == 0))
@@ -79,10 +79,26 @@ public class Controller : MonoBehaviour
                 cur_tint -= angle_delta / 50.0f;
                 if (cur_tint < 0.0f) cur_tint = 0.0f;
 
-                if (cur_tint == 0.0f) sr.color = red;
-                else if (cur_tint < 0.3f) sr.color = orange;
-                else if (cur_tint < 0.6f) sr.color = yellow;
-                else if (cur_tint < 0.9f) sr.color = green;
+                if (cur_tint == 0.0f)
+                {
+                    guides[0].sprite = red;
+                    guides[1].sprite = red;
+                }
+                else if (cur_tint < charge_3)
+                {
+                    guides[0].sprite = orange;
+                    guides[1].sprite = orange;
+                }
+                else if (cur_tint < charge_2)
+                {
+                    guides[0].sprite = yellow;
+                    guides[1].sprite = yellow;
+                }
+                else if (cur_tint < charge_1)
+                {
+                    guides[0].sprite = green;
+                    guides[1].sprite = green;
+                }
             }
         }
 
@@ -94,7 +110,7 @@ public class Controller : MonoBehaviour
             right_stick.Normalize();
             float desired_angle = Mathf.Atan(right_stick.y / right_stick.x);
             float current_angle = Mathf.Atan(tf.position.y / tf.position.x);
-            float final_angle = current_angle + (desired_angle - current_angle) * EASE_FACTOR;
+            float final_angle = current_angle + (desired_angle - current_angle) * aim_ease_factor;
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
@@ -135,18 +151,42 @@ public class Controller : MonoBehaviour
             else buttons_down.w--;
         }
         
-        bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > 0.6f) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > 0.3f);
-        if (fire && cur_tint < 0.9f) {
-            EventBus.Publish<ShootEvent>(new ShootEvent(Mathf.RoundToInt((0.9f - cur_tint) * 10.0f) / 3 + 1));
+        bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > charge_2) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > charge_3);
+        if (fire && cur_tint < charge_1) {
+            GameObject cur_beam = Instantiate(beam_prefab);
+            cur_beam.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            cur_beam.transform.localScale = new Vector3(2.4f, guides[0].transform.localPosition.y * 11.0f, 1.0f);
+            AutoDestroy ad = cur_beam.GetComponent<AutoDestroy>();
+            if (cur_tint == 0.0f) ad.damage = 7;
+            else if (cur_tint < charge_3) ad.damage = 4;
+            else if (cur_tint < charge_2) ad.damage = 2;
+            else ad.damage = 1;
+
+            ad.lifetime = (charge_1 - cur_tint) / charge_1 * 0.325f + 0.075f;
             cur_tint = 1.0f;
-            sr.color = black;
+            guides[0].sprite = black;
+            guides[1].sprite = black;
         }
     }
 
     void LateUpdate()
     {
+
         prev_left_stick = left_stick;
         prev_triggers = cur_triggers;
-        charger_sr.color = new Color(cur_tint, cur_tint, 1.0f);
+
+        float new_size = 0.05f;
+        if (cur_tint < charge_1) new_size = (charge_1 - cur_tint) / charge_1 * 0.95f + 0.05f;
+        float real_size = guides[0].transform.localPosition.y + (new_size - guides[0].transform.localPosition.y) * shoot_ease_factor;
+
+        guides[0].transform.localPosition = new Vector3(0.0f, real_size, 0.0f);
+        guides[1].transform.localPosition = new Vector3(0.0f, -real_size, 0.0f);
+        guides[2].transform.localPosition = new Vector3(0.0f, real_size, 0.0f);
+        guides[3].transform.localPosition = new Vector3(0.0f, -real_size, 0.0f);
+
+        float ease_tint = guides[2].transform.localScale.x + (1.0f - cur_tint - guides[2].transform.localScale.x) * charge_ease_factor;
+        guides[2].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
+        guides[3].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
+        
     }
 }

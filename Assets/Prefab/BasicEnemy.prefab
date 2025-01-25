@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: -6893235431266995456}
   - component: {fileID: 6056705201380812427}
   - component: {fileID: 5975893594290564736}
+  - component: {fileID: -3608906832801368498}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: BasicEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,9 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b978ef3fee7064fbc82af536439de682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cream: {fileID: 21300000, guid: 33b7672993b9d409abb87cae55f3027d, type: 3}
-  brown: {fileID: 21300000, guid: fd031fc5140b845e9b7baa980ab9ca9b, type: 3}
-  pink: {fileID: 21300000, guid: ccbe2568214c84a33b2e057cd1463354, type: 3}
+  health: 5
 --- !u!61 &6056705201380812427
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -155,7 +154,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8924717671439100743}
-  m_BodyType: 2
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -174,3 +173,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-3608906832801368498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8924717671439100743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eace665a930c8441fb63816f759d630f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
