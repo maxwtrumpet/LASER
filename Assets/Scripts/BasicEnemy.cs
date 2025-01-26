@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasicEnemy : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         Vector3 vel = transform.position;
         vel.Normalize();

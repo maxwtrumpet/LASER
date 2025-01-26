@@ -5,15 +5,19 @@ using UnityEngine;
 public class FastEnemy : MonoBehaviour
 {
 
-    Vector3 cur_dest;
+    Vector3 cur_dest = new Vector3(-1.0f, -1.0f, -1.0f);
     [SerializeField] float ease_factor = 0.2f;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
         cur_dest = transform.position;
         EventBus.Publish<MusicEvent>(new MusicEvent("Ostinato Slow", 1.0f));
-        yield return Move();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(Move());
     }
 
     // Update is called once per frame

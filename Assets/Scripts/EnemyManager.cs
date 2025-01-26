@@ -8,12 +8,16 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject[] enemy_prefabs;
     [SerializeField] float[] frequencies;
     [SerializeField] float[] first_appearances;
+    GameObject game_objects;
     float[][] guranteed_times;
     int[] cur_index;
     float time_elapsed = 0.0f;
     // Start is called before the first frame update
-    IEnumerator Start()
+    private void Start()
     {
+
+        game_objects = GameObject.FindGameObjectWithTag("GameController");
+
         cur_index = new int[enemy_prefabs.Length];
         for (int i = 0; i < cur_index.Length; i++)
         {
@@ -37,7 +41,11 @@ public class EnemyManager : MonoBehaviour
         guranteed_times[4][3] = 240.0f;
         guranteed_times[4][4] = 300.0f;
 
-        yield return SpawnEnemies();
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(SpawnEnemies());
     }
 
     IEnumerator SpawnEnemies()
@@ -89,7 +97,7 @@ public class EnemyManager : MonoBehaviour
             }
 
             // Instantiate the enemy and spawn them on the edge of the FOV.
-            new_enemy = Instantiate(new_enemy);
+            new_enemy = Instantiate(new_enemy, game_objects.transform);
             float top_or_bottom = Random.Range(0.0f, 25.0f);
             if (top_or_bottom <= 9.0f) new_enemy.GetComponent<Rigidbody2D>().transform.position = new Vector3(18.0f, Random.Range(0.0f,9.0f), 0.0f);
             else new_enemy.GetComponent<Rigidbody2D>().transform.position = new Vector3(Random.Range(0.0f, 17.0f), 10.0f, 0.0f);

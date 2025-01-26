@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using TMPro;
 
 public class MusicEvent
 {
@@ -16,16 +15,13 @@ public class MusicEvent
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] GameObject em;
-    private FMOD.Studio.EventInstance instance;
+    public FMOD.Studio.EventInstance instance;
     private int kill_points = 0;
-    TextMeshPro tmp;
 
     void _OnKill(KillEvent e)
     {
         int prev_points = kill_points;
         kill_points += e.points;
-        tmp.text = "Score: " + kill_points + " ";
         if (prev_points < 40 && kill_points >= 40)
         {
             instance.setParameterByName("Melody High", 1.0f);
@@ -76,11 +72,10 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
         instance.start();
         instance.setParameterByName("Bass High", 1.0f);
-        tmp = em.GetComponent<TextMeshPro>();
-        tmp.text = "Score: 0 ";
         EventBus.Subscribe<KillEvent>(_OnKill);
         EventBus.Subscribe<MusicEvent>(_OnMusic);
     }

@@ -5,15 +5,31 @@ using UnityEngine;
 public class EggEnemy : MonoBehaviour
 {
     [SerializeField] GameObject gnat_prefab;
+    float remaining_time = 10.0f;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
         if (transform.position.x == 18.0f) GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);
         else GetComponent<MoveWithEase>().desired_dest = new Vector3(transform.position.x, 8.0f);
         EventBus.Publish<MusicEvent>(new MusicEvent("Bass Low", 1.0f));
-        yield return new WaitForSeconds(10.0f);
-        yield return SpawnGnats();
+    }
+
+    private void OnEnable()
+    {
+        if (remaining_time <= 0.0f)
+        {
+            StartCoroutine(SpawnGnats());
+        }
+    }
+
+    void Update()
+    {
+        if (remaining_time > 0.0f)
+        {
+            remaining_time -= Time.deltaTime;
+            if (remaining_time <= 0.0f) StartCoroutine(SpawnGnats());
+        }
     }
 
     IEnumerator SpawnGnats()
@@ -21,7 +37,7 @@ public class EggEnemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            Instantiate(gnat_prefab).transform.position = transform.position;
+            Instantiate(gnat_prefab, transform).transform.position = transform.position;
         }
     }
 
@@ -29,4 +45,5 @@ public class EggEnemy : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("egg").Length == 0) EventBus.Publish<MusicEvent>(new MusicEvent("Bass Low", 0.0f));
     }
+
 }

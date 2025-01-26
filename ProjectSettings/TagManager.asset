@@ -8,6 +8,10 @@ TagManager:
   - egg
   - kamikaze
   - boss
+  - level
+  - menu
+  - pause
+  - music
   layers:
   - Default
   - TransparentFX

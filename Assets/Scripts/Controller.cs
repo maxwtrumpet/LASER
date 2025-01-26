@@ -18,6 +18,8 @@ public class Controller : MonoBehaviour
     [SerializeField] float charge_2 = 0.6f;
     [SerializeField] float charge_3 = 0.3f;
     Transform tf;
+    GameObject pause_menu;
+    GameObject game_objects;
     SpriteRenderer[] guides;
     Vector3 prev_left_stick = new Vector3(0, 0, 0);
     Vector3 left_stick = new Vector3(0,0,0);
@@ -48,6 +50,9 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        pause_menu = GameObject.FindGameObjectWithTag("pause");
+        game_objects = GameObject.FindGameObjectWithTag("GameController");
 
         controls = new Controllers();
         controls.Gameplay.Enable();
@@ -92,7 +97,7 @@ public class Controller : MonoBehaviour
         gun_sounds[3, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun3-2");
         gun_sounds[3, 2].setVolume(0.1f);
         instance.start();
-        instance.setVolume(0.25f);
+        instance.setVolume(0.5f);
     }
 
     float to2Pi(float x, float y)
@@ -145,11 +150,12 @@ public class Controller : MonoBehaviour
 
         if (right_stick.x < 0) right_stick.x = 0;
         if (right_stick.y < 0) right_stick.y = 0;
-        if (right_stick.x != 0 || right_stick.y != 0) {
+        if (right_stick.x != 0.0f || right_stick.y != 0.0f) {
             right_stick.Normalize();
             float desired_angle = Mathf.Atan(right_stick.y / right_stick.x);
             float current_angle = Mathf.Atan(tf.position.y / tf.position.x);
             float final_angle = current_angle + (desired_angle - current_angle) * aim_ease_factor;
+            Debug.Log(desired_angle + ", " + right_stick.x + ", " + right_stick.y);
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
@@ -234,6 +240,12 @@ public class Controller : MonoBehaviour
         guides[3].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
 
         instance.setParameterByName("power", 1.0f - cur_tint);
+
+        if (controls.Gameplay.Pause.WasPressedThisFrame())
+        {
+            pause_menu.SetActive(true);
+            game_objects.SetActive(false);
+        }
         
     }
 }
