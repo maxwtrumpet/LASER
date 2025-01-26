@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Controller : MonoBehaviour
 {
@@ -22,11 +23,14 @@ public class Controller : MonoBehaviour
     Vector3 left_stick = new Vector3(0,0,0);
     Vector3 right_stick = new Vector3(0, 0, 0);
     Vector2 prev_triggers = new Vector2(0, 0);
-    Vector2 cur_triggers = new Vector2(0, 0);
+    Vector2 cur_triggers = new Vector2(-1.0f, -1.0f);
     Vector4 buttons_down = new Vector4(0, 0, 0, 0);
-    float cur_tint = 1.0f;
+    bool left_bumper = false;
+    bool right_bumper = false;
+    public float cur_tint = 1.0f;
     private FMOD.Studio.EventInstance instance;
     FMOD.Studio.EventInstance[,] gun_sounds = new FMOD.Studio.EventInstance[4,3];
+    Controllers controls;
 
     // Buttons:
     // 1 - Down (A)
@@ -44,6 +48,22 @@ public class Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        controls = new Controllers();
+        controls.Gameplay.Enable();
+        controls.Gameplay.LeftStick.performed += ctx => left_stick = ctx.ReadValue<Vector2>();
+        controls.Gameplay.LeftStick.canceled += ctx => left_stick = Vector3.zero;
+        controls.Gameplay.RightStick.performed += ctx => right_stick = ctx.ReadValue<Vector2>();
+        controls.Gameplay.RightStick.canceled += ctx => right_stick = Vector3.zero;
+        controls.Gameplay.RightTrigger.performed += ctx => cur_triggers.y = 1.0f;
+        controls.Gameplay.RightTrigger.canceled += ctx => cur_triggers.y = -1.0f;
+        controls.Gameplay.LeftTrigger.performed += ctx => cur_triggers.x = 1.0f;
+        controls.Gameplay.LeftTrigger.canceled += ctx => cur_triggers.x = -1.0f;
+        controls.Gameplay.RightBumper.performed += ctx => right_bumper = true;
+        controls.Gameplay.RightBumper.canceled += ctx => right_bumper = false;
+        controls.Gameplay.LeftBumper.performed += ctx => left_bumper = true;
+        controls.Gameplay.LeftBumper.canceled += ctx => left_bumper = false;
+
         tf = GetComponent<Transform>();
         guides = GetComponentsInChildren<SpriteRenderer>();
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/effects/cannon");
@@ -86,8 +106,6 @@ public class Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        left_stick.x = Input.GetAxis("Horizontal");
-        left_stick.y = Input.GetAxis("Vertical");
         if (!(left_stick.x == 0 && right_stick.y == 0) && !(prev_left_stick.x == 0 && prev_left_stick.y == 0))
         {
             float prev_angle = to2Pi(prev_left_stick.x, prev_left_stick.y);
@@ -125,8 +143,6 @@ public class Controller : MonoBehaviour
             }
         }
 
-        right_stick.x = Input.GetAxis("Horizontal2");
-        right_stick.y = Input.GetAxis("Vertical2");
         if (right_stick.x < 0) right_stick.x = 0;
         if (right_stick.y < 0) right_stick.y = 0;
         if (right_stick.x != 0 || right_stick.y != 0) {
@@ -137,8 +153,6 @@ public class Controller : MonoBehaviour
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
-        cur_triggers.x = Input.GetAxis("Fire1");
-        cur_triggers.y = Input.GetAxis("Fire2");
         if (buttons_down.x == 0) {
             if (cur_triggers.x > prev_triggers.x) buttons_down.x = 10;
         }
@@ -148,20 +162,20 @@ public class Controller : MonoBehaviour
         }
         if (buttons_down.y == 0)
         {
-            if (Input.GetKeyDown(KeyCode.Joystick1Button7)) buttons_down.y = 10;
+            if (left_bumper) buttons_down.y = 10;
         }
         else
         {
-            if (Input.GetKey(KeyCode.Joystick1Button7)) buttons_down.y--;
+            if (left_bumper) buttons_down.y--;
             else buttons_down.y = 0;
         }
         if (buttons_down.z == 0)
         {
-            if (Input.GetKeyDown(KeyCode.Joystick1Button8)) buttons_down.z = 10;
+            if (right_bumper) buttons_down.z = 10;
         }
         else
         {
-            if (Input.GetKey(KeyCode.Joystick1Button8)) buttons_down.z--;
+            if (right_bumper) buttons_down.z--;
             else buttons_down.z = 0;
         }
         if (buttons_down.w == 0)
