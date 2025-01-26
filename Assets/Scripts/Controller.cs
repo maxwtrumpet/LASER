@@ -248,4 +248,10 @@ public class Controller : MonoBehaviour
         }
         
     }
+
+    private void OnDestroy()
+    {
+        instance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        instance.release();
+    }
 }
