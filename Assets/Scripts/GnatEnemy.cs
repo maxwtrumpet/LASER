@@ -5,17 +5,18 @@ using UnityEngine;
 public class GnatEnemy : MonoBehaviour
 {
 
-    Rigidbody2D rb;
+    Rigidbody2D rb = null;
     [SerializeField] float gravity_scale = 1.0f;
     Vector2 cur_vel = Vector2.zero;
 
     private void OnEnable()
     {
-        rb.velocity = cur_vel;
+        if (rb == null) Init();
+        else rb.velocity = cur_vel;
     }
 
     // Start is called before the first frame update
-    void Start()
+    void Init()
     {
         rb = GetComponent<Rigidbody2D>();
         float angle = Random.Range(0.0f, Mathf.PI*2);

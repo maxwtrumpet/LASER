@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6785519003676431380}
   m_Layer: 0
   m_Name: GnatEnemy
-  m_TagString: Untagged
+  m_TagString: gnat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,8 +31,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.127927, y: 0.45898062, z: -0.0012816219}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 6.25, y: 6.25, z: 6.25}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  points: 1
+  lose_screen: {fileID: 0}
 --- !u!61 &7092066330654557842
 BoxCollider2D:
   m_ObjectHideFlags: 0

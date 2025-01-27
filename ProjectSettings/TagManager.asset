@@ -12,6 +12,10 @@ TagManager:
   - menu
   - pause
   - music
+  - enemy
+  - win
+  - lose
+  - gnat
   layers:
   - Default
   - TransparentFX

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class MusicEvent
 {
@@ -15,53 +16,37 @@ public class MusicEvent
 
 public class MusicManager : MonoBehaviour
 {
-    public FMOD.Studio.EventInstance instance;
-    private int kill_points = 0;
-
-    void _OnKill(KillEvent e)
+    private FMOD.Studio.EventInstance instance;
+    private float[][] parameters = new float[9][]
     {
-        int prev_points = kill_points;
-        kill_points += e.points;
-        if (prev_points < 40 && kill_points >= 40)
-        {
-            instance.setParameterByName("Melody High", 1.0f);
-            instance.setParameterByName("Melody Low", 0.0f);
-        }
-        else if (prev_points < 35 && kill_points >= 35)
-        {
-            instance.setParameterByName("Drum 2", 1.0f);
-        }
-        else if (prev_points < 30 && kill_points >= 30)
-        {
-            instance.setParameterByName("F", 1.0f);
-            instance.setParameterByName("Ab Resolve", 0.0f);
-            instance.setParameterByName("Ab Stay", 0.0f);
-        }
-        else if (prev_points < 25 && kill_points >= 25)
-        {
-            instance.setParameterByName("Bb High", 1.0f);
-            instance.setParameterByName("Bb Low", 0.0f);
-        }
-        else if (prev_points < 20 && kill_points >= 20)
-        {
-            instance.setParameterByName("Eb", 1.0f);
-        }
-        else if (prev_points < 15 && kill_points >= 15)
-        {
-            instance.setParameterByName("Drum 1", 1.0f);
-        }
-        else if (prev_points < 10 && kill_points >= 10)
-        {
-            instance.setParameterByName("Ab Stay", 1.0f);
-        }
-        else if (prev_points < 5 && kill_points >= 5)
-        {
-            instance.setParameterByName("Bb Low", 1.0f);
-        }
-        else if(prev_points < 1 && kill_points >= 1)
-        {
-            instance.setParameterByName("Melody Low", 1.0f);
-        }
+        new float[11] {1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f},
+        new float[11] {1.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f},
+        new float[11] {1.0f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f}
+    };
+
+    public void Reset()
+    {
+        instance.setParameterByName("Ab Resolve", 0.0f);
+        instance.setParameterByName("Ab Stay", 0.0f);
+        instance.setParameterByName("Bass High", 1.0f);
+        instance.setParameterByName("Bass Low", 0.0f);
+        instance.setParameterByName("Bb High", 0.0f);
+        instance.setParameterByName("Bb Low", 0.0f);
+        instance.setParameterByName("Drum 1", 1.0f);
+        instance.setParameterByName("Drum 2", 0.0f);
+        instance.setParameterByName("Drum 3", 0.0f);
+        instance.setParameterByName("Eb", 0.0f);
+        instance.setParameterByName("F", 0.0f);
+        instance.setParameterByName("Melody High", 0.0f);
+        instance.setParameterByName("Melody Low", 0.0f);
+        instance.setParameterByName("Ostinato Fast", 0.0f);
+        instance.setParameterByName("Ostinato Slow", 0.0f);
     }
 
     void _OnMusic(MusicEvent e)
@@ -69,14 +54,28 @@ public class MusicManager : MonoBehaviour
         instance.setParameterByName(e.parameter, e.value);
     }
 
+    public void StartLevel(int level)
+    {
+        instance.setParameterByName("Bass High", parameters[level][0]);
+        instance.setParameterByName("Melody Low", parameters[level][1]);
+        instance.setParameterByName("Bb Low", parameters[level][2]);
+        instance.setParameterByName("Ab Stay", parameters[level][3]);
+        instance.setParameterByName("Drum 1", parameters[level][4]);
+        instance.setParameterByName("Eb", parameters[level][5]);
+        instance.setParameterByName("Bb High", parameters[level][6]);
+        instance.setParameterByName("F", parameters[level][7]);
+        instance.setParameterByName("Ab Resolve", parameters[level][8]);
+        instance.setParameterByName("Drum 2", parameters[level][9]);
+        instance.setParameterByName("Melody High", parameters[level][10]);
+    }
+
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         DontDestroyOnLoad(gameObject);
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
         instance.start();
-        instance.setParameterByName("Bass High", 1.0f);
-        EventBus.Subscribe<KillEvent>(_OnKill);
+        Reset();
         EventBus.Subscribe<MusicEvent>(_OnMusic);
     }
 }

@@ -10,6 +10,8 @@ public class MusicSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("music") == null) Instantiate(manager_prefab).GetComponent<MusicManager>();
+        GameObject mm = GameObject.FindGameObjectWithTag("music");
+        if (mm == null) Instantiate(manager_prefab);
+        else mm.GetComponent<MusicManager>().Reset();
     }
 }

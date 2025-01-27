@@ -6,11 +6,13 @@ using TMPro;
 public class ButtonLevel : MonoBehaviour
 {
     string scene = "Level";
+    int level = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        scene += GetComponentInChildren<TextMeshPro>().text;
+        level = int.Parse(GetComponentInChildren<TextMeshPro>().text);
+        scene += level;
         EventBus.Subscribe<ButtonPress>(_OnClick);
     }
 

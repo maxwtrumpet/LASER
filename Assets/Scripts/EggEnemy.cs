@@ -5,11 +5,16 @@ using UnityEngine;
 public class EggEnemy : MonoBehaviour
 {
     [SerializeField] GameObject gnat_prefab;
+    GameObject lose_screen;
     float remaining_time = 10.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        lose_screen = GetComponent<HealthManager>().lose_screen;
+        float top_or_bottom = Random.Range(0.0f, 25.0f);
+        if (top_or_bottom <= 9.0f) transform.position = new Vector3(18.0f, Random.Range(0.0f, 9.0f), 0.0f);
+        else transform.position = new Vector3(Random.Range(0.0f, 17.0f), 10.0f, 0.0f);
         if (transform.position.x == 18.0f) GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);
         else GetComponent<MoveWithEase>().desired_dest = new Vector3(transform.position.x, 8.0f);
         EventBus.Publish<MusicEvent>(new MusicEvent("Bass Low", 1.0f));
@@ -37,7 +42,9 @@ public class EggEnemy : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            Instantiate(gnat_prefab, transform).transform.position = transform.position;
+            GameObject gnat = Instantiate(gnat_prefab, transform.parent);
+            gnat.transform.position = transform.position;
+            gnat.GetComponent<HealthManager>().lose_screen = lose_screen;
         }
     }
 

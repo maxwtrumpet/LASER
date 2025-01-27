@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Unity.VisualScripting;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -8,38 +10,35 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] GameObject[] enemy_prefabs;
     [SerializeField] float[] frequencies;
     [SerializeField] float[] first_appearances;
+    [SerializeField] NestedArray<float>[] confirmed_appearances;
+    [SerializeField] GameObject music_prefab;
+    public float time_limit = 60.0f;
+    [SerializeField] Vector2 spawn_range = new Vector2(1.0f, 3.0f);
     GameObject game_objects;
-    float[][] guranteed_times;
+    GameObject win_screen;
+    GameObject lose_screen;
+    TextMeshPro tmp;
+    private int kill_points = 0;
+    int bonus_points = 0;
     int[] cur_index;
+    int enemy_count = 0;
     float time_elapsed = 0.0f;
     // Start is called before the first frame update
     private void Start()
     {
-
+        tmp = GetComponent<TextMeshPro>();
+        GameObject mm = GameObject.FindGameObjectWithTag("music");
+        if (mm == null) mm = Instantiate(music_prefab);
+        mm.GetComponent<MusicManager>().StartLevel(int.Parse(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name[5..]) - 1);
         game_objects = GameObject.FindGameObjectWithTag("GameController");
-
+        lose_screen = GameObject.FindGameObjectWithTag("lose");
+        win_screen = GameObject.FindGameObjectWithTag("win");
+        EventBus.Subscribe<KillEvent>(_OnKill);
         cur_index = new int[enemy_prefabs.Length];
         for (int i = 0; i < cur_index.Length; i++)
         {
             cur_index[i] = 0;
         }
-
-        // Have to do this manually because you can't do double array serialized field...
-        guranteed_times = new float[enemy_prefabs.Length][];
-        guranteed_times[0] = new float[1];
-        guranteed_times[0][0] = 0.0f;
-        guranteed_times[1] = new float[1];
-        guranteed_times[1][0] = 15.0f;
-        guranteed_times[2] = new float[1];
-        guranteed_times[2][0] = 30.0f;
-        guranteed_times[3] = new float[1];
-        guranteed_times[3][0] = 45.0f;
-        guranteed_times[4] = new float[5];
-        guranteed_times[4][0] = 60.0f;
-        guranteed_times[4][1] = 120.0f;
-        guranteed_times[4][2] = 180.0f;
-        guranteed_times[4][3] = 240.0f;
-        guranteed_times[4][4] = 300.0f;
 
     }
 
@@ -48,15 +47,85 @@ public class EnemyManager : MonoBehaviour
         StartCoroutine(SpawnEnemies());
     }
 
+    void _OnKill(KillEvent e)
+    {
+        if (e.bonus)
+        {
+            kill_points += e.points + bonus_points;
+            bonus_points += 5;
+        }
+        else
+        {
+            kill_points += e.points;
+        }
+        tmp.text = "Score: " + kill_points;
+        enemy_count--;
+        if (time_limit != -1.0f && time_elapsed >= time_limit && enemy_count == 0)
+        {
+            win_screen.SetActive(true);
+            game_objects.SetActive(false);
+        }
+    }
+
+    public void ResetBonus()
+    {
+        bonus_points = 0;
+    }
+
     IEnumerator SpawnEnemies()
     {
-        while (true)
+        while (time_limit == 1.0f || time_elapsed < time_limit || GameObject.FindGameObjectWithTag("boss") != null)
         {
 
-            // Get random time between 1 and 3 seconds to spawn new enemy. Add it to elapsed time.
-            float next_interval = Random.Range(1, 3);
+            float next_interval = Random.Range(spawn_range.x, spawn_range.y);
             yield return new WaitForSeconds(next_interval);
+            float prev_time = time_elapsed;
             time_elapsed += next_interval;
+
+            // Music changing
+            if (time_limit == 1.0f)
+            {
+                if (prev_time < 300 && time_elapsed >= 300)
+                {
+                    EventBus.Publish(new MusicEvent("Melody High", 1.0f));
+                    EventBus.Publish(new MusicEvent("Melody Low", 0.0f));
+                }
+                else if (prev_time < 240 && time_elapsed >= 240)
+                {
+                    EventBus.Publish(new MusicEvent("Drum 2", 1.0f));
+                }
+                else if (prev_time < 210 && time_elapsed >= 210)
+                {
+                    EventBus.Publish(new MusicEvent("F", 1.0f));
+                    EventBus.Publish(new MusicEvent("Ab Resolve", 0.0f));
+                    EventBus.Publish(new MusicEvent("Ab Stay", 0.0f));
+                }
+                else if (prev_time < 180 && time_elapsed >= 180)
+                {
+                    EventBus.Publish(new MusicEvent("Bb High", 1.0f));
+                    EventBus.Publish(new MusicEvent("Bb Low", 0.0f));
+                }
+                else if (prev_time < 150 && time_elapsed >= 150)
+                {
+                    EventBus.Publish(new MusicEvent("Eb", 1.0f));
+                }
+                else if (prev_time < 120 && time_elapsed >= 120)
+                {
+                    EventBus.Publish(new MusicEvent("Drum 1", 1.0f));
+                }
+                else if (prev_time < 90 && time_elapsed >= 90)
+                {
+                    EventBus.Publish(new MusicEvent("Ab Stay", 1.0f));
+                }
+                else if (prev_time < 60 && time_elapsed >= 60)
+                {
+                    EventBus.Publish(new MusicEvent("Bb Low", 1.0f));
+                }
+                else if (prev_time < 30 && time_elapsed >= 30)
+                {
+                    EventBus.Publish(new MusicEvent("Melody Low", 1.0f));
+                }
+            }
 
             // Loop throguh all enemies and see if the time has past for them to start spawning.
             // If this is the first time they're appearing, gurantee they spawn.
@@ -67,7 +136,7 @@ public class EnemyManager : MonoBehaviour
                 if (time_elapsed >= first_appearances[i])
                 {
                     total_chance += frequencies[i];
-                    if (cur_index[i] < guranteed_times[i].Length && time_elapsed >= guranteed_times[i][cur_index[i]] && time_elapsed - next_interval < guranteed_times[i][cur_index[i]])
+                    if (cur_index[i] < confirmed_appearances[i].row.Length && time_elapsed >= confirmed_appearances[i].row[cur_index[i]] && prev_time < confirmed_appearances[i].row[cur_index[i]])
                     {
                         auto_appear = i;
                         cur_index[i]++;
@@ -97,10 +166,8 @@ public class EnemyManager : MonoBehaviour
             }
 
             // Instantiate the enemy and spawn them on the edge of the FOV.
-            new_enemy = Instantiate(new_enemy, game_objects.transform);
-            float top_or_bottom = Random.Range(0.0f, 25.0f);
-            if (top_or_bottom <= 9.0f) new_enemy.GetComponent<Rigidbody2D>().transform.position = new Vector3(18.0f, Random.Range(0.0f,9.0f), 0.0f);
-            else new_enemy.GetComponent<Rigidbody2D>().transform.position = new Vector3(Random.Range(0.0f, 17.0f), 10.0f, 0.0f);
+            Instantiate(new_enemy, game_objects.transform).GetComponent<HealthManager>().lose_screen = lose_screen;
+            enemy_count++;
 
         }
     }

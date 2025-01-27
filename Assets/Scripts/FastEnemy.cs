@@ -9,14 +9,18 @@ public class FastEnemy : MonoBehaviour
     [SerializeField] float ease_factor = 0.2f;
 
     // Start is called before the first frame update
-    void Start()
+    void Initialize()
     {
+        float top_or_bottom = Random.Range(0.0f, 25.0f);
+        if (top_or_bottom <= 9.0f) transform.position = new Vector3(18.0f, Random.Range(0.0f, 9.0f), 0.0f);
+        else transform.position = new Vector3(Random.Range(0.0f, 17.0f), 10.0f, 0.0f);
         cur_dest = transform.position;
         EventBus.Publish<MusicEvent>(new MusicEvent("Ostinato Slow", 1.0f));
     }
 
     private void OnEnable()
     {
+        if (cur_dest.x == -1.0f) Initialize();
         StartCoroutine(Move());
     }
 

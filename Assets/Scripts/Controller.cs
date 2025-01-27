@@ -150,12 +150,11 @@ public class Controller : MonoBehaviour
 
         if (right_stick.x < 0) right_stick.x = 0;
         if (right_stick.y < 0) right_stick.y = 0;
+        right_stick.Normalize();
         if (right_stick.x != 0.0f || right_stick.y != 0.0f) {
-            right_stick.Normalize();
             float desired_angle = Mathf.Atan(right_stick.y / right_stick.x);
             float current_angle = Mathf.Atan(tf.position.y / tf.position.x);
             float final_angle = current_angle + (desired_angle - current_angle) * aim_ease_factor;
-            Debug.Log(desired_angle + ", " + right_stick.x + ", " + right_stick.y);
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
@@ -196,7 +195,7 @@ public class Controller : MonoBehaviour
         
         bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > charge_2) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > charge_3);
         if (fire && cur_tint < charge_1) {
-            GameObject cur_beam = Instantiate(beam_prefab);
+            GameObject cur_beam = Instantiate(beam_prefab, transform.parent.parent);
             cur_beam.transform.SetPositionAndRotation(transform.position, transform.rotation);
             cur_beam.transform.localScale = new Vector3(2.4f, guides[0].transform.localPosition.y * 11.0f, 1.0f);
             AutoDestroy ad = cur_beam.GetComponent<AutoDestroy>();

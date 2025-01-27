@@ -5,19 +5,22 @@ using UnityEngine;
 public class KillEvent
 {
     public int points = 1;
-    public KillEvent(int _new_points) { points = _new_points; }
+    public bool bonus = true;
+    public KillEvent(int _new_points) { points = _new_points; bonus = _new_points != 1; }
 }
 
 public class HealthManager : MonoBehaviour
 {
 
     [SerializeField] int health = 4;
+    [SerializeField] int points = 1;
+    public GameObject lose_screen;
 
     void LateUpdate()
     {
         if (health <= 0)
         {
-            EventBus.Publish<KillEvent>(new KillEvent(1));
+            EventBus.Publish<KillEvent>(new KillEvent(points));
             Destroy(gameObject);
         }
     }
@@ -30,12 +33,8 @@ public class HealthManager : MonoBehaviour
         }
         else if (collision.name == "Center")
         {
-            Debug.Log("Game Over!");
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
+            lose_screen.SetActive(true);
+            GameObject.FindGameObjectWithTag("GameController").SetActive(false);
         }
     }
 }
