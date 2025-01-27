@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ButtonControls : MonoBehaviour
+public class ButtonBack : MonoBehaviour
 {
     GameObject menu_buttons;
     GameObject control_buttons;
@@ -20,8 +20,8 @@ public class ButtonControls : MonoBehaviour
     {
         if (e.selected_button == gameObject)
         {
-            control_buttons.SetActive(true);
-            menu_buttons.SetActive(false);
+            menu_buttons.SetActive(true);
+            control_buttons.SetActive(false);
         }
     }
 }

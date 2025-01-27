@@ -11,7 +11,6 @@ public class Controller : MonoBehaviour
     [SerializeField] Sprite yellow;
     [SerializeField] Sprite orange;
     [SerializeField] Sprite red;
-    [SerializeField] float aim_ease_factor = 0.01f;
     [SerializeField] float shoot_ease_factor = 0.2f;
     [SerializeField] float charge_ease_factor = 0.025f;
     [SerializeField] float charge_1 = 0.9f;
@@ -152,9 +151,21 @@ public class Controller : MonoBehaviour
         if (right_stick.y < 0) right_stick.y = 0;
         right_stick.Normalize();
         if (right_stick.x != 0.0f || right_stick.y != 0.0f) {
+
             float desired_angle = Mathf.Atan(right_stick.y / right_stick.x);
             float current_angle = Mathf.Atan(tf.position.y / tf.position.x);
-            float final_angle = current_angle + (desired_angle - current_angle) * aim_ease_factor;
+
+            float final_angle = current_angle;
+            float factor = 0.005f + cur_tint / 100.0f;
+            if (Mathf.Abs(current_angle - desired_angle) > factor)
+            {
+                if (current_angle < desired_angle) final_angle = current_angle + factor;
+                else final_angle = current_angle - factor;
+            }
+
+            if (final_angle > Mathf.PI / 2) final_angle = Mathf.PI / 2;
+            else if (final_angle < 0.0f) final_angle = 0.0f;
+
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
@@ -234,7 +245,9 @@ public class Controller : MonoBehaviour
         guides[2].transform.localPosition = new Vector3(0.0f, real_size, 0.0f);
         guides[3].transform.localPosition = new Vector3(0.0f, -real_size, 0.0f);
 
-        float ease_tint = guides[2].transform.localScale.x + (1.0f - cur_tint - guides[2].transform.localScale.x) * charge_ease_factor;
+        float ease_tint;
+        if (1.0f - cur_tint >= guides[2].transform.localScale.x) ease_tint = 1.0f - cur_tint;
+        else ease_tint = guides[2].transform.localScale.x + (1.0f - cur_tint - guides[2].transform.localScale.x) * charge_ease_factor;
         guides[2].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
         guides[3].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
 

@@ -28,8 +28,19 @@ public class GnatEnemy : MonoBehaviour
     void Update()
     {
         cur_vel = rb.velocity;
+        if (transform.position.y < 0.0f)
+        {
+            transform.position = new Vector3(0.0f, transform.position.x, 0.0f);
+            rb.velocity = new Vector3(-rb.velocity.y, rb.velocity.x);
+        }
+        else if (transform.position.x < 0.0f)
+        {
+            transform.position = new Vector3(transform.position.y, 0.0f, 0.0f);
+            rb.velocity = new Vector3(rb.velocity.y, -rb.velocity.x);
+        }
         float angle = Mathf.Abs(Mathf.Atan(transform.position.y / transform.position.x));
         Vector2 gravity = new Vector2(Mathf.Sign(transform.position.x) * Mathf.Cos(angle) * -gravity_scale, Mathf.Sign(transform.position.y) * Mathf.Sin(angle) * -gravity_scale);
         rb.AddForce(gravity);
     }
+
 }

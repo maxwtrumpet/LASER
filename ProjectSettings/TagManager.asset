@@ -16,6 +16,7 @@ TagManager:
   - win
   - lose
   - gnat
+  - controls
   layers:
   - Default
   - TransparentFX
