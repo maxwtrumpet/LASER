@@ -8,11 +8,10 @@ public class AutoDestroy : MonoBehaviour
     public float lifetime;
     public int damage;
 
-    // Start is called before the first frame update
-    IEnumerator Start()
+    private void Update()
     {
-        yield return new WaitForSeconds(lifetime);
-        Destroy(gameObject);
+        lifetime -= Time.deltaTime;
+        if (lifetime <= 0.0f) Destroy(gameObject);
     }
 
 }

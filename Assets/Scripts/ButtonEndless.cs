@@ -14,7 +14,7 @@ public class ButtonEndless : MonoBehaviour
     {
         if (e.selected_button == gameObject)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Endless");
+            UnityEngine.SceneManagement.SceneManager.LoadScene("Level10");
         }
     }
 }

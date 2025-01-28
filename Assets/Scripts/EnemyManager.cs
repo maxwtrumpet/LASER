@@ -53,13 +53,14 @@ public class EnemyManager : MonoBehaviour
         {
             kill_points += e.points + bonus_points;
             bonus_points += 5;
+            enemy_count--;
         }
         else
         {
             kill_points += e.points;
         }
         tmp.text = "Score: " + kill_points;
-        enemy_count--;
+        
         if (time_limit != -1.0f && time_elapsed >= time_limit && enemy_count == 0)
         {
             win_screen.SetActive(true);
@@ -74,16 +75,16 @@ public class EnemyManager : MonoBehaviour
 
     IEnumerator SpawnEnemies()
     {
-        while (time_limit == 1.0f || time_elapsed < time_limit || GameObject.FindGameObjectWithTag("boss") != null)
+        while (time_limit == -1.0f || time_elapsed < time_limit || GameObject.FindGameObjectWithTag("boss") != null)
         {
-
-            float next_interval = Random.Range(spawn_range.x, spawn_range.y);
+            if (time_limit == -1.0f) spawn_range.y = 3.0f - time_elapsed / 300.0f;
+            float next_interval; next_interval = Random.Range(spawn_range.x, spawn_range.y);
             yield return new WaitForSeconds(next_interval);
             float prev_time = time_elapsed;
             time_elapsed += next_interval;
 
             // Music changing
-            if (time_limit == 1.0f)
+            if (time_limit == -1.0f)
             {
                 if (prev_time < 300 && time_elapsed >= 300)
                 {

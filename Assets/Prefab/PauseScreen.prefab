@@ -53,6 +53,8 @@ MonoBehaviour:
     - {fileID: 537995405304429098}
   - row:
     - {fileID: 3279884841668782121}
+  row: 1
+  column: 0
 --- !u!114 &485696827571396263
 MonoBehaviour:
   m_ObjectHideFlags: 0

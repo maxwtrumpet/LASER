@@ -17,6 +17,7 @@ TagManager:
   - lose
   - gnat
   - controls
+  - floor
   layers:
   - Default
   - TransparentFX

@@ -16,8 +16,8 @@ public class NestedArray<T>
 public class ButtonController : MonoBehaviour
 {
     [SerializeField] NestedArray<GameObject>[] buttons;
-    int row = 0;
-    int column = 0;
+    [SerializeField] int row = 0;
+    [SerializeField] int column = 0;
     Vector2 JoystickInput = Vector2.zero;
     bool cur_input = false;
     Controllers controls;

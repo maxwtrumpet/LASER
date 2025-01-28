@@ -13,10 +13,15 @@ public class EggEnemy : MonoBehaviour
     {
         lose_screen = GetComponent<HealthManager>().lose_screen;
         float top_or_bottom = Random.Range(0.0f, 25.0f);
-        if (top_or_bottom <= 9.0f) transform.position = new Vector3(18.0f, Random.Range(0.0f, 9.0f), 0.0f);
-        else transform.position = new Vector3(Random.Range(0.0f, 17.0f), 10.0f, 0.0f);
-        if (transform.position.x == 18.0f) GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);
-        else GetComponent<MoveWithEase>().desired_dest = new Vector3(transform.position.x, 8.0f);
+        if (top_or_bottom <= 9.0f)
+        {
+            transform.position = new Vector3(18.0f, Random.Range(0.0f, 6.5f), 0.0f);
+            GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);
+        }
+        else {
+            transform.position = new Vector3(Random.Range(0.0f, 16.0f), 8.5f, 0.0f);
+            GetComponent<MoveWithEase>().desired_dest = new Vector3(transform.position.x, 6.5f);
+        }
         EventBus.Publish<MusicEvent>(new MusicEvent("Bass Low", 1.0f));
     }
 
