@@ -13,35 +13,35 @@ public class ScreenScroller : MonoBehaviour
     void Update()
     {
         float change = floors[0].transform.localPosition.x + 0.05f;
-        if (change >= 17.8f) floors[0].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
-        else floors[0].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
+        if (change >= 18.0f) floors[0].transform.localPosition = new Vector3(-18.0f + change - 18.0f, -5.0f, 0.0f);
+        else floors[0].transform.localPosition = new Vector3(change, -5.0f, 0.0f);
 
         change = floors[1].transform.localPosition.x + 0.05f;
-        if (change >= 17.8f) floors[1].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
-        else floors[1].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
+        if (change >= 18.0f) floors[1].transform.localPosition = new Vector3(-18.0f + change - 18.0f, -5.0f, 0.0f);
+        else floors[1].transform.localPosition = new Vector3(change, -5.0f, 0.0f);
 
         change = bg_2[0].transform.localPosition.x + 0.001f;
-        if (change >= 17.8f) bg_2[0].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_2[0].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_2[0].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
 
         change = bg_2[1].transform.localPosition.x + 0.001f;
-        if (change >= 17.8f) bg_2[1].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_2[1].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_2[1].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
 
         change = bg_3[0].transform.localPosition.x + 0.005f;
-        if (change >= 17.8f) bg_3[0].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_3[0].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_3[0].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
 
         change = bg_3[1].transform.localPosition.x + 0.005f;
-        if (change >= 17.8f) bg_3[1].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_3[1].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_3[1].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
 
         change = bg_4[0].transform.localPosition.x + 0.01f;
-        if (change >= 17.8f) bg_4[0].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_4[0].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_4[0].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
 
         change = bg_4[1].transform.localPosition.x + 0.01f;
-        if (change >= 17.8f) bg_4[1].transform.localPosition = new Vector3(-17.5f, 0.0f, 0.0f);
+        if (change >= 18.0f) bg_4[1].transform.localPosition = new Vector3(-18.0f + change - 18.0f, 0.0f, 0.0f);
         else bg_4[1].transform.localPosition = new Vector3(change, 0.0f, 0.0f);
     }
 }

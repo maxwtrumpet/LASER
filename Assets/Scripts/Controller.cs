@@ -11,6 +11,7 @@ public class Controller : MonoBehaviour
     [SerializeField] Sprite yellow;
     [SerializeField] Sprite orange;
     [SerializeField] Sprite red;
+    [SerializeField] Sprite idle_gun;
     [SerializeField] float shoot_ease_factor = 0.2f;
     [SerializeField] float charge_ease_factor = 0.025f;
     [SerializeField] float charge_1 = 0.9f;
@@ -20,6 +21,7 @@ public class Controller : MonoBehaviour
     GameObject pause_menu;
     GameObject game_objects;
     SpriteRenderer[] guides;
+    Animator am;
     Vector3 prev_left_stick = new Vector3(0, 0, 0);
     Vector3 left_stick = new Vector3(0,0,0);
     Vector3 right_stick = new Vector3(0, 0, 0);
@@ -68,6 +70,7 @@ public class Controller : MonoBehaviour
         controls.Gameplay.LeftBumper.performed += ctx => left_bumper = true;
         controls.Gameplay.LeftBumper.canceled += ctx => left_bumper = false;
 
+        am = GetComponentInChildren<Animator>();
         tf = GetComponent<Transform>();
         guides = GetComponentsInChildren<SpriteRenderer>();
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/effects/cannon");
@@ -126,23 +129,23 @@ public class Controller : MonoBehaviour
 
                 if (cur_tint == 0.0f)
                 {
-                    guides[0].sprite = red;
                     guides[1].sprite = red;
+                    guides[2].sprite = red;
                 }
                 else if (cur_tint < charge_3)
                 {
-                    guides[0].sprite = orange;
                     guides[1].sprite = orange;
+                    guides[2].sprite = orange;
                 }
                 else if (cur_tint < charge_2)
                 {
-                    guides[0].sprite = yellow;
                     guides[1].sprite = yellow;
+                    guides[2].sprite = yellow;
                 }
                 else if (cur_tint < charge_1)
                 {
-                    guides[0].sprite = green;
                     guides[1].sprite = green;
+                    guides[2].sprite = green;
                 }
             }
         }
@@ -207,14 +210,14 @@ public class Controller : MonoBehaviour
         bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > charge_2) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > charge_3);
         if (fire && cur_tint < charge_1) {
             GameObject cur_beam = Instantiate(beam_prefab, transform.parent.parent);
-            cur_beam.transform.SetPositionAndRotation(transform.position, transform.rotation);
-            cur_beam.transform.localScale = new Vector3(2.4f, guides[0].transform.localPosition.y * 11.0f, 1.0f);
-            AutoDestroy ad = cur_beam.GetComponent<AutoDestroy>();
+            cur_beam.transform.SetPositionAndRotation(transform.GetChild(transform.childCount-1).position, transform.rotation);
+            BeamManager bm = cur_beam.GetComponent<BeamManager>();
+            bm.goal_thickness = guides[1].transform.localPosition.y * 3.125f;
 
-            if (cur_tint == 0.0f) ad.damage = 7;
-            else if (cur_tint < charge_3) ad.damage = 4;
-            else if (cur_tint < charge_2) ad.damage = 2;
-            else ad.damage = 1;
+            if (cur_tint == 0.0f) bm.damage = 7;
+            else if (cur_tint < charge_3) bm.damage = 4;
+            else if (cur_tint < charge_2) bm.damage = 2;
+            else bm.damage = 1;
 
             int main_idx = 0;
             int rand_idx = Mathf.RoundToInt(Random.Range(-0.499f, 2.499f));
@@ -223,10 +226,10 @@ public class Controller : MonoBehaviour
             else if (cur_tint < charge_2) main_idx = 1;
             gun_sounds[main_idx, rand_idx].start();
 
-            ad.lifetime = (charge_1 - cur_tint) / charge_1 * 0.325f + 0.075f;
+            bm.lifetime = (charge_1 - cur_tint) / charge_1 * 0.325f + 0.075f;
             cur_tint = 1.0f;
-            guides[0].sprite = black;
             guides[1].sprite = black;
+            guides[2].sprite = black;
         }
     }
 
@@ -238,20 +241,46 @@ public class Controller : MonoBehaviour
 
         float new_size = 0.05f;
         if (cur_tint < charge_1) new_size = (charge_1 - cur_tint) / charge_1 * 0.95f + 0.05f;
-        float real_size = guides[0].transform.localPosition.y + (new_size - guides[0].transform.localPosition.y) * shoot_ease_factor;
+        float real_size = guides[1].transform.localPosition.y + (new_size - guides[1].transform.localPosition.y) * shoot_ease_factor;
 
-        guides[0].transform.localPosition = new Vector3(0.0f, real_size, 0.0f);
-        guides[1].transform.localPosition = new Vector3(0.0f, -real_size, 0.0f);
-        guides[2].transform.localPosition = new Vector3(0.0f, real_size, 0.0f);
-        guides[3].transform.localPosition = new Vector3(0.0f, -real_size, 0.0f);
+        guides[1].transform.localPosition = new Vector3(1.25f, real_size, 0.0f);
+        guides[2].transform.localPosition = new Vector3(1.25f, -real_size, 0.0f);
+        guides[3].transform.localPosition = new Vector3(1.281f, real_size, 0.0f);
+        guides[4].transform.localPosition = new Vector3(1.281f, -real_size, 0.0f);
 
         float ease_tint;
-        if (1.0f - cur_tint >= guides[2].transform.localScale.x) ease_tint = 1.0f - cur_tint;
-        else ease_tint = guides[2].transform.localScale.x + (1.0f - cur_tint - guides[2].transform.localScale.x) * charge_ease_factor;
-        guides[2].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
-        guides[3].transform.localScale = new Vector3(ease_tint, 1.0f, 1.0f);
+        if ((1.0f - cur_tint) * 3.125f >= guides[3].transform.localScale.x) ease_tint = (1.0f - cur_tint) * 3.125f;
+        else ease_tint = guides[3].transform.localScale.x + ((1.0f - cur_tint) * 3.125f - guides[3].transform.localScale.x) * charge_ease_factor;
+        guides[3].transform.localScale = new Vector3(ease_tint, 3.125f, 1.0f);
+        guides[4].transform.localScale = new Vector3(ease_tint, 3.125f, 1.0f);
 
         instance.setParameterByName("power", 1.0f - cur_tint);
+        if (cur_tint == 0.0f)
+        {
+            am.enabled = true;
+            am.speed = 2.4f;
+        }
+        else if (cur_tint <= charge_3)
+        {
+            am.enabled = true;
+            am.speed = 1.85f;
+        }
+        else if (cur_tint <= charge_2)
+        {
+            am.enabled = true;
+            am.speed = 1.3f;
+        }
+        else if (cur_tint <= charge_1)
+        {
+            am.enabled = true;
+            am.speed = 0.75f;
+        }
+        else
+        {
+            am.enabled = false;
+            guides[0].sprite = idle_gun;
+            am.speed = 0.0f;
+        }
 
         if (controls.Gameplay.Pause.WasPressedThisFrame())
         {

@@ -27,9 +27,9 @@ public class HealthManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out AutoDestroy ad))
+        if (collision.TryGetComponent(out BeamManager bm))
         {
-            health -= ad.damage;
+            health -= bm.damage;
         }
         else if (collision.name == "Center")
         {

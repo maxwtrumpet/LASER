@@ -18,6 +18,6 @@ public class ProgressBar : MonoBehaviour
     void Update()
     {
         total_time += Time.deltaTime;
-        transform.localScale = new Vector3(Mathf.Min(1.0f, total_time / em.time_limit), 1.0f, 1.0f);
+        transform.localScale = new Vector3(Mathf.Min(3.125f, total_time / em.time_limit * 3.125f), 3.125f, 1.0f);
     }
 }

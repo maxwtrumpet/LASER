@@ -13,7 +13,7 @@ public class FastEnemy : MonoBehaviour
     {
         float top_or_bottom = Random.Range(0.0f, 25.0f);
         if (top_or_bottom <= 9.0f) transform.position = new Vector3(18.0f, Random.Range(0.0f, 7.5f), 0.0f);
-        else transform.position = new Vector3(Random.Range(0.0f, 17.0f), 8.5f, 0.0f);
+        else transform.position = new Vector3(Random.Range(1.0f, 17.0f), 8.5f, 0.0f);
         cur_dest = transform.position;
         EventBus.Publish<MusicEvent>(new MusicEvent("Ostinato Slow", 1.0f));
     }
@@ -38,7 +38,7 @@ public class FastEnemy : MonoBehaviour
             {
                 float dist_diff = Random.Range(0.25f, 1.0f);
                 float distance = cur_dest.magnitude - dist_diff;
-                float angle = Random.Range(0, Mathf.PI / 2);
+                float angle = Random.Range(0, 1.4f);
                 cur_dest = new Vector3(Mathf.Cos(angle) * distance, Mathf.Sin(angle) * distance, 0.0f);
             }
         }

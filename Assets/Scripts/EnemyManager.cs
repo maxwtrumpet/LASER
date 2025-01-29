@@ -83,51 +83,6 @@ public class EnemyManager : MonoBehaviour
             float prev_time = time_elapsed;
             time_elapsed += next_interval;
 
-            // Music changing
-            if (time_limit == -1.0f)
-            {
-                if (prev_time < 300 && time_elapsed >= 300)
-                {
-                    EventBus.Publish(new MusicEvent("Melody High", 1.0f));
-                    EventBus.Publish(new MusicEvent("Melody Low", 0.0f));
-                }
-                else if (prev_time < 240 && time_elapsed >= 240)
-                {
-                    EventBus.Publish(new MusicEvent("Drum 2", 1.0f));
-                }
-                else if (prev_time < 210 && time_elapsed >= 210)
-                {
-                    EventBus.Publish(new MusicEvent("F", 1.0f));
-                    EventBus.Publish(new MusicEvent("Ab Resolve", 0.0f));
-                    EventBus.Publish(new MusicEvent("Ab Stay", 0.0f));
-                }
-                else if (prev_time < 180 && time_elapsed >= 180)
-                {
-                    EventBus.Publish(new MusicEvent("Bb High", 1.0f));
-                    EventBus.Publish(new MusicEvent("Bb Low", 0.0f));
-                }
-                else if (prev_time < 150 && time_elapsed >= 150)
-                {
-                    EventBus.Publish(new MusicEvent("Eb", 1.0f));
-                }
-                else if (prev_time < 120 && time_elapsed >= 120)
-                {
-                    EventBus.Publish(new MusicEvent("Drum 1", 1.0f));
-                }
-                else if (prev_time < 90 && time_elapsed >= 90)
-                {
-                    EventBus.Publish(new MusicEvent("Ab Stay", 1.0f));
-                }
-                else if (prev_time < 60 && time_elapsed >= 60)
-                {
-                    EventBus.Publish(new MusicEvent("Bb Low", 1.0f));
-                }
-                else if (prev_time < 30 && time_elapsed >= 30)
-                {
-                    EventBus.Publish(new MusicEvent("Melody Low", 1.0f));
-                }
-            }
-
             // Loop throguh all enemies and see if the time has past for them to start spawning.
             // If this is the first time they're appearing, gurantee they spawn.
             float total_chance = 0.0f;
