@@ -11,6 +11,7 @@ public class FastEnemy : MonoBehaviour
     // Start is called before the first frame update
     void Initialize()
     {
+        GetComponent<Animator>().speed = 0.75f;
         float top_or_bottom = Random.Range(0.0f, 25.0f);
         if (top_or_bottom <= 9.0f) transform.position = new Vector3(18.0f, Random.Range(0.0f, 7.5f), 0.0f);
         else transform.position = new Vector3(Random.Range(1.0f, 17.0f), 8.5f, 0.0f);

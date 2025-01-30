@@ -7,10 +7,13 @@ public class EggEnemy : MonoBehaviour
     [SerializeField] GameObject gnat_prefab;
     GameObject lose_screen;
     float remaining_time = 10.0f;
+    Animator am;
 
     // Start is called before the first frame update
     void Start()
     {
+        am = GetComponent<Animator>();
+        am.speed = 0.5f;
         lose_screen = GetComponent<HealthManager>().lose_screen;
         float top_or_bottom = Random.Range(0.0f, 25.0f);
         if (top_or_bottom <= 9.0f)
@@ -38,6 +41,7 @@ public class EggEnemy : MonoBehaviour
         if (remaining_time > 0.0f)
         {
             remaining_time -= Time.deltaTime;
+            am.speed = (10.0f - remaining_time) / 10.0f * 1.5f + 0.5f;
             if (remaining_time <= 0.0f) StartCoroutine(SpawnGnats());
         }
     }
