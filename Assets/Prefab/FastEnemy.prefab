@@ -104,6 +104,7 @@ MonoBehaviour:
   health: 2
   points: 15
   explosion_index: 1
+  explosion_prefab: {fileID: 4498691094871151360, guid: d28f5ae2898584845a856a2b115cd6e2, type: 3}
   lose_screen: {fileID: 0}
 --- !u!50 &3793807021740276267
 Rigidbody2D:

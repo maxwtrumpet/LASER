@@ -102,6 +102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   points: 1
+  explosion_index: 0
+  explosion_prefab: {fileID: 1634355531052142903, guid: 7227d41996f6b4f2a95a0d183069718a, type: 3}
   lose_screen: {fileID: 0}
 --- !u!61 &7092066330654557842
 BoxCollider2D:

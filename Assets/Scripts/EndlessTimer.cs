@@ -62,4 +62,9 @@ public class EndlessTimer : MonoBehaviour
         }
 
     }
+
+    public void CheckTime()
+    {
+        if (PlayerPrefs.GetInt("EndlessTime") < (int)time_elapsed) PlayerPrefs.SetInt("EndlessTime", (int)time_elapsed);
+    }
 }

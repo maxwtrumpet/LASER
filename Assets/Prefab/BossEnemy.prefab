@@ -102,8 +102,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 64
-  points: 50
+  points: 100
   explosion_index: 4
+  explosion_prefab: {fileID: 5488711845935431867, guid: 4441b96c5d9ae4d1cbe2a8324eb93a26, type: 3}
+  boss_dead: {fileID: 21300000, guid: 5d249f2499e684f94be00c08a8d6949c, type: 3}
   lose_screen: {fileID: 0}
 --- !u!61 &4413374897481942734
 BoxCollider2D:

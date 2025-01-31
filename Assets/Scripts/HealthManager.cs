@@ -16,15 +16,45 @@ public class HealthManager : MonoBehaviour
     [SerializeField] int health = 4;
     [SerializeField] int points = 1;
     [SerializeField] int explosion_index = 0;
+    [SerializeField] GameObject explosion_prefab;
+    [SerializeField] Sprite boss_dead;
     public GameObject lose_screen;
+    float countdown = -1.0f;
+
+    private void Update()
+    {
+        if (countdown != -1.0f)
+        {
+            countdown -= Time.deltaTime;
+            if (countdown <= 0.0f) Destroy(gameObject);
+        }
+    }
 
     void LateUpdate()
     {
-        if (health <= 0)
+        if (health <= 0 && countdown == -1.0f)
         {
             EventBus.Publish(new ExplosionEvent(explosion_index));
             EventBus.Publish(new KillEvent(points));
-            Destroy(gameObject);
+            if (points == 100)
+            {
+                GameObject explosion = Instantiate(explosion_prefab, transform);
+                explosion.transform.position = transform.position;
+                BossExplosion be = explosion.AddComponent<BossExplosion>();
+                be.iteration = 0;
+                be.explosion_prefab = explosion_prefab;
+                gameObject.GetComponent<BossEnemy>().enabled = false;
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                gameObject.GetComponent<Animator>().enabled = false;
+                gameObject.GetComponent<SpriteRenderer>().sprite = boss_dead;
+                countdown = 1.5f;
+            }
+            else
+            {
+                Instantiate(explosion_prefab, transform.parent).transform.position = transform.position;
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -52,6 +82,12 @@ public class HealthManager : MonoBehaviour
             EventBus.Publish(new MusicEvent("Melody Low", 1.0f));
             EventBus.Publish(new MusicEvent("Ostinato Fast", 0.0f));
             EventBus.Publish(new MusicEvent("Ostinato Slow", 0.0f));
+            EnemyManager em = FindAnyObjectByType<EnemyManager>();
+            if (em.time_limit == -1.0f)
+            {
+                if (PlayerPrefs.GetInt("EndlessScore") < em.kill_points) PlayerPrefs.SetInt("EndlessScore", em.kill_points);
+                FindAnyObjectByType<EndlessTimer>().CheckTime();
+            }
             lose_screen.SetActive(true);
             GameObject.FindGameObjectWithTag("GameController").SetActive(false);
         }

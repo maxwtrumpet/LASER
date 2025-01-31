@@ -187,8 +187,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
-  points: 20
+  points: 25
   explosion_index: 2
+  explosion_prefab: {fileID: 2433245463858068288, guid: 1658c732433af422f86e7b22ae1ec6c3, type: 3}
   lose_screen: {fileID: 0}
 --- !u!50 &1530853336928916382
 Rigidbody2D:

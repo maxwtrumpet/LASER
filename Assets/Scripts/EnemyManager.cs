@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour
     GameObject win_screen;
     GameObject lose_screen;
     TextMeshPro tmp;
-    private int kill_points = 0;
+    public int kill_points = 0;
     int bonus_points = 0;
     int[] cur_index;
     int enemy_count = 0;
@@ -63,6 +63,8 @@ public class EnemyManager : MonoBehaviour
         
         if (time_limit != -1.0f && time_elapsed >= time_limit && enemy_count == 0)
         {
+            string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+            if (PlayerPrefs.GetInt(scene) < kill_points) PlayerPrefs.SetInt(scene, kill_points);
             win_screen.SetActive(true);
             game_objects.SetActive(false);
         }
