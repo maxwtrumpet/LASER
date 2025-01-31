@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   points: 15
+  explosion_index: 1
   lose_screen: {fileID: 0}
 --- !u!50 &3793807021740276267
 Rigidbody2D:

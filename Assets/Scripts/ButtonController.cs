@@ -21,6 +21,8 @@ public class ButtonController : MonoBehaviour
     Vector2 JoystickInput = Vector2.zero;
     bool cur_input = false;
     Controllers controls;
+    private ButtonEvent changed = new ButtonEvent(0);
+    private ButtonEvent select = new ButtonEvent(1);
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,7 @@ public class ButtonController : MonoBehaviour
                 int change = (int)Mathf.Sign(JoystickInput.x);
                 if (column + change >= 0 && column + change < buttons[row].row.Length)
                 {
+                    EventBus.Publish(changed);
                     column += change;
                 }
             }
@@ -56,12 +59,17 @@ public class ButtonController : MonoBehaviour
                 int change = -(int)Mathf.Sign(JoystickInput.y);
                 if (row + change >= 0 && row + change < buttons.Length)
                 {
+                    EventBus.Publish(changed);
                     row += change;
                     if (column >= buttons[row].row.Length) column = buttons[row].row.Length - 1;
                 }
             }
             buttons[row].row[column].GetComponentsInChildren<SpriteRenderer>()[1].enabled = true;
         }
-        if (controls.Gameplay.Select.WasPressedThisFrame()) EventBus.Publish<ButtonPress>(new ButtonPress(buttons[row].row[column]));
+        if (controls.Gameplay.Select.WasPressedThisFrame())
+        {
+            EventBus.Publish(select);
+            EventBus.Publish<ButtonPress>(new ButtonPress(buttons[row].row[column]));
+        }
     }
 }

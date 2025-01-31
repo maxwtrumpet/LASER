@@ -189,6 +189,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4513414875835918337, guid: 6ba65604bd7e94ce7bf91a0de2593560, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2916041756266646597, guid: 6ba65604bd7e94ce7bf91a0de2593560, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 6ba65604bd7e94ce7bf91a0de2593560, type: 3}
 --- !u!1 &106558999
 GameObject:
@@ -420,6 +423,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4930784118888863309, guid: 9d366b27592c94d2db1c85cab114d10d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 974749678418919634, guid: 9d366b27592c94d2db1c85cab114d10d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 9d366b27592c94d2db1c85cab114d10d, type: 3}
 --- !u!1001 &1144044656
 PrefabInstance:
@@ -487,6 +493,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6916181812075138591, guid: 42eb7faa740174867a76396c64d61582, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 2627347526673064277, guid: 42eb7faa740174867a76396c64d61582, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 42eb7faa740174867a76396c64d61582, type: 3}
 --- !u!1001 &1421872581
 PrefabInstance:
@@ -502,15 +511,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: time_limit
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: spawn_range.x
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: spawn_range.y
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: frequencies.Array.size
@@ -527,7 +536,7 @@ PrefabInstance:
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: enemy_prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 7292155192222903409, guid: 83d69d8ab476249f993e7163c25777ab, type: 3}
+      objectReference: {fileID: 8390530900887867425, guid: 55d60a15f37c842128b59e903fc99546, type: 3}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: first_appearances.Array.size
       value: 1

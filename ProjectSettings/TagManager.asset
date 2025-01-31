@@ -18,6 +18,8 @@ TagManager:
   - gnat
   - controls
   - floor
+  - records
+  - credits
   layers:
   - Default
   - TransparentFX

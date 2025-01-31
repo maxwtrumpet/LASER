@@ -103,6 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 64
   points: 50
+  explosion_index: 4
   lose_screen: {fileID: 0}
 --- !u!61 &4413374897481942734
 BoxCollider2D:

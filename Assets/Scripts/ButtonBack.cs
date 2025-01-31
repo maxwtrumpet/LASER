@@ -5,13 +5,13 @@ using UnityEngine;
 public class ButtonBack : MonoBehaviour
 {
     GameObject menu_buttons;
-    GameObject control_buttons;
+    GameObject current_buttons;
 
     // Start is called before the first frame update
     void Start()
     {
         menu_buttons = GameObject.FindGameObjectWithTag("menu");
-        control_buttons = GameObject.FindGameObjectWithTag("controls");
+        current_buttons = transform.parent.gameObject;
         EventBus.Subscribe<ButtonPress>(_OnClick);
     }
 
@@ -21,7 +21,7 @@ public class ButtonBack : MonoBehaviour
         if (e.selected_button == gameObject)
         {
             menu_buttons.SetActive(true);
-            control_buttons.SetActive(false);
+            current_buttons.SetActive(false);
         }
     }
 }

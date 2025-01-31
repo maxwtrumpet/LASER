@@ -14,9 +14,23 @@ public class MusicEvent
     }
 }
 
+public class ExplosionEvent
+{
+    public int index;
+    public ExplosionEvent(int _new_index) { index = _new_index; }
+}
+
+public class ButtonEvent
+{
+    public int index;
+    public ButtonEvent(int _new_index) { index = _new_index; }
+}
+
 public class MusicManager : MonoBehaviour
 {
     private FMOD.Studio.EventInstance instance;
+    private FMOD.Studio.EventInstance[] explosions = new FMOD.Studio.EventInstance[5];
+    private FMOD.Studio.EventInstance[] buttons = new FMOD.Studio.EventInstance[2];
     private float[][] parameters = new float[10][]
     {
         new float[11] {1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
@@ -50,6 +64,16 @@ public class MusicManager : MonoBehaviour
         instance.setParameterByName("Ostinato Slow", 0.0f);
     }
 
+    void _OnButton(ButtonEvent e)
+    {
+        buttons[e.index].start();
+    }
+
+    void _OnExplosion(ExplosionEvent e)
+    {
+        explosions[e.index].start();
+    }
+
     void _OnMusic(MusicEvent e)
     {
         instance.setParameterByName(e.parameter, e.value);
@@ -75,8 +99,24 @@ public class MusicManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         instance = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
+        explosions[0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_0");
+        explosions[0].setVolume(0.25f);
+        explosions[1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_1");
+        explosions[1].setVolume(0.25f);
+        explosions[2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_2");
+        explosions[2].setVolume(0.25f);
+        explosions[3] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_3");
+        explosions[3].setVolume(0.25f);
+        explosions[4] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_4");
+        explosions[4].setVolume(0.25f);
+        buttons[0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/button_change");
+        buttons[0].setVolume(0.25f);
+        buttons[1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/button_select");
+        buttons[1].setVolume(0.25f);
         instance.start();
         Reset();
         EventBus.Subscribe<MusicEvent>(_OnMusic);
+        EventBus.Subscribe<ExplosionEvent>(_OnExplosion);
+        EventBus.Subscribe<ButtonEvent>(_OnButton);
     }
 }

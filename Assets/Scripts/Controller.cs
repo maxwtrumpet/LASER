@@ -172,43 +172,81 @@ public class Controller : MonoBehaviour
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
+        int buttons_pressed = 0;
         if (buttons_down.x == 0) {
-            if (cur_triggers.x > prev_triggers.x) buttons_down.x = 10;
+            if (cur_triggers.x > prev_triggers.x)
+            {
+                buttons_pressed++;
+                buttons_down.x = 10;
+            }
         }
         else {
             if (cur_triggers.x != 1) buttons_down.x = 0;
-            else buttons_down.x--;
+            else
+            {
+                buttons_pressed++;
+                buttons_down.x--;
+            }
         }
         if (buttons_down.y == 0)
         {
-            if (left_bumper) buttons_down.y = 10;
+            if (left_bumper)
+            {
+                buttons_pressed++;
+                buttons_down.y = 10;
+            }
         }
         else
         {
-            if (left_bumper) buttons_down.y--;
+            if (left_bumper)
+            {
+                buttons_pressed++;
+                buttons_down.y--;
+            }
             else buttons_down.y = 0;
         }
         if (buttons_down.z == 0)
         {
-            if (right_bumper) buttons_down.z = 10;
+            if (right_bumper)
+            {
+                buttons_pressed++;
+                buttons_down.z = 10;
+            }
         }
         else
         {
-            if (right_bumper) buttons_down.z--;
+            if (right_bumper)
+            {
+                buttons_pressed++;
+                buttons_down.z--;
+            }
             else buttons_down.z = 0;
         }
         if (buttons_down.w == 0)
         {
-            if (cur_triggers.y > prev_triggers.y) buttons_down.w = 10;
+            if (cur_triggers.y > prev_triggers.y)
+            {
+                buttons_pressed++;
+                buttons_down.w = 10;
+            }
         }
         else
         {
             if (cur_triggers.y != 1) buttons_down.w = 0;
-            else buttons_down.w--;
+            else
+            {
+                buttons_pressed++;
+                buttons_down.w--;
+            }
         }
-        
-        bool fire = (buttons_down.x > 0 || cur_tint > 0.0f) && (buttons_down.y > 0 || cur_tint > charge_2) && (buttons_down.z > 0) && (buttons_down.w > 0 || cur_tint > charge_3);
-        if (fire && cur_tint < charge_1) {
+
+        int charge_count = 0;
+        if (cur_tint == 0.0f) charge_count = 4;
+        else if (cur_tint <= charge_3) charge_count = 3;
+        else if (cur_tint <= charge_2) charge_count = 2;
+        else if (cur_tint <= charge_1) charge_count = 1;
+
+        if (charge_count != 0 && buttons_pressed >= charge_count) {
             GameObject cur_beam = Instantiate(beam_prefab, transform.parent.parent);
             cur_beam.transform.SetPositionAndRotation(transform.GetChild(transform.childCount-1).position, transform.rotation);
             BeamManager bm = cur_beam.GetComponent<BeamManager>();
@@ -218,6 +256,7 @@ public class Controller : MonoBehaviour
             else if (cur_tint < charge_3) bm.damage = 4;
             else if (cur_tint < charge_2) bm.damage = 2;
             else bm.damage = 1;
+            Debug.Log(bm.damage);
 
             int main_idx = 0;
             int rand_idx = Mathf.RoundToInt(Random.Range(-0.499f, 2.499f));
