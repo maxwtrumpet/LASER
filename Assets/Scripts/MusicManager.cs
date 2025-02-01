@@ -110,6 +110,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void OnEnable()
     {
+        Cursor.visible = false;
         DontDestroyOnLoad(gameObject);
         music = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
         explosions[0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_0");

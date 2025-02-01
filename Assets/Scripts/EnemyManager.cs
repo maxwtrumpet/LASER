@@ -79,7 +79,7 @@ public class EnemyManager : MonoBehaviour
     {
         while (time_limit == -1.0f || time_elapsed < time_limit || GameObject.FindGameObjectWithTag("boss") != null)
         {
-            if (time_limit == -1.0f) spawn_range.y = 3.0f - time_elapsed / 300.0f;
+            if (time_limit == -1.0f && time_elapsed >= 300.0f) spawn_range.y = Mathf.Max(1.0f, 3.0f - (time_elapsed - 300.0f) / 150.0f);
             float next_interval; next_interval = Random.Range(spawn_range.x, spawn_range.y);
             yield return new WaitForSeconds(next_interval);
             float prev_time = time_elapsed;

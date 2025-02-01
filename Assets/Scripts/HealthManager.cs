@@ -36,7 +36,7 @@ public class HealthManager : MonoBehaviour
         {
             EventBus.Publish(new ExplosionEvent(explosion_index));
             EventBus.Publish(new KillEvent(points));
-            if (points == 100)
+            if (points == 1000)
             {
                 GameObject explosion = Instantiate(explosion_prefab, transform);
                 explosion.transform.position = transform.position;

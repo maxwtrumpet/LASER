@@ -11,6 +11,14 @@ public class EndlessTimer : MonoBehaviour
     void Start()
     {
         tmp = GetComponent<TextMeshPro>();
+        EventBus.Subscribe<MusicEvent>(_OnMusic);
+    }
+
+    void _OnMusic(MusicEvent e)
+    {
+        if (e.parameter == "Bass Low" && e.value == 0.0f && time_elapsed >= 360) EventBus.Publish(new MusicEvent("Bass Low", 1.0f));
+        else if (e.parameter == "Ostinato Slow" && e.value == 0.0f && time_elapsed >= 420) EventBus.Publish(new MusicEvent("Ostinato Slow", 1.0f));
+        else if (e.parameter == "Ostinato Fast" && e.value == 0.0f && time_elapsed >= 600) EventBus.Publish(new MusicEvent("Ostinato Fast", 1.0f));
     }
 
     // Update is called once per frame
@@ -20,7 +28,23 @@ public class EndlessTimer : MonoBehaviour
         time_elapsed += Time.deltaTime;
         tmp.text = "Time: " + (int)time_elapsed;
 
-        if (prev_time < 300 && time_elapsed >= 300)
+        if (prev_time < 600 && time_elapsed >= 600)
+        {
+            EventBus.Publish(new MusicEvent("Ostinato Fast", 1.0f));
+        }
+        else if (prev_time < 510 && time_elapsed >= 510)
+        {
+            EventBus.Publish(new MusicEvent("Melody Low", 1.0f));
+        }
+        else if (prev_time < 420 && time_elapsed >= 420)
+        {
+            EventBus.Publish(new MusicEvent("Ostinato Slow", 1.0f));
+        }
+        else if (prev_time < 360 && time_elapsed >= 360)
+        {
+            EventBus.Publish(new MusicEvent("Bass Low", 1.0f));
+        }
+        else if (prev_time < 300 && time_elapsed >= 300)
         {
             EventBus.Publish(new MusicEvent("Melody High", 1.0f));
             EventBus.Publish(new MusicEvent("Melody Low", 0.0f));
