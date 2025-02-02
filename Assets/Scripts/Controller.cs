@@ -225,7 +225,7 @@ public class Controller : MonoBehaviour
             GameObject cur_beam = Instantiate(beam_prefab, transform.parent.parent);
             cur_beam.transform.SetPositionAndRotation(transform.GetChild(transform.childCount-1).position, transform.rotation);
             BeamManager bm = cur_beam.GetComponent<BeamManager>();
-            bm.goal_thickness = guides[1].transform.localPosition.y * 3.125f;
+            bm.goal_thickness = guides[1].transform.localPosition.y * 2.0f;
 
             if (cur_tint == 0.0f) bm.damage = 7;
             else if (cur_tint < charge_3) bm.damage = 4;
@@ -239,7 +239,7 @@ public class Controller : MonoBehaviour
             else if (cur_tint < charge_2) main_idx = 1;
             EventBus.Publish(new GunEvent(main_idx, rand_idx));
 
-            bm.lifetime = (charge_1 - cur_tint) / charge_1 * 0.325f + 0.075f;
+            bm.grow_time = (charge_1 - cur_tint) / charge_1 * 0.2f + 0.05f;
             cur_tint = 1.0f;
             guides[1].sprite = black;
             guides[2].sprite = black;
@@ -256,10 +256,10 @@ public class Controller : MonoBehaviour
         if (cur_tint < charge_1) new_size = (charge_1 - cur_tint) / charge_1 * 0.95f + 0.05f;
         float real_size = guides[1].transform.localPosition.y + (new_size - guides[1].transform.localPosition.y) * shoot_ease_factor;
 
-        guides[1].transform.localPosition = new Vector3(1.25f, real_size, 0.0f);
-        guides[2].transform.localPosition = new Vector3(1.25f, -real_size, 0.0f);
-        guides[3].transform.localPosition = new Vector3(1.281f, real_size, 0.0f);
-        guides[4].transform.localPosition = new Vector3(1.281f, -real_size, 0.0f);
+        guides[1].transform.localPosition = new Vector3(1.25f, real_size, -0.02f);
+        guides[2].transform.localPosition = new Vector3(1.25f, -real_size, -0.02f);
+        guides[3].transform.localPosition = new Vector3(1.281f, real_size, -0.02f);
+        guides[4].transform.localPosition = new Vector3(1.281f, -real_size, -0.02f);
 
         float ease_tint;
         if ((1.0f - cur_tint) * 3.125f >= guides[3].transform.localScale.x) ease_tint = (1.0f - cur_tint) * 3.125f;

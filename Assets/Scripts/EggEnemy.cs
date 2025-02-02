@@ -15,8 +15,8 @@ public class EggEnemy : MonoBehaviour
         am = GetComponent<Animator>();
         am.speed = 0.5f;
         lose_screen = GetComponent<HealthManager>().lose_screen;
-        float top_or_bottom = Random.Range(0.0f, 25.0f);
-        if (top_or_bottom <= 9.0f)
+        float top_or_bottom = Random.Range(0.0f, 19.0f);
+        if (top_or_bottom <= 5.0f)
         {
             transform.position = new Vector3(18.0f, Random.Range(1.5f, 6.5f), 0.0f);
             GetComponent<MoveWithEase>().desired_dest = new Vector3(16.0f, transform.position.y);

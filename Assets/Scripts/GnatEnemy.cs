@@ -5,7 +5,7 @@ using UnityEngine;
 public class GnatEnemy : MonoBehaviour
 {
 
-    Rigidbody2D rb = null;
+    Rigidbody rb = null;
     [SerializeField] float gravity_scale = 1.0f;
     [SerializeField] Sprite[] sprites;
     SpriteRenderer sr;
@@ -22,7 +22,7 @@ public class GnatEnemy : MonoBehaviour
     void Init()
     {
         sr = GetComponent<SpriteRenderer>();
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
         float angle = Random.Range(0.0f, Mathf.PI*2);
         rb.velocity = new Vector2(Mathf.Cos(angle) * 2.0f, Mathf.Sin(angle) * 2.0f);
         rb.drag = 0.1f;

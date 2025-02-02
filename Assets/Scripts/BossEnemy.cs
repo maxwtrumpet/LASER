@@ -20,7 +20,7 @@ public class BossEnemy : MonoBehaviour
     private void OnEnable()
     {
         if (vel == Vector3.zero) Init();
-        GetComponent<Rigidbody2D>().velocity = new Vector2(vel.x / 2.5f, vel.y / 2.5f);
+        GetComponent<Rigidbody>().velocity = new Vector2(vel.x / 2.5f, vel.y / 2.5f);
     }
 
     private void OnDestroy()

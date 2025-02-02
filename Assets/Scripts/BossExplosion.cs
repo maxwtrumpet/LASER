@@ -8,9 +8,9 @@ public class BossExplosion : MonoBehaviour
     public int iteration = 0;
     public GameObject explosion_prefab;
     public bool[] used_positions = { false, false, false };
-    Vector3[] positions = { new Vector3(-0.15f, 0.35f, 0.0f),
-                            new Vector3(-0.3f, -0.45f, 0.0f),
-                            new Vector3(0.4f, -0.125f, 0.0f)};
+    Vector3[] positions = { new Vector3(-0.15f, 0.35f, -0.02f),
+                            new Vector3(-0.3f, -0.45f, -0.02f),
+                            new Vector3(0.4f, -0.125f, -0.02f)};
 
     private void Start()
     {

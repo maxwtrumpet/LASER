@@ -20,6 +20,7 @@ public class HealthManager : MonoBehaviour
     [SerializeField] Sprite boss_dead;
     public GameObject lose_screen;
     float countdown = -1.0f;
+    GameObject cur_beam = null;
 
     private void Update()
     {
@@ -44,27 +45,28 @@ public class HealthManager : MonoBehaviour
                 be.iteration = 0;
                 be.explosion_prefab = explosion_prefab;
                 gameObject.GetComponent<BossEnemy>().enabled = false;
-                gameObject.GetComponent<BoxCollider2D>().enabled = false;
-                gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                gameObject.GetComponent<BoxCollider>().enabled = false;
+                gameObject.GetComponent<Rigidbody>().velocity = Vector2.zero;
                 gameObject.GetComponent<Animator>().enabled = false;
                 gameObject.GetComponent<SpriteRenderer>().sprite = boss_dead;
                 countdown = 1.5f;
             }
             else
             {
-                Instantiate(explosion_prefab, transform.parent).transform.position = transform.position;
+                Instantiate(explosion_prefab, transform.parent).transform.position = new Vector3(transform.position.x, transform.position.y, -0.02f);
                 Destroy(gameObject);
             }
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.TryGetComponent(out BeamManager bm))
+        if (other.gameObject != cur_beam && other.TryGetComponent(out BeamManager bm))
         {
+            cur_beam = other.gameObject;
             health -= bm.damage;
         }
-        else if (collision.name == "Center")
+        else if (other.name == "Center")
         {
             EventBus.Publish(new ExplosionEvent(4));
             EventBus.Publish(new MusicEvent("Ab Resolve", 0.0f));
@@ -91,5 +93,10 @@ public class HealthManager : MonoBehaviour
             lose_screen.SetActive(true);
             GameObject.FindGameObjectWithTag("GameController").SetActive(false);
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == cur_beam) cur_beam = null;
     }
 }
