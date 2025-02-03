@@ -105,7 +105,11 @@ MonoBehaviour:
   points: 1000
   explosion_index: 4
   explosion_prefab: {fileID: 5488711845935431867, guid: 4441b96c5d9ae4d1cbe2a8324eb93a26, type: 3}
-  boss_dead: {fileID: 21300000, guid: 5d249f2499e684f94be00c08a8d6949c, type: 3}
+  boss_dead: {fileID: 21300000, guid: 3a558bfa40dd3434f9aab058ed7ac508, type: 3}
+  damage_0: {fileID: 9100000, guid: b0dbf7be3ab1647b29ee126fafe504e3, type: 2}
+  damage_1: {fileID: 9100000, guid: 538d7d4d23c284bb8b79f700b2188690, type: 2}
+  damage_2: {fileID: 9100000, guid: f9b38c06194344d1d8e884b675ea9a34, type: 2}
+  damage_3: {fileID: 9100000, guid: 64a1c8c8894174ac5940a22b52191c8e, type: 2}
   lose_screen: {fileID: 0}
 --- !u!114 &1119132231628303389
 MonoBehaviour:

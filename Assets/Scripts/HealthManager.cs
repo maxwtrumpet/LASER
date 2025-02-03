@@ -14,13 +14,29 @@ public class HealthManager : MonoBehaviour
 {
 
     [SerializeField] int health = 4;
+    int cur_health;
     [SerializeField] int points = 1;
     [SerializeField] int explosion_index = 0;
     [SerializeField] GameObject explosion_prefab;
     [SerializeField] Sprite boss_dead;
+    [SerializeField] RuntimeAnimatorController damage_0;
+    [SerializeField] RuntimeAnimatorController damage_1;
+    [SerializeField] RuntimeAnimatorController damage_2;
+    [SerializeField] RuntimeAnimatorController damage_3;
     public GameObject lose_screen;
+    Animator am;
     float countdown = -1.0f;
     GameObject cur_beam = null;
+
+    private void Start()
+    {
+        cur_health = health;
+        if (points != 1)
+        {
+            am = GetComponent<Animator>();
+            am.runtimeAnimatorController = damage_0;
+        }
+    }
 
     private void Update()
     {
@@ -33,7 +49,7 @@ public class HealthManager : MonoBehaviour
 
     void LateUpdate()
     {
-        if (health <= 0 && countdown == -1.0f)
+        if (cur_health <= 0 && countdown == -1.0f)
         {
             EventBus.Publish(new ExplosionEvent(explosion_index));
             EventBus.Publish(new KillEvent(points));
@@ -57,6 +73,18 @@ public class HealthManager : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+        else if (cur_health <= health / 4)
+        {
+            am.runtimeAnimatorController = damage_3;
+        }
+        else if (cur_health <= health / 2)
+        {
+            am.runtimeAnimatorController = damage_2;
+        }
+        else if (cur_health <= health * 3 / 4)
+        {
+            am.runtimeAnimatorController = damage_1;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -64,7 +92,7 @@ public class HealthManager : MonoBehaviour
         if (other.gameObject != cur_beam && other.TryGetComponent(out BeamManager bm))
         {
             cur_beam = other.gameObject;
-            health -= bm.damage;
+            cur_health -= bm.damage;
         }
         else if (other.name == "Center")
         {

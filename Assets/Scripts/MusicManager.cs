@@ -33,9 +33,12 @@ public class GunEvent
     public GunEvent(int type_in, int index_in) { type = type_in; index = index_in; }
 }
 
+public class WinEvent { }
+
 public class MusicManager : MonoBehaviour
 {
     private FMOD.Studio.EventInstance music;
+    private FMOD.Studio.EventInstance win;
     private FMOD.Studio.EventInstance[] explosions = new FMOD.Studio.EventInstance[5];
     private FMOD.Studio.EventInstance[] buttons = new FMOD.Studio.EventInstance[2];
     private FMOD.Studio.EventInstance[,] guns = new FMOD.Studio.EventInstance[4,3];
@@ -92,6 +95,11 @@ public class MusicManager : MonoBehaviour
         guns[e.type, e.index].start();
     }
 
+    void _OnWin(WinEvent e)
+    {
+        win.start();
+    }
+
     public void StartLevel(int level)
     {
         music.setParameterByName("Bass High", parameters[level][0]);
@@ -113,6 +121,8 @@ public class MusicManager : MonoBehaviour
         Cursor.visible = false;
         DontDestroyOnLoad(gameObject);
         music = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
+        win = FMODUnity.RuntimeManager.CreateInstance("event:/effects/win");
+        win.setVolume(1.0f);
         explosions[0] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_0");
         explosions[0].setVolume(0.25f);
         explosions[1] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/explosion_1");
@@ -157,5 +167,6 @@ public class MusicManager : MonoBehaviour
         EventBus.Subscribe<ExplosionEvent>(_OnExplosion);
         EventBus.Subscribe<ButtonEvent>(_OnButton);
         EventBus.Subscribe<GunEvent>(_OnGun);
+        EventBus.Subscribe<WinEvent>(_OnWin);
     }
 }

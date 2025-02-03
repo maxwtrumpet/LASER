@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 4715276974937371071}
   - component: {fileID: 813040113380719199}
   - component: {fileID: 2627454614342778739}
-  - component: {fileID: 8299067296593478572}
   - component: {fileID: 8590939189121543148}
   - component: {fileID: 1420888676797324268}
+  - component: {fileID: 5120692660075022240}
   m_Layer: 0
   m_Name: FastEnemy
   m_TagString: fast
@@ -120,27 +120,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ease_factor: 0.1
---- !u!95 &8299067296593478572
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 849984150533376911}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ba0d889330ddc4be1b9fe75e9e1da308, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!54 &8590939189121543148
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,3 +168,24 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.08
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &5120692660075022240
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849984150533376911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1025aa96fedd4b42a5659f46a3a0c52, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

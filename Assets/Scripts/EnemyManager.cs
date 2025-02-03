@@ -65,6 +65,7 @@ public class EnemyManager : MonoBehaviour
         {
             string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
             if (PlayerPrefs.GetInt(scene) < kill_points) PlayerPrefs.SetInt(scene, kill_points);
+            EventBus.Publish(new WinEvent());
             win_screen.SetActive(true);
             game_objects.SetActive(false);
         }

@@ -107,6 +107,10 @@ MonoBehaviour:
   explosion_index: 3
   explosion_prefab: {fileID: 5488711845935431867, guid: 4441b96c5d9ae4d1cbe2a8324eb93a26, type: 3}
   boss_dead: {fileID: 0}
+  damage_0: {fileID: 9100000, guid: 091de2502d4ee46e4bc398d27555b663, type: 2}
+  damage_1: {fileID: 9100000, guid: 9e3de849d5b9c433dba135d7f8bad4eb, type: 2}
+  damage_2: {fileID: 9100000, guid: 669c7677fdf684a9483785f71daee4fc, type: 2}
+  damage_3: {fileID: 9100000, guid: d4a9a8544cfbe4afa98349b115fb432d, type: 2}
   lose_screen: {fileID: 0}
 --- !u!114 &1302274318503065553
 MonoBehaviour:
@@ -145,7 +149,7 @@ Animator:
   m_GameObject: {fileID: 8390530900887867425}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7ac6d91e1b2e74a308d9ec10a915ebc9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 091de2502d4ee46e4bc398d27555b663, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
