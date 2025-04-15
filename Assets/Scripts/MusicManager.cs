@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using TMPro;
 
+// A music event. Contains a paramter name and float value.
 public class MusicEvent
 {
     public string parameter = "Bass High";
@@ -14,18 +15,21 @@ public class MusicEvent
     }
 }
 
+// An explosion sound event. Contains an index.
 public class ExplosionEvent
 {
     public int index;
     public ExplosionEvent(int _new_index) { index = _new_index; }
 }
 
+// A button sound event. Contains an index.
 public class ButtonEvent
 {
     public int index;
     public ButtonEvent(int _new_index) { index = _new_index; }
 }
 
+// A gun shooting event. Contains a level and index.
 public class GunEvent
 {
     public int type = 0;
@@ -33,15 +37,20 @@ public class GunEvent
     public GunEvent(int type_in, int index_in) { type = type_in; index = index_in; }
 }
 
+// A win event. No information is needed.
 public class WinEvent { }
 
+// The component managing the dynamic music of the game.
 public class MusicManager : MonoBehaviour
 {
+    // Events for music, winning, explosions, buttons, and the gun.
     private FMOD.Studio.EventInstance music;
     private FMOD.Studio.EventInstance win;
     private FMOD.Studio.EventInstance[] explosions = new FMOD.Studio.EventInstance[5];
     private FMOD.Studio.EventInstance[] buttons = new FMOD.Studio.EventInstance[2];
     private FMOD.Studio.EventInstance[,] guns = new FMOD.Studio.EventInstance[4,3];
+
+    // All the different parameter values for each level in the game.
     private float[][] parameters = new float[10][]
     {
         new float[11] {1.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f},
@@ -56,6 +65,7 @@ public class MusicManager : MonoBehaviour
         new float[11] {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f}
     };
 
+    // Reset the music back to the menu mix.
     public void Reset()
     {
         music.setParameterByName("Ab Resolve", 0.0f);
@@ -75,31 +85,37 @@ public class MusicManager : MonoBehaviour
         music.setParameterByName("Ostinato Slow", 0.0f);
     }
 
+    // When a button is clicked, play the apporiate sound.
     void _OnButton(ButtonEvent e)
     {
         buttons[e.index].start();
     }
 
+    // When an explosion occurs, play the apporiate sound.
     void _OnExplosion(ExplosionEvent e)
     {
         explosions[e.index].start();
     }
 
+    // When a music event occurs, change the given parameter.
     void _OnMusic(MusicEvent e)
     {
         music.setParameterByName(e.parameter, e.value);
     }
 
+    // When the gun is used, play the apporiate sound.
     void _OnGun(GunEvent e)
     {
         guns[e.type, e.index].start();
     }
 
+    // When a the game is won, play the win sound effect.
     void _OnWin(WinEvent e)
     {
         win.start();
     }
 
+    // Start the given level and set all layer parameters.
     public void StartLevel(int level)
     {
         music.setParameterByName("Bass High", parameters[level][0]);
@@ -115,11 +131,16 @@ public class MusicManager : MonoBehaviour
         music.setParameterByName("Melody High", parameters[level][10]);
     }
 
-    // Start is called before the first frame update
     void OnEnable()
     {
+
+        // Disable the cursor visibility.
         Cursor.visible = false;
+
+        // Ensure the object does not get destroyed between scenes.
         DontDestroyOnLoad(gameObject);
+
+        // Load all sound events and set their volumes.
         music = FMODUnity.RuntimeManager.CreateInstance("event:/music/Theme");
         win = FMODUnity.RuntimeManager.CreateInstance("event:/effects/win");
         win.setVolume(1.0f);
@@ -161,12 +182,17 @@ public class MusicManager : MonoBehaviour
         guns[3, 1].setVolume(0.1f);
         guns[3, 2] = FMODUnity.RuntimeManager.CreateInstance("event:/effects/gun3-2");
         guns[3, 2].setVolume(0.1f);
+
+        // Start the music and default to the menu mix.
         music.start();
         Reset();
+
+        // Subscribe to all relevant events.
         EventBus.Subscribe<MusicEvent>(_OnMusic);
         EventBus.Subscribe<ExplosionEvent>(_OnExplosion);
         EventBus.Subscribe<ButtonEvent>(_OnButton);
         EventBus.Subscribe<GunEvent>(_OnGun);
         EventBus.Subscribe<WinEvent>(_OnWin);
+
     }
 }

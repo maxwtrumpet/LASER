@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// The button for quitting the game.
 public class ButtonQuit : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
+        // Subscribe to button clicks.
         EventBus.Subscribe<ButtonPress>(_OnClick);
     }
 
-    // Update is called once per frame
+    // When receiving a click event for this button, quit the game.
     void _OnClick(ButtonPress e)
     {
         if (e.selected_button == gameObject)

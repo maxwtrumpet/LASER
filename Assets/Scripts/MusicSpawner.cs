@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+// Initializes the music manager.
 public class MusicSpawner : MonoBehaviour
 {
+
+    // The MM pregab.
     [SerializeField] GameObject manager_prefab;
 
-    // Start is called before the first frame update
+    // Initialize the MM if applicable and reset the music layers.
     void Start()
     {
         GameObject mm = GameObject.FindGameObjectWithTag("music");

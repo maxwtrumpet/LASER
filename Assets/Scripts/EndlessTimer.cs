@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// The component for endless specific features.
 public class EndlessTimer : MonoBehaviour
 {
+    // The total time elapsed and the text displaying it.
     float time_elapsed = 0.0f;
     TextMeshPro tmp;
-    // Start is called before the first frame update
+
     void Start()
     {
+        // Get the text and subscribe to music events.
         tmp = GetComponent<TextMeshPro>();
         EventBus.Subscribe<MusicEvent>(_OnMusic);
     }
 
+    // When music events are sent that try to stop special layers, override it with another event.
     void _OnMusic(MusicEvent e)
     {
         if (e.parameter == "Bass Low" && e.value == 0.0f && time_elapsed >= 360) EventBus.Publish(new MusicEvent("Bass Low", 1.0f));
@@ -21,13 +25,16 @@ public class EndlessTimer : MonoBehaviour
         else if (e.parameter == "Ostinato Fast" && e.value == 0.0f && time_elapsed >= 600) EventBus.Publish(new MusicEvent("Ostinato Fast", 1.0f));
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Record the previous time and increase the current time.
         float prev_time = time_elapsed;
         time_elapsed += Time.deltaTime;
+
+        // Update the text rounded to the second.
         tmp.text = "Time: " + (int)time_elapsed;
 
+        // Add different layers of the music depending on how far the player has gotten.
         if (prev_time < 600 && time_elapsed >= 600)
         {
             EventBus.Publish(new MusicEvent("Ostinato Fast", 1.0f));
@@ -87,6 +94,7 @@ public class EndlessTimer : MonoBehaviour
 
     }
 
+    // Check time to update the bet recorded endless time.
     public void CheckTime()
     {
         if (PlayerPrefs.GetInt("EndlessTime") < (int)time_elapsed) PlayerPrefs.SetInt("EndlessTime", (int)time_elapsed);

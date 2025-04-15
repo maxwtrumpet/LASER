@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// The component for fading in the menu.
 public class FadeIn : MonoBehaviour
 {
+
+    // The current alpha value and the SR component.
     float opacity = 1.0f;
     SpriteRenderer sr;
 
+    // Get the SR.
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
+    // Decrease the alpha of the black screen until it's 0, then destroy it.
     void Update()
     {
         opacity -= 0.01f;

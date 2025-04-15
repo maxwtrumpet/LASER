@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// The progress bar for levels.
 public class ProgressBar : MonoBehaviour
 {
 
+    // The enemy manager object and total level time.
     EnemyManager em;
     float total_time = 0;
 
-    // Start is called before the first frame update
+    // Get the enemy manager.
     void Start()
     {
         em = GameObject.FindGameObjectWithTag("enemy").GetComponent<EnemyManager>();
     }
 
-    // Update is called once per frame
+    // Update the total time and change the progress bar proportionally.
     void Update()
     {
         total_time += Time.deltaTime;
