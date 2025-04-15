@@ -28,36 +28,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             ""id"": ""8152c718-f540-43ae-ba22-e553964d2e05"",
             ""actions"": [
                 {
-                    ""name"": ""Right Bumper"",
-                    ""type"": ""Button"",
-                    ""id"": ""72985974-77e6-4097-bbe2-add75bf1bd86"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Left Bumper"",
-                    ""type"": ""Button"",
-                    ""id"": ""db295212-4a0f-43a1-9517-540edafea66b"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Right Trigger"",
+                    ""name"": ""Attack"",
                     ""type"": ""Button"",
                     ""id"": ""4d336cc4-9dfe-4e76-8231-b17ed2753c24"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Left Trigger"",
-                    ""type"": ""Button"",
-                    ""id"": ""5edf6b97-70e4-4513-96f7-e21076b18849"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -91,15 +64,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DPad"",
-                    ""type"": ""Value"",
-                    ""id"": ""70644c84-9b24-4f2a-9b18-81b6c6feb299"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""45dc7977-24b4-4832-98a0-f04b5e11b733"",
@@ -121,56 +85,12 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""13485f25-6aaa-4e4e-9198-e28666c23eac"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right Bumper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1e96fc7b-f8f7-479d-9a3d-1020c135ed88"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Right Bumper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""60f19846-d0a9-44c6-bb61-d1f3c9012993"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Bumper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9a858087-23d6-4872-949e-07af9f9b1eb7"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Bumper"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""31321728-2118-47f8-8ad3-92e57716efe1"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Trigger"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -181,29 +101,7 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Right Trigger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""61756c41-bc13-47b4-ad13-51384685a8a1"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Trigger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4721b142-c36e-4d7b-9757-cc0b3533d55f"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Left Trigger"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -363,17 +261,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""8ca53526-bd2b-4e0d-8746-323214f7f6e4"",
-                    ""path"": ""<Gamepad>/dpad"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""DPad"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""401aaf9f-bbda-4018-9fe0-f70230cb35b5"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
@@ -434,14 +321,10 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
 }");
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
-        m_Gameplay_RightBumper = m_Gameplay.FindAction("Right Bumper", throwIfNotFound: true);
-        m_Gameplay_LeftBumper = m_Gameplay.FindAction("Left Bumper", throwIfNotFound: true);
-        m_Gameplay_RightTrigger = m_Gameplay.FindAction("Right Trigger", throwIfNotFound: true);
-        m_Gameplay_LeftTrigger = m_Gameplay.FindAction("Left Trigger", throwIfNotFound: true);
+        m_Gameplay_Attack = m_Gameplay.FindAction("Attack", throwIfNotFound: true);
         m_Gameplay_LeftStick = m_Gameplay.FindAction("Left Stick", throwIfNotFound: true);
         m_Gameplay_RightStick = m_Gameplay.FindAction("Right Stick", throwIfNotFound: true);
         m_Gameplay_Select = m_Gameplay.FindAction("Select", throwIfNotFound: true);
-        m_Gameplay_DPad = m_Gameplay.FindAction("DPad", throwIfNotFound: true);
         m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
         m_Gameplay_Scroll = m_Gameplay.FindAction("Scroll", throwIfNotFound: true);
     }
@@ -505,28 +388,20 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     // Gameplay
     private readonly InputActionMap m_Gameplay;
     private List<IGameplayActions> m_GameplayActionsCallbackInterfaces = new List<IGameplayActions>();
-    private readonly InputAction m_Gameplay_RightBumper;
-    private readonly InputAction m_Gameplay_LeftBumper;
-    private readonly InputAction m_Gameplay_RightTrigger;
-    private readonly InputAction m_Gameplay_LeftTrigger;
+    private readonly InputAction m_Gameplay_Attack;
     private readonly InputAction m_Gameplay_LeftStick;
     private readonly InputAction m_Gameplay_RightStick;
     private readonly InputAction m_Gameplay_Select;
-    private readonly InputAction m_Gameplay_DPad;
     private readonly InputAction m_Gameplay_Pause;
     private readonly InputAction m_Gameplay_Scroll;
     public struct GameplayActions
     {
         private @Controllers m_Wrapper;
         public GameplayActions(@Controllers wrapper) { m_Wrapper = wrapper; }
-        public InputAction @RightBumper => m_Wrapper.m_Gameplay_RightBumper;
-        public InputAction @LeftBumper => m_Wrapper.m_Gameplay_LeftBumper;
-        public InputAction @RightTrigger => m_Wrapper.m_Gameplay_RightTrigger;
-        public InputAction @LeftTrigger => m_Wrapper.m_Gameplay_LeftTrigger;
+        public InputAction @Attack => m_Wrapper.m_Gameplay_Attack;
         public InputAction @LeftStick => m_Wrapper.m_Gameplay_LeftStick;
         public InputAction @RightStick => m_Wrapper.m_Gameplay_RightStick;
         public InputAction @Select => m_Wrapper.m_Gameplay_Select;
-        public InputAction @DPad => m_Wrapper.m_Gameplay_DPad;
         public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputAction @Scroll => m_Wrapper.m_Gameplay_Scroll;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
@@ -538,18 +413,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_GameplayActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_GameplayActionsCallbackInterfaces.Add(instance);
-            @RightBumper.started += instance.OnRightBumper;
-            @RightBumper.performed += instance.OnRightBumper;
-            @RightBumper.canceled += instance.OnRightBumper;
-            @LeftBumper.started += instance.OnLeftBumper;
-            @LeftBumper.performed += instance.OnLeftBumper;
-            @LeftBumper.canceled += instance.OnLeftBumper;
-            @RightTrigger.started += instance.OnRightTrigger;
-            @RightTrigger.performed += instance.OnRightTrigger;
-            @RightTrigger.canceled += instance.OnRightTrigger;
-            @LeftTrigger.started += instance.OnLeftTrigger;
-            @LeftTrigger.performed += instance.OnLeftTrigger;
-            @LeftTrigger.canceled += instance.OnLeftTrigger;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
             @LeftStick.started += instance.OnLeftStick;
             @LeftStick.performed += instance.OnLeftStick;
             @LeftStick.canceled += instance.OnLeftStick;
@@ -559,9 +425,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Select.started += instance.OnSelect;
             @Select.performed += instance.OnSelect;
             @Select.canceled += instance.OnSelect;
-            @DPad.started += instance.OnDPad;
-            @DPad.performed += instance.OnDPad;
-            @DPad.canceled += instance.OnDPad;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
@@ -572,18 +435,9 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(IGameplayActions instance)
         {
-            @RightBumper.started -= instance.OnRightBumper;
-            @RightBumper.performed -= instance.OnRightBumper;
-            @RightBumper.canceled -= instance.OnRightBumper;
-            @LeftBumper.started -= instance.OnLeftBumper;
-            @LeftBumper.performed -= instance.OnLeftBumper;
-            @LeftBumper.canceled -= instance.OnLeftBumper;
-            @RightTrigger.started -= instance.OnRightTrigger;
-            @RightTrigger.performed -= instance.OnRightTrigger;
-            @RightTrigger.canceled -= instance.OnRightTrigger;
-            @LeftTrigger.started -= instance.OnLeftTrigger;
-            @LeftTrigger.performed -= instance.OnLeftTrigger;
-            @LeftTrigger.canceled -= instance.OnLeftTrigger;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
             @LeftStick.started -= instance.OnLeftStick;
             @LeftStick.performed -= instance.OnLeftStick;
             @LeftStick.canceled -= instance.OnLeftStick;
@@ -593,9 +447,6 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
             @Select.started -= instance.OnSelect;
             @Select.performed -= instance.OnSelect;
             @Select.canceled -= instance.OnSelect;
-            @DPad.started -= instance.OnDPad;
-            @DPad.performed -= instance.OnDPad;
-            @DPad.canceled -= instance.OnDPad;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
@@ -621,14 +472,10 @@ public partial class @Controllers: IInputActionCollection2, IDisposable
     public GameplayActions @Gameplay => new GameplayActions(this);
     public interface IGameplayActions
     {
-        void OnRightBumper(InputAction.CallbackContext context);
-        void OnLeftBumper(InputAction.CallbackContext context);
-        void OnRightTrigger(InputAction.CallbackContext context);
-        void OnLeftTrigger(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
         void OnLeftStick(InputAction.CallbackContext context);
         void OnRightStick(InputAction.CallbackContext context);
         void OnSelect(InputAction.CallbackContext context);
-        void OnDPad(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnScroll(InputAction.CallbackContext context);
     }

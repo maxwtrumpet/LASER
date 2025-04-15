@@ -6,36 +6,9 @@
             "id": "8152c718-f540-43ae-ba22-e553964d2e05",
             "actions": [
                 {
-                    "name": "Right Bumper",
-                    "type": "Button",
-                    "id": "72985974-77e6-4097-bbe2-add75bf1bd86",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Left Bumper",
-                    "type": "Button",
-                    "id": "db295212-4a0f-43a1-9517-540edafea66b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Right Trigger",
+                    "name": "Attack",
                     "type": "Button",
                     "id": "4d336cc4-9dfe-4e76-8231-b17ed2753c24",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Left Trigger",
-                    "type": "Button",
-                    "id": "5edf6b97-70e4-4513-96f7-e21076b18849",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -69,15 +42,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DPad",
-                    "type": "Value",
-                    "id": "70644c84-9b24-4f2a-9b18-81b6c6feb299",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "45dc7977-24b4-4832-98a0-f04b5e11b733",
@@ -99,56 +63,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "13485f25-6aaa-4e4e-9198-e28666c23eac",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right Bumper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1e96fc7b-f8f7-479d-9a3d-1020c135ed88",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Right Bumper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "60f19846-d0a9-44c6-bb61-d1f3c9012993",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left Bumper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9a858087-23d6-4872-949e-07af9f9b1eb7",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left Bumper",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "31321728-2118-47f8-8ad3-92e57716efe1",
                     "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Trigger",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -159,29 +79,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Right Trigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "61756c41-bc13-47b4-ad13-51384685a8a1",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left Trigger",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4721b142-c36e-4d7b-9757-cc0b3533d55f",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Left Trigger",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -336,17 +234,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8ca53526-bd2b-4e0d-8746-323214f7f6e4",
-                    "path": "<Gamepad>/dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "DPad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

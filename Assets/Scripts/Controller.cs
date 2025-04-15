@@ -40,11 +40,6 @@ public class Controller : MonoBehaviour
     Vector3 prev_left_stick = new Vector3(0, 0, 0);
     Vector3 left_stick = new Vector3(0,0,0);
     Vector3 right_stick = new Vector3(0, 0, 0);
-    Vector2 prev_triggers = new Vector2(0, 0);
-    Vector2 cur_triggers = new Vector2(-1.0f, -1.0f);
-    bool left_bumper = false;
-    bool right_bumper = false;
-    Vector4 buttons_down = new Vector4(0, 0, 0, 0);
 
     // Whether or not keyboard controls are being used.
     bool keyboard = true;
@@ -78,14 +73,6 @@ public class Controller : MonoBehaviour
         controls.Gameplay.LeftStick.canceled += ctx => left_stick = Vector3.zero;
         controls.Gameplay.RightStick.performed += ctx => right_stick = ctx.ReadValue<Vector2>();
         controls.Gameplay.RightStick.canceled += ctx => right_stick = Vector3.zero;
-        controls.Gameplay.RightTrigger.performed += ctx => cur_triggers.y = 1.0f;
-        controls.Gameplay.RightTrigger.canceled += ctx => cur_triggers.y = -1.0f;
-        controls.Gameplay.LeftTrigger.performed += ctx => cur_triggers.x = 1.0f;
-        controls.Gameplay.LeftTrigger.canceled += ctx => cur_triggers.x = -1.0f;
-        controls.Gameplay.RightBumper.performed += ctx => right_bumper = true;
-        controls.Gameplay.RightBumper.canceled += ctx => right_bumper = false;
-        controls.Gameplay.LeftBumper.performed += ctx => left_bumper = true;
-        controls.Gameplay.LeftBumper.canceled += ctx => left_bumper = false;
 
         // Get all the relevant components.
         am = GetComponentInChildren<Animator>();
@@ -231,93 +218,8 @@ public class Controller : MonoBehaviour
             tf.SetPositionAndRotation(new Vector3(Mathf.Cos(final_angle), Mathf.Sin(final_angle), 0), Quaternion.Euler(0.0f, 0.0f, final_angle * 180.0f / Mathf.PI));
         }
 
-        // BEAM SHOOT UPDATE
-
-        // Keep track of how many buttons (triggers + bumpers) were pressed.
-        // Each of the four buttons get a 10 frame window to be pressed together.
-        // When that countdown ends, you have to repress the button.
-        // This allows for some leniency but will not let you just hold them all down.
-        int buttons_pressed = 0;
-
-        if (buttons_down.x == 0) {
-            if (cur_triggers.x > prev_triggers.x)
-            {
-                buttons_pressed++;
-                buttons_down.x = 10;
-            }
-        }
-        else {
-            if (cur_triggers.x != 1) buttons_down.x = 0;
-            else
-            {
-                buttons_pressed++;
-                buttons_down.x--;
-            }
-        } // LEFT TRIGGER
-
-        if (buttons_down.y == 0)
-        {
-            if (left_bumper)
-            {
-                buttons_pressed++;
-                buttons_down.y = 10;
-            }
-        }
-        else
-        {
-            if (left_bumper)
-            {
-                buttons_pressed++;
-                buttons_down.y--;
-            }
-            else buttons_down.y = 0;
-        } // LEFT BUMPER
-
-        if (buttons_down.z == 0)
-        {
-            if (right_bumper)
-            {
-                buttons_pressed++;
-                buttons_down.z = 10;
-            }
-        }
-        else
-        {
-            if (right_bumper)
-            {
-                buttons_pressed++;
-                buttons_down.z--;
-            }
-            else buttons_down.z = 0;
-        } // RIGHT BUMPER
-
-        if (buttons_down.w == 0)
-        {
-            if (cur_triggers.y > prev_triggers.y)
-            {
-                buttons_pressed++;
-                buttons_down.w = 10;
-            }
-        }
-        else
-        {
-            if (cur_triggers.y != 1) buttons_down.w = 0;
-            else
-            {
-                buttons_pressed++;
-                buttons_down.w--;
-            }
-        } // RIGHT TRIGGER
-
-        // Set the number of necessary buttons based on the charge threshold.
-        int charge_count = 0;
-        if (cur_tint == 0.0f) charge_count = 4;
-        else if (cur_tint <= charge_3) charge_count = 3;
-        else if (cur_tint <= charge_2) charge_count = 2;
-        else if (cur_tint <= charge_1) charge_count = 1;
-
         // If the beam can be fired this frame:
-        if (charge_count != 0 && buttons_pressed >= charge_count) {
+        if (cur_tint <= charge_1 && controls.Gameplay.Attack.WasPressedThisFrame()) {
 
             // Create a new beam and set its position and rotation.
             GameObject cur_beam = Instantiate(beam_prefab, transform.parent.parent);
@@ -351,9 +253,8 @@ public class Controller : MonoBehaviour
     void LateUpdate()
     {
 
-        // Update the previous states.
+        // Update the previous stick state.
         prev_left_stick = left_stick;
-        prev_triggers = cur_triggers;
 
         // Update the guide positions based on the current charge and ease factor.
         float new_size = 0.05f;
