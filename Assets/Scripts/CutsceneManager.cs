@@ -15,10 +15,10 @@ public class CutsceneManager : MonoBehaviour
 
     // All the messages to be displayed.
     string[] messages = { "The year is 30XX.\nHumans have begun using fusion as their main power source.",
-        "Suddenly, leagues of aliens robots swarm  Earth. Space pirates!",
+        "Suddenly, leagues of alien robots swarm  Earth. Space pirates!",
         "Having depleted their own fossil fuels, they scour the cosmos looking for planets to raid; Earth is next.",
         "To stop them, the world powers have united to build a ray gun that can destroy the robots.",
-        "They put your trust in you to man this machine, and save humanity.",
+        "They put their trust in you to man this machine, and save humanity.",
         "This, soldier, is your Last Assignment: Save Earth from the Robots..." };
 
 
