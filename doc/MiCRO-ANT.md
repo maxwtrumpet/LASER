@@ -57,12 +57,23 @@ A scene is a JSON object that contains actors. The format is as follows:
 
 ```
 {
+    // Configurations
+    "Camera X Position" : 0,
+    ...
     "actors": {
         // Your actor JSON object here
         ...
     }
 }
 ```
+
+There are a couple of configurations that can be set immedaitely within the scene:
+* `"Camera X Position"`: The starting x position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Y Position"`: The starting y position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Z Position"`: The starting z position of the camera. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera X Direction"`: What x coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Y Direction"`: What y coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at 0.
+* `"Camera Z Direction"`: What z coordinate the camera is looking at. Defaults to where it ended the previous scene, and starts the game at -1 (looking "into" the screen).
 
 ## Provided Life Cycle Functions
 
@@ -209,7 +220,7 @@ The Rigidbody3D class has many variables that are important to Bullet physics ca
 * `body_type (string)`: Whether this is a collider or trigger. Defaults to "collider".
 * `actor (Actor *)`: The actor this component belongs to.
 * `x_position (float)`: The initial x position of the Rigidbody3D. Defaults to 0.
-* `x_position (float)`: The initial y position of the Rigidbody3D. Defaults to 0.
+* `y_position (float)`: The initial y position of the Rigidbody3D. Defaults to 0.
 * `z_position (float)`: The initial z position of the Rigidbody3D. Defaults to 0.
 * `x_rotation (float)`: The initial x rotation of the Rigidbody3D, in degrees. Defaults to 0.
 * `y_rotation (float)`: The initial y rotation of the Rigidbody3D, in degrees. Defaults to 0.
@@ -355,7 +366,7 @@ This contains all audio utility functions. This engine integrates FMOD studio, s
 
 Functions:
 
-* `PlaySound(string file, float volume, bool loops)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. This is not spatial audio and will sound the same everywhere. Returns an integer indicating which channel the sound is being played on.
+* `PlaySound(string file, float volume, bool loops, bool persists)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. `persists`, when true, allows the sound to continue playing between scenes, This is not spatial audio and will sound the same everywhere. Returns an integer indicating which channel the sound is being played on.
 * `Play3DSound(string file, float volume, bool loops, Vector3 position, Vector3 velocity)`: Play the sound from the given file (extension included, assuming it is located in the audio folder) with the given volume and given loop status. This is spatial audio, and the position and velocity are initialized to the given values. Returns an integer indicating which channel the sound is being played on.
 * `StopSound(int channel)`: Stops the sound being played on the given channel, if there one.
 * `IsChannelLive(int channel)`: Returns a bool indicating whether or not there is a sound currently playing on the given channel.
@@ -363,7 +374,7 @@ Functions:
 * `GetChannelVolume(int channel)`: Gets the volume of the given channel.
 * `StopAllSounds(bool persistent)`: Stops all currently playing sounds, including ones that persist across scenes if given a `true` value.
 * `LoadBank(string bank)`: Loads the FMOD bank with the given name (extension not included, assuming it is located in the banks folder).
-* `PlayEvent(string event, Vector3 position, Vector3 velocity)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect.
+* `PlayEvent(string event, Vector3 position, Vector3 velocity, bool persists)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect. `persists`, when true, allows the sound to continue playing between scenes,
 * `StopEvent(string event, bool fade)`: Stops the given effect and fades it based on the given boolean.
 * `IsEventPlaying(string event)`: Returns a boolean indicating whether or not the event with the given name is currently playing.
 * `GetEventParameter(string event, string parameter)`: Returns a float correlating the to the value of the given parameter on the given event. 

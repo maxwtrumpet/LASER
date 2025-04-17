@@ -1,5 +1,193 @@
 {
     "actors": [
-        
+        {
+            "template": "Floor",
+            "name": "Floor_1",
+            "components": {
+                "RB2D": {
+                    "x_position": 0,
+                    "y_position": 0
+                },
+                "1": {
+                    "sprite": "background/floor_middle"
+                },
+                "18": {
+                    "sprite": "background/floor_middle"
+                }
+            }
+        },
+        {
+            "template": "Floor",
+            "name": "Floor_2",
+            "components": {
+                "RB2D": {
+                    "x_position": 18,
+                    "y_position": 0
+                },
+                "1": {
+                    "sprite": "background/floor_middle"
+                },
+                "18": {
+                    "sprite": "background/floor_middle"
+                }
+            }
+        },
+        {
+            "template": "Background",
+            "name": "Background_1",
+            "components": {
+                "RB2D": {
+                    "x_position": 0,
+                    "y_position": 0
+                },
+                "1": {
+                    "sprite": "background/Day_1"
+                },
+                "2": {
+                    "sprite": "background/Day_2"
+                },
+                "3": {
+                    "sprite": "background/Day_3"
+                },
+                "4": {
+                    "enabled": false
+                },
+                "5": {
+                    "sprite": "background/Day_5"
+                }
+            }
+        },
+        {
+            "template": "Background",
+            "name": "Background_2",
+            "components": {
+                "RB2D": {
+                    "x_position": 0,
+                    "y_position": 0
+                },
+                "1": {
+                    "enabled": false
+                },
+                "2": {
+                    "sprite": "background/Day_2",
+                    "x_position_offset": 18
+                },
+                "3": {
+                    "sprite": "background/Day_3",
+                    "x_position_offset": 18
+                },
+                "4": {
+                    "enabled": false
+                },
+                "5": {
+                    "sprite": "background/Day_5",
+                    "x_position_offset": 18
+                }
+            }
+        },
+        {
+            "name": "Scroller",
+            "components": {
+                "Scroller": {
+                    "type": "ScrollerManager"
+                }
+            }
+        },
+        {
+            "name": "FadeIn",
+            "components": {
+                "Sprite": {
+                    "type": "SpriteRenderer",
+                    "sprite": "ui/backdrop",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "sorting_order": 400
+                },
+                "Fade": {
+                    "type": "FadeIn"
+                }
+            }
+        },
+        {
+            "name": "Logo",
+            "components": {
+                "SR": {
+                    "type": "SpriteRenderer",
+                    "sprite": "ui/logo",
+                    "x_position": 0.525,
+                    "y_position": 3,
+                    "x_scale": 9.375,
+                    "y_scale": 9.375
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "RB2D": {
+                    "x_position": -5.5
+                },
+                "Text": {
+                    "text": "Levels"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "Text": {
+                    "text": "Endless"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "RB2D": {
+                    "x_position": 5.5
+                },
+                "Text": {
+                    "text": "Records"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "RB2D": {
+                    "x_position": -5.5,
+                    "y_position": -3
+                },
+                "Text": {
+                    "text": "Quit"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "RB2D": {
+                    "y_position": -3
+                },
+                "Text": {
+                    "text": "Controls"
+                }
+            }
+        },
+        {
+            "template": "Button",
+            "components": {
+                "RB2D": {
+                    "x_position": 5.5,
+                    "y_position": -3
+                },
+                "Text": {
+                    "text": "Credits"
+                }
+            }
+        }
     ]
 }

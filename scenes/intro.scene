@@ -9,7 +9,7 @@
                 "T1": {
                     "type": "TextRenderer",
                     "text": " ",
-                    "size": 85,
+                    "size": 120,
                     "font": "Editia",
                     "r": 209,
                     "g": 209,
@@ -19,7 +19,7 @@
                 "T2": {
                     "type": "TextRenderer",
                     "text": " ",
-                    "size": 85,
+                    "size": 120,
                     "font": "Editia",
                     "r": 209,
                     "g": 209,
@@ -29,7 +29,7 @@
                 "T3": {
                     "type": "TextRenderer",
                     "text": " ",
-                    "size": 85,
+                    "size": 120,
                     "font": "Editia",
                     "r": 209,
                     "g": 209,
@@ -39,7 +39,7 @@
                 "T4": {
                     "type": "TextRenderer",
                     "text": " ",
-                    "size": 85,
+                    "size": 120,
                     "font": "Editia",
                     "r": 209,
                     "g": 209,
@@ -49,7 +49,7 @@
                 "T5": {
                     "type": "TextRenderer",
                     "text": " ",
-                    "size": 85,
+                    "size": 120,
                     "font": "Editia",
                     "r": 209,
                     "g": 209,

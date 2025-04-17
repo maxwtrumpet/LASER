@@ -61,7 +61,7 @@ MusicManager = {
         Audio.LoadBank("Master")
         Audio.LoadBank("Music")
         Audio.LoadBank("Sounds")
-        Audio.PlayEvent(self.music, self.blank_vector, self.blank_vector)
+        Audio.PlayEvent(self.music, self.blank_vector, self.blank_vector, true)
         self:Reset()
         Event.Subscribe("Music", self, self._OnMusic)
     end,

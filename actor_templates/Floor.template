@@ -1,0 +1,175 @@
+{
+    "name": "Floor",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "has_trigger": false,
+            "body_type": "static",
+            "x_position": 8.35,
+            "y_position": 4
+        },
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_left",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -8.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "2": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -7.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "3": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -6.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "4": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -5.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "5": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -4.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "6": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -3.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "7": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -2.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "8": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -1.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "9": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": -0.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "10": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 0.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "11": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 1.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "12": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 2.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "13": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 3.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "14": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 4.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "15": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 5.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "16": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 6.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "17": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_middle",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 7.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        },
+        "18": {
+            "type": "SpriteRenderer",
+            "sprite": "background/floor_right",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 8.5,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        }
+    }
+}

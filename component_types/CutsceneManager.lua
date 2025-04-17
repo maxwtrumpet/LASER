@@ -16,13 +16,13 @@ CutsceneManager = {
         local length = #(self.messages[1])
         for index, value in ipairs(self.messages[1]) do
             self.trs[index].text = value
-            self.trs[index].y_position = (length - 1) / 2 + 1 - index
+            self.trs[index].y_position = ((length - 1) / 2 + 1 - index) * 1.5
         end
         local played = io.open(Application.FullPath("resources/.data/.played"),"r")
         if played ~= nil then
             io.close(played)
-            --Scene.Load("menu")
-            --return
+            Scene.Load("menu")
+            return
         end
         played = io.open(Application.FullPath("resources/.data/.played"),"w")
         io.close(played)
@@ -48,7 +48,7 @@ CutsceneManager = {
                 local length = #(self.messages[self.cur_message])
                 for index, value in ipairs(self.messages[self.cur_message]) do
                     self.trs[index].text = value
-                    self.trs[index].y_position = (length - 1) / 2 + 1 - index
+                    self.trs[index].y_position = ((length - 1) / 2 + 1 - index) * 1.5
                 end
                 self.cur_mode = 1
                 self.frame_goal = self.frame_goal + 100

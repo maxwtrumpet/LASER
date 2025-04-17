@@ -1,0 +1,48 @@
+{
+    "name": "Background",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "has_trigger": false,
+            "body_type": "static",
+            "x_position": 8.35,
+            "y_position": 4
+        },
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night_1",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -20
+        },
+        "2": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night_2",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -19
+        },
+        "3": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night_3",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -18
+        },
+        "4": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night_4",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -17
+        },
+        "5": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night_5",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -16
+        }
+    }
+}
