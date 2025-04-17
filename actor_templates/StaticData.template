@@ -1,0 +1,11 @@
+{
+    "name": "StaticData",
+    "components": {
+        "Music": {
+            "type": "MusicManager"
+        },
+        "Data": {
+            "type": "LevelData"
+        }
+    }
+}
