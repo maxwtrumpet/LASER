@@ -23,8 +23,10 @@ MusicManager = {
         Audio.SetEventParameter(self.music, event.parameter, event.value);
     end,
 
-    _OnFocus = function (self)
-        Audio.PlayEvent(self.buttons[1], self.blank_vector, self.blank_vector, true)
+    _OnFocus = function (self, event)
+        if event.initial == false then
+            Audio.PlayEvent(self.buttons[1], self.blank_vector, self.blank_vector, true)
+        end
     end,
 
     _OnPress = function (self)
