@@ -112,82 +112,25 @@
             }
         },
         {
-            "name": "Logo",
-            "components": {
-                "SR": {
-                    "type": "SpriteRenderer",
-                    "sprite": "ui/logo",
-                    "x_position": 0.525,
-                    "y_position": 3,
-                    "x_scale": 9.375,
-                    "y_scale": 9.375
-                }
-            }
+            "template": "ButtonLevels"
         },
         {
-            "template": "Button",
-            "components": {
-                "RB2D": {
-                    "x_position": -5.5
-                },
-                "Text": {
-                    "text": "Levels"
-                }
-            }
+            "template": "ButtonEndless"
         },
         {
-            "template": "Button",
-            "components": {
-                "Text": {
-                    "text": "Endless"
-                }
-            }
+            "template": "ButtonRecords"
         },
         {
-            "template": "Button",
-            "components": {
-                "RB2D": {
-                    "x_position": 5.5
-                },
-                "Text": {
-                    "text": "Records"
-                }
-            }
+            "template": "ButtonQuit"
         },
         {
-            "template": "Button",
-            "components": {
-                "RB2D": {
-                    "x_position": -5.5,
-                    "y_position": -3
-                },
-                "Text": {
-                    "text": "Quit"
-                }
-            }
+            "template": "ButtonControls"
         },
         {
-            "template": "Button",
-            "components": {
-                "RB2D": {
-                    "y_position": -3
-                },
-                "Text": {
-                    "text": "Controls"
-                }
-            }
+            "template": "ButtonCredits"
         },
         {
-            "template": "Button",
-            "components": {
-                "RB2D": {
-                    "x_position": 5.5,
-                    "y_position": -3
-                },
-                "Text": {
-                    "text": "Credits"
-                }
-            }
+            "template": "Logo"
         }
     ]
 }

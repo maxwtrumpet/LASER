@@ -1,0 +1,20 @@
+{
+    "template": "Button",
+    "name": "ButtonControls",
+    "components": {
+        "RB2D": {
+            "y_position": -3
+        },
+        "Text": {
+            "text": "Controls"
+        },
+        "Focus": {
+            "row": 2,
+            "column": 2
+        },
+        "Controls": {
+            "type": "ButtonToInfo",
+            "menu": "Controls"
+        }
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "template": "Button",
+    "name": "ButtonLevel",
+    "components": {
+        "Level": {
+            "type": "ButtonLevel"
+        }
+    }
+}

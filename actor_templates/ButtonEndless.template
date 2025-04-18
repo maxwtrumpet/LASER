@@ -1,0 +1,13 @@
+{
+    "template": "Button",
+    "name": "ButtonEndless",
+    "components": {
+        "Text": {
+            "text": "Endless"
+        },
+        "Focus": {
+            "row": 1,
+            "column": 2
+        }
+    }
+}

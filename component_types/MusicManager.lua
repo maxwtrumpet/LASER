@@ -20,8 +20,15 @@ MusicManager = {
     },
 
     _OnMusic = function (self, event)
-        Debug.Log("Called!")
         Audio.SetEventParameter(self.music, event.parameter, event.value);
+    end,
+
+    _OnFocus = function (self)
+        Audio.PlayEvent(self.buttons[1], self.blank_vector, self.blank_vector, true)
+    end,
+
+    _OnPress = function (self)
+        Audio.PlayEvent(self.buttons[2], self.blank_vector, self.blank_vector, true)
     end,
 
     StartLevel = function (self, level)
@@ -64,6 +71,8 @@ MusicManager = {
         Audio.PlayEvent(self.music, self.blank_vector, self.blank_vector, true)
         self:Reset()
         Event.Subscribe("Music", self, self._OnMusic)
+        Event.Subscribe("ButtonFocus", self, self._OnFocus)
+        Event.Subscribe("ButtonPress", self, self._OnPress)
     end,
 
 }

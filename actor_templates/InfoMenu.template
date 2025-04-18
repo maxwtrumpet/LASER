@@ -1,0 +1,83 @@
+{
+    "template": "Button",
+    "name": "InfoMenu",
+    "components": {
+        "Button": {
+            "y_position_offset": -3.483
+        },
+        "Text": {
+            "text": "Back",
+            "y_position_offset": -3.483
+        },
+        "Selected": {
+            "y_position_offset": -3.483,
+            "enabled": true
+        },
+        "Focus": {
+            "enabled": false
+        },
+        "Back": {
+            "type": "ButtonBack"
+        },
+        "Background1": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/tile_wall",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": 4.1,
+            "sorting_order": 200
+        },
+        "Background2": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/tile_wall",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": 2.1,
+            "sorting_order": 200
+        },
+        "Background3": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/tile_wall",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": 0.1,
+            "sorting_order": 200
+        },
+        "Background4": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/tile_wall",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": -0.9,
+            "sorting_order": 200
+        },
+        "Divider": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/divider",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": -2.15,
+            "sorting_order": 200
+        },
+        "Backdrop": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/backdrop",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "a": 103,
+            "y_position_offset": -0.15,
+            "sorting_order": -1
+        },
+        "Title": {
+            "type": "TextRenderer",
+            "text": "???",
+            "size": 95,
+            "font": "Editia",
+            "y_position_offset": 4.25,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        }
+    }
+}

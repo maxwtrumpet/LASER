@@ -31,6 +31,9 @@
             "y_scale": 1.666,
             "sorting_order": 12,
             "enabled": false
+        },
+        "Focus": {
+            "type": "ButtonFocus"
         }
     }
 }

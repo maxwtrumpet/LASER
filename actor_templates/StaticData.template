@@ -4,8 +4,11 @@
         "Music": {
             "type": "MusicManager"
         },
-        "Data": {
+        "Level": {
             "type": "LevelData"
+        },
+        "Buttons": {
+            "type": "ButtonData"
         }
     }
 }

@@ -1,0 +1,80 @@
+{
+    "template": "InfoMenu",
+    "components": {
+        "Title": {
+            "text": "Credits"
+        },
+        "Info1": {
+            "type": "TextRenderer",
+            "text": "Game made by Max Tennant",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -3.48,
+            "y_position_offset": 2.95,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info2": {
+            "type": "TextRenderer",
+            "text": "Music - Max Tennant on BeepBox/FMOD Studio",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.1,
+            "y_position_offset": 2.2,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info3": {
+            "type": "TextRenderer",
+            "text": "Player/Enemy Art - Max Tennant",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -2.56,
+            "y_position_offset": 1.45,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info4": {
+            "type": "TextRenderer",
+            "text": "World Art - Free Assets on CraftPix",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -2.09,
+            "y_position_offset": 0.7,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info5": {
+            "type": "TextRenderer",
+            "text": "Sound Effects - Free Assets on Pixabay",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -1.22,
+            "y_position_offset": -0.05,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info6": {
+            "type": "TextRenderer",
+            "text": "Font - Edition 12 by Designer's High on dafont",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.25,
+            "y_position_offset": -0.8,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        }
+    }
+}
