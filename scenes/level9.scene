@@ -10,7 +10,7 @@
             "template": "UI",
             "components": {
                 "EM": {
-                    "level": 1
+                    "level": 9
                 }
             }
         },
@@ -21,26 +21,17 @@
             "template": "LevelBackground",
             "components": {
                 "1": {
-                    "x_position": -3.95
+                    "x_position": 1.75
                 },
                 "2": {
-                    "x_position": 14.05
-                },
-                "Transformer": {
-                    "type": "SpriteRenderer",
-                    "sprite": "decoration/transformer",
-                    "x_scale": 3.125,
-                    "y_scale": 3.125,
-                    "x_position": 13.82,
-                    "y_position": 0.24,
-                    "sorting_order": -15
+                    "x_position": 19.75
                 },
                 "Power": {
                     "type": "SpriteRenderer",
                     "sprite": "decoration/power",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
+                    "x_position": 11.13,
                     "y_position": 4.44,
                     "sorting_order": -15
                 },
@@ -49,16 +40,17 @@
                     "sprite": "decoration/power_base",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
+                    "x_position": 11.13,
                     "y_position": 0.48,
                     "sorting_order": -15
                 },
-                "Generator": {
+                "PowerDamaged": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/generator",
+                    "sprite": "decoration/power_damaged",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 4.67,
+                    "x_position": 5.18,
+                    "y_position": 2.41,
                     "sorting_order": -15
                 }
             }

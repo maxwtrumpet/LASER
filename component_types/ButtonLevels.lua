@@ -12,7 +12,7 @@ ButtonLevels = {
                 cur_button.row = math.ceil(i / 3)
                 cur_button.column = ((i-1) % 3) + 1
             end
-            Actor.Instantiate("ButtonReturn")
+            Actor.Instantiate("ButtonReturn"):GetComponent("ButtonManager").button_layout = {3,3,3,1}
             Actor.Destroy(Actor.Find("Logo"))
             Actor.Destroy(Actor.Find("ButtonEndless"))
             Actor.Destroy(Actor.Find("ButtonRecords"))

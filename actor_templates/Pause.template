@@ -1,0 +1,53 @@
+{
+    "name": "Pause",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "has_trigger": false,
+            "body_type": "static",
+            "x_position": 8.35,
+            "y_position": 4.5
+        },
+        "Backdrop": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/backdrop",
+            "x_scale": 3.125,
+            "y_scale": 3.5,
+            "a": 103,
+            "sorting_order": 20
+        },
+        "Wall": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/tile_wall_medium",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": 3,
+            "sorting_order": 200
+        },
+        "Divider": {
+            "type": "SpriteRenderer",
+            "sprite": "ui/divider",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": 1.25,
+            "sorting_order": 200
+        },
+        "Text": {
+            "type": "TextRenderer",
+            "text": "Pause",
+            "size": 180,
+            "y_position_offset": 3,
+            "font": "Editia",
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "BM": {
+            "type": "ButtonManager",
+            "cur_row": 1,
+            "cur_column": 2
+        }
+    }
+}

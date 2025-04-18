@@ -1,0 +1,27 @@
+{
+    "template": "Button",
+    "name": "ButtonMenu",
+    "components": {
+        "RB2D": {
+            "x_position": 4.6,
+            "y_position": 2.5
+        },
+        "Button": {
+            "sorting_order": 21
+        },
+        "Text": {
+            "text": "Menu",
+            "sorting_order": 22
+        },
+        "Selected": {
+            "sorting_order": 23
+        },
+        "Focus": {
+            "row": 1,
+            "column": 1
+        },
+        "Menu": {
+            "type": "ButtonMenu"
+        }
+    }
+}

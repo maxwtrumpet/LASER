@@ -1,0 +1,13 @@
+{
+    "name": "Floor",
+    "components": {
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "background/menu_floor",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position_offset": -5,
+            "sorting_order": 1
+        }
+    }
+}

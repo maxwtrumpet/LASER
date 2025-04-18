@@ -10,7 +10,7 @@
             "template": "UI",
             "components": {
                 "EM": {
-                    "level": 1
+                    "level": 8
                 }
             }
         },
@@ -21,36 +21,36 @@
             "template": "LevelBackground",
             "components": {
                 "1": {
-                    "x_position": -3.95
+                    "x_position": 8.35
                 },
                 "2": {
-                    "x_position": 14.05
+                    "enabled": false
                 },
                 "Transformer": {
                     "type": "SpriteRenderer",
                     "sprite": "decoration/transformer",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 13.82,
+                    "x_position": 3.76,
                     "y_position": 0.24,
                     "sorting_order": -15
                 },
-                "Power": {
+                "Transformer2": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/power",
+                    "sprite": "decoration/transformer",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
-                    "y_position": 4.44,
+                    "x_position": 12.03,
+                    "y_position": 0.24,
                     "sorting_order": -15
                 },
-                "PowerBase": {
+                "Transformer3": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/power_base",
+                    "sprite": "decoration/transformer",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
-                    "y_position": 0.48,
+                    "x_position": 16.69,
+                    "y_position": 0.24,
                     "sorting_order": -15
                 },
                 "Generator": {
@@ -58,7 +58,7 @@
                     "sprite": "decoration/generator",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 4.67,
+                    "x_position": 7.78,
                     "sorting_order": -15
                 }
             }

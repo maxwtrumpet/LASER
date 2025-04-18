@@ -19,36 +19,12 @@
         "Back": {
             "type": "ButtonBack"
         },
-        "Background1": {
+        "Wall": {
             "type": "SpriteRenderer",
-            "sprite": "ui/tile_wall",
+            "sprite": "ui/tile_wall_large",
             "x_scale": 3.125,
             "y_scale": 3.125,
-            "y_position_offset": 4.1,
-            "sorting_order": 200
-        },
-        "Background2": {
-            "type": "SpriteRenderer",
-            "sprite": "ui/tile_wall",
-            "x_scale": 3.125,
-            "y_scale": 3.125,
-            "y_position_offset": 2.1,
-            "sorting_order": 200
-        },
-        "Background3": {
-            "type": "SpriteRenderer",
-            "sprite": "ui/tile_wall",
-            "x_scale": 3.125,
-            "y_scale": 3.125,
-            "y_position_offset": 0.1,
-            "sorting_order": 200
-        },
-        "Background4": {
-            "type": "SpriteRenderer",
-            "sprite": "ui/tile_wall",
-            "x_scale": 3.125,
-            "y_scale": 3.125,
-            "y_position_offset": -0.9,
+            "y_position_offset": 1.6,
             "sorting_order": 200
         },
         "Divider": {

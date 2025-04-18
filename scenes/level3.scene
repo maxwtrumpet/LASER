@@ -10,7 +10,7 @@
             "template": "UI",
             "components": {
                 "EM": {
-                    "level": 1
+                    "level": 3
                 }
             }
         },
@@ -21,44 +21,52 @@
             "template": "LevelBackground",
             "components": {
                 "1": {
-                    "x_position": -3.95
+                    "x_position": -7.75
                 },
                 "2": {
-                    "x_position": 14.05
+                    "x_position": 10.25
                 },
                 "Transformer": {
                     "type": "SpriteRenderer",
                     "sprite": "decoration/transformer",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 13.82,
+                    "x_position": 1.21,
                     "y_position": 0.24,
                     "sorting_order": -15
                 },
-                "Power": {
+                "PowerBroken1": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/power",
+                    "sprite": "decoration/power_broken",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
-                    "y_position": 4.44,
+                    "x_position": 5.9,
+                    "y_position": 0.09,
                     "sorting_order": -15
                 },
-                "PowerBase": {
+                "PowerBroken2": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/power_base",
+                    "sprite": "decoration/power_broken",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
-                    "y_position": 0.48,
+                    "x_position": 13.61,
+                    "y_position": 0.09,
                     "sorting_order": -15
                 },
-                "Generator": {
+                "Generator1": {
                     "type": "SpriteRenderer",
                     "sprite": "decoration/generator",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 4.67,
+                    "x_position": 8.75,
+                    "sorting_order": -15
+                },
+                "Generator2": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/generator",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 17.92,
                     "sorting_order": -15
                 }
             }

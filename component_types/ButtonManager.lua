@@ -1,11 +1,12 @@
 ButtonManager = {
-    screen = "???",
     cur_row = 1,
     cur_column = 1,
-    button_layout = {},
+    button_layout = nil,
 
     OnStart = function (self)
-        self.button_layout = Actor.Find("StaticData"):GetComponent("ButtonData")[self.screen]
+        if self.button_layout == nil then
+            self.button_layout = {3,3}
+        end
         Event.Publish("ButtonFocus", {focus = true, initial = true, row = self.cur_row, column = self.cur_column})
     end,
 

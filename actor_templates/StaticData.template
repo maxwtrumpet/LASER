@@ -6,9 +6,6 @@
         },
         "Level": {
             "type": "LevelData"
-        },
-        "Buttons": {
-            "type": "ButtonData"
         }
     }
 }

@@ -10,7 +10,7 @@
             "template": "UI",
             "components": {
                 "EM": {
-                    "level": 1
+                    "level": 2
                 }
             }
         },
@@ -21,44 +21,54 @@
             "template": "LevelBackground",
             "components": {
                 "1": {
-                    "x_position": -3.95
+                    "x_position": 3.65
                 },
                 "2": {
-                    "x_position": 14.05
+                    "x_position": 21.65
                 },
-                "Transformer": {
+                "PowerDamaged": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/transformer",
+                    "sprite": "decoration/power_damaged",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 13.82,
-                    "y_position": 0.24,
-                    "sorting_order": -15
-                },
-                "Power": {
-                    "type": "SpriteRenderer",
-                    "sprite": "decoration/power",
-                    "x_scale": 3.125,
-                    "y_scale": 3.125,
-                    "x_position": 11.44,
+                    "x_position": 4.23,
                     "y_position": 4.44,
                     "sorting_order": -15
                 },
-                "PowerBase": {
+                "PowerBase1": {
                     "type": "SpriteRenderer",
                     "sprite": "decoration/power_base",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 11.44,
+                    "x_position": 4.44,
                     "y_position": 0.48,
                     "sorting_order": -15
                 },
-                "Generator": {
+                "Power1": {
                     "type": "SpriteRenderer",
-                    "sprite": "decoration/generator",
+                    "sprite": "decoration/power",
                     "x_scale": 3.125,
                     "y_scale": 3.125,
-                    "x_position": 4.67,
+                    "x_position": 9.3,
+                    "y_position": 2.41,
+                    "sorting_order": -15
+                },
+                "PowerBase2": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_base",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 14.14,
+                    "y_position": 0.48,
+                    "sorting_order": -15
+                },
+                "Power2": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 14.14,
+                    "y_position": 4.44,
                     "sorting_order": -15
                 }
             }

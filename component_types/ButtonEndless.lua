@@ -1,11 +1,10 @@
-ButtonLevel = {
+ButtonEndless = {
 
     focus = nil,
 
     _OnPress = function (self, event)
         if event.row == self.focus.row and event.column == self.focus.column then
-            local queued_level = self.actor:GetComponent("TextRenderer").text
-            Scene.Load("Level" .. queued_level)
+            Scene.Load("Level10")
         end
     end,
 

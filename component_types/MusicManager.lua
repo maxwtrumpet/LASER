@@ -19,6 +19,20 @@ MusicManager = {
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
     },
 
+    _OnLevel = function (self, event)
+        Audio.SetEventParameter(self.music, "Bass High", self.parameters[event.level][1]);
+        Audio.SetEventParameter(self.music, "Melody Low", self.parameters[event.level][2]);
+        Audio.SetEventParameter(self.music, "Bb Low", self.parameters[event.level][3]);
+        Audio.SetEventParameter(self.music, "Ab Stay", self.parameters[event.level][4]);
+        Audio.SetEventParameter(self.music, "Drum 1", self.parameters[event.level][5]);
+        Audio.SetEventParameter(self.music, "Eb", self.parameters[event.level][6]);
+        Audio.SetEventParameter(self.music, "Bb High", self.parameters[event.level][7]);
+        Audio.SetEventParameter(self.music, "F", self.parameters[event.level][8]);
+        Audio.SetEventParameter(self.music, "Ab Resolve", self.parameters[event.level][9]);
+        Audio.SetEventParameter(self.music, "Drum 2", self.parameters[event.level][10]);
+        Audio.SetEventParameter(self.music, "Melody High", self.parameters[event.level][11]);
+    end,
+
     _OnMusic = function (self, event)
         Audio.SetEventParameter(self.music, event.parameter, event.value);
     end,
@@ -31,20 +45,6 @@ MusicManager = {
 
     _OnPress = function (self)
         Audio.PlayEvent(self.buttons[2], self.blank_vector, self.blank_vector, true)
-    end,
-
-    StartLevel = function (self, level)
-         Audio.SetEventParameter(self.music, "Bass High", self.parameters[level][1]);
-         Audio.SetEventParameter(self.music, "Melody Low", self.parameters[level][2]);
-         Audio.SetEventParameter(self.music, "Bb Low", self.parameters[level][3]);
-         Audio.SetEventParameter(self.music, "Ab Stay", self.parameters[level][4]);
-         Audio.SetEventParameter(self.music, "Drum 1", self.parameters[level][5]);
-         Audio.SetEventParameter(self.music, "Eb", self.parameters[level][6]);
-         Audio.SetEventParameter(self.music, "Bb High", self.parameters[level][7]);
-         Audio.SetEventParameter(self.music, "F", self.parameters[level][8]);
-         Audio.SetEventParameter(self.music, "Ab Resolve", self.parameters[level][9]);
-         Audio.SetEventParameter(self.music, "Drum 2", self.parameters[level][10]);
-         Audio.SetEventParameter(self.music, "Melody High", self.parameters[level][11]);
     end,
 
     Reset = function (self)
@@ -75,6 +75,7 @@ MusicManager = {
         Event.Subscribe("Music", self, self._OnMusic)
         Event.Subscribe("ButtonFocus", self, self._OnFocus)
         Event.Subscribe("ButtonPress", self, self._OnPress)
+        Event.Subscribe("Level", self, self._OnLevel)
     end,
 
 }
