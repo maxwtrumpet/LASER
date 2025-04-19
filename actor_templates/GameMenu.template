@@ -1,5 +1,5 @@
 {
-    "name": "Pause",
+    "name": "GameMenu",
     "components": {
         "RB2D": {
             "type": "Rigidbody2D",
@@ -35,7 +35,7 @@
         },
         "Text": {
             "type": "TextRenderer",
-            "text": "Pause",
+            "text": "???",
             "size": 180,
             "y_position_offset": 3,
             "font": "Editia",

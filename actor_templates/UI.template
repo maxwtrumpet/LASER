@@ -59,9 +59,6 @@
             "x_position": 11.69,
             "y_position": 8.45,
             "sorting_order": 19
-        },
-        "EM": {
-            "type": "EnemyManager"
         }
     }
 }

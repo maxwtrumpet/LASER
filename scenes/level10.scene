@@ -7,11 +7,14 @@
     "Camera Z Direction": 0,
     "actors": [
         {
+            "template": "Player"
+        },
+        {
+            "template": "Gun"
+        },
+        {
             "template": "UI",
             "components": {
-                "EM": {
-                    "enabled": false
-                },
                 "Meter": {
                     "enabled": false
                 },
@@ -21,7 +24,7 @@
                 "Progress": {
                     "enabled": false
                 },
-                "Endless": {
+                "Manager": {
                     "type": "EndlessManager"
                 }
             }

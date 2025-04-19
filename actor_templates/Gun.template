@@ -1,0 +1,69 @@
+{
+    "name": "Gun",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "has_trigger": false,
+            "body_type": "static"
+        },
+        "Gun": {
+            "type": "SpriteRenderer",
+            "sprite": "player/beam_0",
+            "x_scale": 4.5,
+            "y_scale": 4.5,
+            "x_position_offset": 1.58,
+            "sorting_order": 1
+        },
+        "LeftMeter": {
+            "type": "SpriteRenderer",
+            "sprite": "player/ray_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 2.25,
+            "y_position_offset": 0.05,
+            "x_alignment": 0.0,
+            "y_alignment": 1.0,
+            "sorting_order": 10
+        },
+        "RightMeter": {
+            "type": "SpriteRenderer",
+            "sprite": "player/ray_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 2.25,
+            "y_position_offset": -0.05,
+            "x_alignment": 0.0,
+            "y_alignment": 0.0,
+            "sorting_order": 10
+        },
+        "LeftCharge": {
+            "type": "SpriteRenderer",
+            "sprite": "player/charge",
+            "x_scale": 0,
+            "y_scale": 3.125,
+            "x_position_offset": 2.281,
+            "y_position_offset": 0.05,
+            "x_alignment": 0.0,
+            "y_alignment": 1.0,
+            "sorting_order": 9
+        },
+        "RightCharge": {
+            "type": "SpriteRenderer",
+            "sprite": "player/charge",
+            "x_scale": 0,
+            "y_scale": 3.125,
+            "x_position_offset": 2.281,
+            "y_position_offset": -0.05,
+            "x_alignment": 0.0,
+            "y_alignment": 0.0,
+            "sorting_order": 9
+        },
+        "Controller": {
+            "type": "GunController"
+        },
+        "XAnimator": {
+            "type": "Animator"
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "name": "Player",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": true,
+            "has_trigger": false,
+            "body_type": "static"
+        },
+        "Front": {
+            "type": "SpriteRenderer",
+            "sprite": "player/player_front",
+            "x_alignment": 0.25,
+            "y_alignment": 0.75,
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": 2
+        },
+        "Back": {
+            "type": "SpriteRenderer",
+            "sprite": "player/player_back",
+            "x_alignment": 0.25,
+            "y_alignment": 0.75,
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -15
+        }
+    }
+}

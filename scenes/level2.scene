@@ -7,10 +7,17 @@
     "Camera Z Direction": 0,
     "actors": [
         {
+            "template": "Player"
+        },
+        {
+            "template": "Gun"
+        },
+        {
             "template": "UI",
             "components": {
-                "EM": {
-                    "level": 2
+                "Manager": {
+                    "type": "EnemyManager",
+                    "level": 1
                 }
             }
         },

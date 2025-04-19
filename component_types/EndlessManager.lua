@@ -1,6 +1,5 @@
 EndlessManager = {
     OnStart = function (self)
-        self.actor:RemoveComponent(self.actor:GetComponentByKey("EM"))
         self.actor:RemoveComponent(self.actor:GetComponentByKey("Meter"))
         self.actor:RemoveComponent(self.actor:GetComponentByKey("Backdrop"))
         self.actor:RemoveComponent(self.actor:GetComponentByKey("Progress"))

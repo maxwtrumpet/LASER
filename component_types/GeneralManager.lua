@@ -5,7 +5,12 @@ GeneralManager = {
             Event.Publish("ButtonPress", {})
             Actor.Instantiate("ButtonMenu")
             Actor.Instantiate("ButtonResume")
-            Actor.Instantiate("Pause"):GetComponent("ButtonManager").button_layout = {2}
+            local pause = Actor.Instantiate("GameMenu")
+            pause:GetComponent("ButtonManager").button_layout = {2}
+            pause:GetComponent("TextRenderer").text = "Pause"
+            Actor.Find("UI"):GetComponentByKey("Manager").enabled = false
+            Actor.Find("Gun"):DisableAll()
+            Actor.Find("Player"):DisableAll()
             self.enabled = false
         end
     end
