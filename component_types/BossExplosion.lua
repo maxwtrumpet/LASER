@@ -1,0 +1,3 @@
+BossExplosion = {
+    iteration = 0,
+}

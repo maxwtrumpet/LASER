@@ -11,6 +11,23 @@ ButtonResume = {
             Actor.Find("UI"):GetComponentByKey("Manager").enabled = true
             Actor.Find("Gun"):EnableAll()
             Actor.Find("Player"):EnableAll()
+            local beam = Actor.Find("Beam")
+            if beam ~= nil then
+                beam:EnableAll()
+            end
+            local basic = Actor.FindAll("Basic")
+            for index, value in ipairs(basic) do
+                value:EnableAll()
+                value:GetComponentByKey("XManager"):OnEnable()
+            end
+            local fast = Actor.FindAll("Fast")
+            for index, value in ipairs(fast) do
+                value:EnableAll()
+            end
+            local explosions = Actor.FindAll("Explosion")
+            for index, value in ipairs(explosions) do
+                value:EnableAll()
+            end
         end
     end,
 

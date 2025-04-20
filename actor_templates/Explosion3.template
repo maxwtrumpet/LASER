@@ -1,0 +1,24 @@
+{
+    "name": "Explosion",
+    "components": {
+         "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/explosion/3_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": 9
+        },
+        "AD": {
+            "type": "AutoDestroy",
+            "time": 33
+        },
+        "AM": {
+            "type": "Animator",
+            "speed": 0.90909090909
+        },
+        "EX": {
+            "type": "Explosion",
+            "size": "3"
+        }
+    }
+}

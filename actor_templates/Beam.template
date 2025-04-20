@@ -1,0 +1,30 @@
+{
+    "name": "Beam",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "trigger_width": 20,
+            "trigger_height": 2,
+            "gravity_scale": 0
+        },
+        "XManager": {
+            "type": "BeamManager"
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "beam/beam_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": 8
+        },
+        "ZAM": {
+            "type": "Animator",
+            "speed": 65
+        },
+        "AD": {
+            "type": "AutoDestroy",
+            "time": 30
+        }
+    }
+}

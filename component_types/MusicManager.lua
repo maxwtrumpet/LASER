@@ -4,10 +4,7 @@ MusicManager = {
     win = "event:/effects/win",
     explosion = "event:/effects/explosion_",
     buttons = {"event:/effects/button_change", "event:/effects/button_select"},
-    guns = {{"event:/effects/gun0-0","event:/effects/gun0-1","event:/effects/gun0-2"},
-            {"event:/effects/gun1-0","event:/effects/gun1-1","event:/effects/gun1-2"},
-            {"event:/effects/gun2-0","event:/effects/gun2-1","event:/effects/gun2-2"},
-            {"event:/effects/gun3-0","event:/effects/gun3-1","event:/effects/gun3-2"}},
+    gun = "event:/effects/gun",
     blank_vector = Vector3(0,0,0),
     parameters = {
         {1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -44,8 +41,30 @@ MusicManager = {
         Audio.PlayEvent(self.win, self.blank_vector, self.blank_vector, true)
     end,
 
+    _OnLose = function (self, event)
+        Audio.SetEventParameter(self.music, "Ab Resolve", 0)
+        Audio.SetEventParameter(self.music, "Ab Stay", 0)
+        Audio.SetEventParameter(self.music, "Bass High", 0)
+        Audio.SetEventParameter(self.music, "Bass Low", 0)
+        Audio.SetEventParameter(self.music, "Bb High", 0)
+        Audio.SetEventParameter(self.music, "Bb Low", 1)
+        Audio.SetEventParameter(self.music, "Drum 1", 0)
+        Audio.SetEventParameter(self.music, "Drum 2", 0)
+        Audio.SetEventParameter(self.music, "Drum 3", 0)
+        Audio.SetEventParameter(self.music, "Eb", 0)
+        Audio.SetEventParameter(self.music, "F", 0)
+        Audio.SetEventParameter(self.music, "Melody High", 0)
+        Audio.SetEventParameter(self.music, "Melody Low", 1)
+        Audio.SetEventParameter(self.music, "Ostinato Fast", 0)
+        Audio.SetEventParameter(self.music, "Ostinato Slow", 0)
+    end,
+
+    _OnExplosion = function (self, event)
+        Audio.PlayEvent(self.explosion .. event.size, self.blank_vector, self.blank_vector, false)
+    end,
+
     _OnGun = function (self, event)
-        Audio.PlayEvent(self.guns[event.main][event.random], self.blank_vector, self.blank_vector, false)
+        Audio.PlayEvent(self.gun .. event.main .. "-" .. event.random, self.blank_vector, self.blank_vector, false)
     end,
 
     _OnFocus = function (self, event)
@@ -89,6 +108,8 @@ MusicManager = {
         Event.Subscribe("Level", self, self._OnLevel)
         Event.Subscribe("Win", self, self._OnWin)
         Event.Subscribe("Gun", self, self._OnGun)
+        Event.Subscribe("Explosion", self, self._OnExplosion)
+        Event.Subscribe("Lose", self, self._OnLose)
     end,
 
 }

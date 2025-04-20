@@ -17,7 +17,7 @@
             "components": {
                 "Manager": {
                     "type": "EnemyManager",
-                    "level": 1
+                    "level": 2
                 }
             }
         },

@@ -72,15 +72,34 @@ GunController = {
         end
         self.previous_scroll = scroll
         if self.cur_charge < 0.75 and Input.IsKeyJustDown("space") then
-            local main_idx = 1
+
+            local cur_beam = Actor.Instantiate("Beam"):GetComponent("Rigidbody2D")
+            local angle = self.rb2d:GetRotation()
+            cur_beam:SetRotation(angle)
+            angle = angle * math.pi / 180
+            cur_beam:SetPosition(Vector2(12.25 * math.cos(angle),12.25 * math.sin(angle)))
+            cur_beam.actor:GetComponent("SpriteRenderer").y_scale = self.meters[1].y_position_offset * 3.125
+
+            cur_beam = cur_beam.actor:GetComponent("BeamManager")
             if self.cur_charge == 0 then
-                main_idx = 4
+                cur_beam.damage = 7
             elseif self.cur_charge < 0.375 then
-                main_idx = 3
+                cur_beam.damage = 4
             elseif self.cur_charge < 0.625 then
-                main_idx = 2
+                cur_beam.damage = 2
+            else
+                cur_beam.damage = 1
             end
-            Event.Publish("Gun", {main = main_idx, random = math.random(3)})
+
+            local main_idx = "0"
+            if self.cur_charge == 0 then
+                main_idx = "3"
+            elseif self.cur_charge < 0.375 then
+                main_idx = "2"
+            elseif self.cur_charge < 0.625 then
+                main_idx = "1"
+            end
+            Event.Publish("Gun", {main = main_idx, random = tostring(math.random(3)-1)})
 
             self.cur_charge = 1
             self.meters[1].sprite = "player/ray_0"
@@ -102,7 +121,7 @@ GunController = {
 
         local ease_tint = (1 - self.cur_charge) * 3.125
         if ease_tint < self.charges[1].x_scale then
-            ease_tint = self.charges[1].x_scale + (ease_tint - self.charges[1].x_scale) * self.charge_ease_factor;
+            ease_tint = self.charges[1].x_scale + (ease_tint - self.charges[1].x_scale) * self.charge_ease_factor
         end
         self.charges[1].x_scale = ease_tint
         self.charges[2].x_scale = ease_tint
