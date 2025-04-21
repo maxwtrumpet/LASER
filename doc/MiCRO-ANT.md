@@ -279,6 +279,10 @@ This is a built in C++ component for rendering images. This component automatica
 * `z_rotation_offset`: The z offset from the initial rotation. Only relevant if there is a matching Rigidbody component. Defaults to 0.
 * `x_scale`: The width scale of the image. Note that 100 pixels = 1 in-game unit. Defaults to 1.
 * `y_scale`: The height scale of the image. Note that 100 pixels = 1 in-game unit. Defaults to 1.
+* `x_begin`: What fraction of the original image width the sprite starts at. 0 means left edge, 1 means right edge. Defaults to 0.
+* `x_end`: What fraction of the original image width the sprite ends at. 0 means left edge, 1 means right edge. Defaults to 1.
+* `y_begin`: What fraction of the original image height the sprite starts at. 0 means top edge, 1 means bottom edge. Defaults to 0.
+* `y_end`: What fraction of the original image height the sprite starts at. 0 means top edge, 1 means bottom edge. Defaults to 1.
 * `r`: The red color mod (0-255) from the initial image. Defaults to 255.
 * `g`: The green color mod (0-255) from the initial image. Defaults to 255.
 * `b`: The blue color mod (0-255) from the initial image. Defaults to 255.
@@ -374,7 +378,7 @@ Functions:
 * `GetChannelVolume(int channel)`: Gets the volume of the given channel.
 * `StopAllSounds(bool persistent)`: Stops all currently playing sounds, including ones that persist across scenes if given a `true` value.
 * `LoadBank(string bank)`: Loads the FMOD bank with the given name (extension not included, assuming it is located in the banks folder).
-* `PlayEvent(string event, Vector3 position, Vector3 velocity, bool persists)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect. `persists`, when true, allows the sound to continue playing between scenes,
+* `PlayEvent(string event, float volume, Vector3 position, Vector3 velocity, bool persists)`: Plays the given event with the specified spatial positon and velocity. If the event doesn't have a 3D panner, these values have no effect. `persists`, when true, allows the sound to continue playing between scenes. A volume of 1 means original volume and 0 means muted.
 * `StopEvent(string event, bool fade)`: Stops the given effect and fades it based on the given boolean.
 * `IsEventPlaying(string event)`: Returns a boolean indicating whether or not the event with the given name is currently playing.
 * `GetEventParameter(string event, string parameter)`: Returns a float correlating the to the value of the given parameter on the given event. 

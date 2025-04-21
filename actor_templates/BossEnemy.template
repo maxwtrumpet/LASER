@@ -1,28 +1,28 @@
 {
-    "name": "Fast",
+    "name": "Boss",
     "components": {
         "RB2D": {
             "type": "Rigidbody2D",
             "has_collider": false,
-            "trigger_type": "circle",
-            "trigger_radius": 0.25,
+            "trigger_width": 3.875,
+            "trigger_height": 3.5,
             "gravity_scale": 0
         },
         "SR": {
             "type": "SpriteRenderer",
-            "sprite": "enemies/fast/fast_0_0",
+            "sprite": "enemies/boss/boss_0_0",
             "x_scale": 3.125,
             "y_scale": 3.125,
-            "sorting_order": -8
+            "sorting_order": -11
         },
         "XManager": {
-            "type": "FastEnemy"
+            "type": "BossEnemy"
         },
         "YHM": {
             "type": "HealthManager",
-            "health": 2,
-            "points": 15,
-            "explosion": "1"
+            "health": 64,
+            "points": 1000,
+            "explosion": "4"
         },
         "ZAM": {
             "type": "Animator",

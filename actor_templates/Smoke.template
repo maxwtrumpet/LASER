@@ -1,0 +1,15 @@
+{
+    "name": "Smoke",
+    "components": {
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/kamikaze/smoke",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -13
+        },
+        "AD": {
+            "type": "AutoDestroy"
+        }
+    }
+}

@@ -1,28 +1,33 @@
 {
-    "name": "Fast",
+    "name": "Kamikaze",
     "components": {
         "RB2D": {
             "type": "Rigidbody2D",
             "has_collider": false,
-            "trigger_type": "circle",
-            "trigger_radius": 0.25,
             "gravity_scale": 0
         },
         "SR": {
             "type": "SpriteRenderer",
-            "sprite": "enemies/fast/fast_0_0",
+            "sprite": "enemies/kamikaze/kamikaze_0",
             "x_scale": 3.125,
             "y_scale": 3.125,
-            "sorting_order": -8
+            "sorting_order": -14
+        },
+        "Tank": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/kamikaze/engines",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -12
         },
         "XManager": {
-            "type": "FastEnemy"
+            "type": "KamikazeEnemy"
         },
         "YHM": {
             "type": "HealthManager",
-            "health": 2,
-            "points": 15,
-            "explosion": "1"
+            "health": 1,
+            "points": 40,
+            "explosion": "2"
         },
         "ZAM": {
             "type": "Animator",

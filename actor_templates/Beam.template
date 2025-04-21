@@ -16,15 +16,13 @@
             "sprite": "beam/beam_0",
             "x_scale": 3.125,
             "y_scale": 3.125,
+            "x_alignment": 0.0,
+            "x_end": 0.0,
             "sorting_order": 8
         },
         "ZAM": {
             "type": "Animator",
             "speed": 65
-        },
-        "AD": {
-            "type": "AutoDestroy",
-            "time": 30
         }
     }
 }

@@ -24,6 +24,29 @@ ButtonResume = {
             for index, value in ipairs(fast) do
                 value:EnableAll()
             end
+            local egg = Actor.FindAll("Egg")
+            for index, value in ipairs(egg) do
+                value:EnableAll()
+            end
+            local gnat = Actor.FindAll("Gnat")
+            for index, value in ipairs(gnat) do
+                value:EnableAll()
+                value:GetComponentByKey("XManager"):OnEnable()
+            end
+            local kamikaze = Actor.FindAll("Kamikaze")
+            for index, value in ipairs(kamikaze) do
+                value:EnableAll()
+                value:GetComponentByKey("XManager"):OnEnable()
+            end
+            local smoke = Actor.FindAll("Smoke")
+            for index, value in ipairs(smoke) do
+                value:EnableAll()
+            end
+            local boss = Actor.FindAll("Boss")
+            for index, value in ipairs(boss) do
+                value:EnableAll()
+                value:GetComponentByKey("XManager"):OnEnable()
+            end
             local explosions = Actor.FindAll("Explosion")
             for index, value in ipairs(explosions) do
                 value:EnableAll()

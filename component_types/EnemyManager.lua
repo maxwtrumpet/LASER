@@ -17,7 +17,7 @@ EnemyManager = {
             self.enemy_count = self.enemy_count - 1
         end
         self.score.text = "Score: " .. self.kill_points
-        if self.cur_time >= self.ld.times[self.level] and self.enemy_count == 0 then
+        if self.cur_time >= self.next_spawn and self.enemy_count == 0 then
             local file = io.open(Application.FullPath("resources/.data/." .. self.level),"r")
             if self.kill_points > tonumber(file:read()) then
                 io.close(file)
@@ -41,11 +41,21 @@ EnemyManager = {
                 win = win.actor
             end
             win:GetComponent("TextRenderer").text = "You win!"
+            Actor.Find("Floor"):GetComponent("GeneralManager").enabled = false
             Actor.Find("Gun"):DisableAll()
             Actor.Find("Player"):DisableAll()
             local beam = Actor.Find("Beam")
             if beam ~= nil then
                 beam:DisableAll()
+            end
+            local gnat = Actor.FindAll("Gnat")
+            for index, value in ipairs(gnat) do
+                value:DisableAll()
+                value:GetComponentByKey("XManager"):OnDisable()
+            end
+            local smoke = Actor.FindAll("Smoke")
+            for index, value in ipairs(smoke) do
+                value:DisableAll()
             end
             local explosions = Actor.FindAll("Explosion")
             for index, value in ipairs(explosions) do
@@ -82,9 +92,11 @@ EnemyManager = {
             local total_chance = 0
             local auto_appear = -1
             for i = 1, #self.ld.first_appearances[self.level], 1 do
-                if self.cur_time > self.ld.first_appearances[self.level][i] then
+                if self.cur_time >= self.ld.first_appearances[self.level][i] then
                     total_chance = total_chance + self.ld.frequencies[self.level][i]
-                    if self.cur_index[i] <= #self.ld.confirmed_appearances[self.level][i] and self.cur_time >= self.ld.confirmed_appearances[self.level][i] and self.prev_time < self.ld.confirmed_appearances[self.level][i] then
+                    if self.cur_index[i] <= #self.ld.confirmed_appearances[self.level][i] and
+                       self.cur_time >= self.ld.confirmed_appearances[self.level][i][self.cur_index[i]] and
+                       self.prev_time < self.ld.confirmed_appearances[self.level][i][self.cur_index[i]] then
                         auto_appear = i
                         self.cur_index[i] = self.cur_index[i] + 1
                     end

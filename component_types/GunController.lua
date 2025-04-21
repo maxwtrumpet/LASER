@@ -6,6 +6,7 @@ GunController = {
     cannon = "event:/effects/cannon",
     blank_vector = Vector3(0,0,0),
     previous_scroll = 0,
+    beam_counter = 1,
 
     OnStart = function (self)
         self.rb2d = self.actor:GetComponent("Rigidbody2D")
@@ -15,7 +16,7 @@ GunController = {
         self.meters[2] = self.actor:GetComponentByKey("RightMeter")
         self.charges[1] = self.actor:GetComponentByKey("LeftCharge")
         self.charges[2] = self.actor:GetComponentByKey("RightCharge")
-        Audio.PlayEvent(self.cannon, self.blank_vector, self.blank_vector, false)
+        Audio.PlayEvent(self.cannon, 0.5, self.blank_vector, self.blank_vector, false)
         self.am = self.actor:GetComponent("Animator")
         self.am.frames = {"player/beam_1", "player/beam_2", "player/beam_3", "player/beam_4"}
         self.gun = self.actor:GetComponentByKey("Gun")
@@ -90,6 +91,8 @@ GunController = {
             else
                 cur_beam.damage = 1
             end
+            cur_beam.identifier = self.beam_counter
+            self.beam_counter = self.beam_counter + 1
 
             local main_idx = "0"
             if self.cur_charge == 0 then

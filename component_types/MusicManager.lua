@@ -38,7 +38,7 @@ MusicManager = {
     end,
 
     _OnWin = function (self, event)
-        Audio.PlayEvent(self.win, self.blank_vector, self.blank_vector, true)
+        Audio.PlayEvent(self.win, 1.0, self.blank_vector, self.blank_vector, true)
     end,
 
     _OnLose = function (self, event)
@@ -60,21 +60,25 @@ MusicManager = {
     end,
 
     _OnExplosion = function (self, event)
-        Audio.PlayEvent(self.explosion .. event.size, self.blank_vector, self.blank_vector, false)
+        Audio.PlayEvent(self.explosion .. event.size, 0.25, self.blank_vector, self.blank_vector, false)
     end,
 
     _OnGun = function (self, event)
-        Audio.PlayEvent(self.gun .. event.main .. "-" .. event.random, self.blank_vector, self.blank_vector, false)
+        local volume = 0.25
+        if event.main == "3" then
+            volume = 0.1
+        end
+        Audio.PlayEvent(self.gun .. event.main .. "-" .. event.random, volume, self.blank_vector, self.blank_vector, false)
     end,
 
     _OnFocus = function (self, event)
         if event.initial == false then
-            Audio.PlayEvent(self.buttons[1], self.blank_vector, self.blank_vector, true)
+            Audio.PlayEvent(self.buttons[1], 0.25, self.blank_vector, self.blank_vector, true)
         end
     end,
 
     _OnPress = function (self)
-        Audio.PlayEvent(self.buttons[2], self.blank_vector, self.blank_vector, true)
+        Audio.PlayEvent(self.buttons[2], 0.25, self.blank_vector, self.blank_vector, true)
     end,
 
     Reset = function (self)
@@ -100,7 +104,7 @@ MusicManager = {
         Audio.LoadBank("Master")
         Audio.LoadBank("Music")
         Audio.LoadBank("Sounds")
-        Audio.PlayEvent(self.music, self.blank_vector, self.blank_vector, true)
+        Audio.PlayEvent(self.music, 1.0, self.blank_vector, self.blank_vector, true)
         self:Reset()
         Event.Subscribe("Music", self, self._OnMusic)
         Event.Subscribe("ButtonFocus", self, self._OnFocus)

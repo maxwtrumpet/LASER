@@ -7,9 +7,6 @@
     "Camera Z Direction": 0,
     "actors": [
         {
-            "template": "BasicEnemy"
-        },
-        {
             "template": "Player"
         },
         {
