@@ -1,0 +1,21 @@
+{
+    "template": "Button",
+    "name": "ButtonCredits",
+    "components": {
+        "RB2D": {
+            "x_position": 5.5,
+            "y_position": -3
+        },
+        "Text": {
+            "text": "Credits"
+        },
+        "Focus": {
+            "row": 2,
+            "column": 3
+        },
+        "Credits": {
+            "type": "ButtonToInfo",
+            "menu": "Credits"
+        }
+    }
+}

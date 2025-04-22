@@ -1,0 +1,37 @@
+{
+    "name": "Kamikaze",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "gravity_scale": 0
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/kamikaze/kamikaze_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -14
+        },
+        "Tank": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/kamikaze/engines",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -12
+        },
+        "XManager": {
+            "type": "KamikazeEnemy"
+        },
+        "YHM": {
+            "type": "HealthManager",
+            "health": 1,
+            "points": 40,
+            "explosion": "2"
+        },
+        "ZAM": {
+            "type": "Animator",
+            "speed": 0.75
+        }
+    }
+}

@@ -1,0 +1,83 @@
+{
+    "Camera X Position": 0,
+    "Camera Y Position": 0,
+    "Camera Z Position": 0,
+    "Camera X Direction": 0,
+    "Camera Y Direction": 0,
+    "Camera Z Direction": -1,
+    "actors": [
+        {
+            "template": "MenuFloor",
+            "name": "Floor_1"
+        },
+        {
+            "template": "MenuFloor",
+            "name": "Floor_2",
+            "components": {
+                "SR": {
+                    "x_position": 18
+                }
+            }
+        },
+        {
+            "template": "MenuBackground",
+            "name": "Background_1"
+        },
+        {
+            "template": "MenuBackground",
+            "name": "Background_2",
+            "components": {
+                "1": {
+                    "enabled": false
+                }
+            }
+        },
+        {
+            "name": "Scroller",
+            "components": {
+                "Scroller": {
+                    "type": "ScrollerManager"
+                }
+            }
+        },
+        {
+            "name": "FadeIn",
+            "components": {
+                "Sprite": {
+                    "type": "SpriteRenderer",
+                    "sprite": "ui/backdrop",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "r": 0,
+                    "g": 0,
+                    "b": 0,
+                    "sorting_order": 400
+                },
+                "Fade": {
+                    "type": "FadeIn"
+                }
+            }
+        },
+        {
+            "template": "ButtonLevels"
+        },
+        {
+            "template": "ButtonEndless"
+        },
+        {
+            "template": "ButtonRecords"
+        },
+        {
+            "template": "ButtonQuit"
+        },
+        {
+            "template": "ButtonControls"
+        },
+        {
+            "template": "ButtonCredits"
+        },
+        {
+            "template": "Logo"
+        }
+    ]
+}

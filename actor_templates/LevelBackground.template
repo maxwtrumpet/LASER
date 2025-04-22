@@ -1,0 +1,21 @@
+{
+    "name": "Background",
+    "components": {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position": 4,
+            "sorting_order": -20
+        },
+        "2": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Night",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "y_position": 4,
+            "sorting_order": -20
+        }
+    }
+}

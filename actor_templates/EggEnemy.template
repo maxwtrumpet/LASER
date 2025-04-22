@@ -1,0 +1,35 @@
+{
+    "name": "Egg",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "trigger_width": 2,
+            "trigger_height": 2,
+            "gravity_scale": 0
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/egg/egg_0_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -10
+        },
+        "WManager": {
+            "type": "EggEnemy"
+        },
+        "XMWE": {
+            "type": "MoveWithEase"
+        },
+        "YHM": {
+            "type": "HealthManager",
+            "health": 20,
+            "points": 100,
+            "explosion": "3"
+        },
+        "ZAM": {
+            "type": "Animator",
+            "speed": 0.5
+        }
+    }
+}

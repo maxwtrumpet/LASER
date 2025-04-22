@@ -1,0 +1,62 @@
+{
+    "actors": [
+        {
+            "name": "Cutscene",
+            "components": {
+                "Runner": {
+                    "type": "CutsceneManager"
+                },
+                "T1": {
+                    "type": "TextRenderer",
+                    "text": " ",
+                    "size": 120,
+                    "font": "Editia",
+                    "r": 209,
+                    "g": 209,
+                    "b": 209,
+                    "a": 0
+                },
+                "T2": {
+                    "type": "TextRenderer",
+                    "text": " ",
+                    "size": 120,
+                    "font": "Editia",
+                    "r": 209,
+                    "g": 209,
+                    "b": 209,
+                    "a": 0
+                },
+                "T3": {
+                    "type": "TextRenderer",
+                    "text": " ",
+                    "size": 120,
+                    "font": "Editia",
+                    "r": 209,
+                    "g": 209,
+                    "b": 209,
+                    "a": 0
+                },
+                "T4": {
+                    "type": "TextRenderer",
+                    "text": " ",
+                    "size": 120,
+                    "font": "Editia",
+                    "r": 209,
+                    "g": 209,
+                    "b": 209,
+                    "a": 0
+                },
+                "T5": {
+                    "type": "TextRenderer",
+                    "text": " ",
+                    "size": 120,
+                    "font": "Editia",
+                    "r": 209,
+                    "g": 209,
+                    "b": 209,
+                    "a": 0
+                }
+            }
+        }
+    ]
+}

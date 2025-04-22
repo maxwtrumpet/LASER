@@ -1,0 +1,33 @@
+{
+    "name": "Background",
+    "components": {
+        "1": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Day_1",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -20
+        },
+        "2": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Day_2",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -19
+        },
+        "3": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Day_3",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -18
+        },
+        "4": {
+            "type": "SpriteRenderer",
+            "sprite": "background/Day_4",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -17
+        }
+    }
+}

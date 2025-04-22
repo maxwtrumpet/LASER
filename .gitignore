@@ -1,6 +1,19 @@
 # Created by https://www.toptal.com/developers/gitignore/api/unity
 # Edit at https://www.toptal.com/developers/gitignore?templates=unity
 
+# Specifically for LASER - Ignore used data
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+played
+
 ### Unity ###
 # This .gitignore file should be placed at the root of your Unity project directory
 #

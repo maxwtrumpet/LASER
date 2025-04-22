@@ -1,0 +1,32 @@
+{
+    "name": "Basic",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "trigger_width": 2,
+            "trigger_height": 1,
+            "gravity_scale": 0
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/basic/basic_0_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -9
+        },
+        "XManager": {
+            "type": "BasicEnemy"
+        },
+        "YHM": {
+            "type": "HealthManager",
+            "health": 4,
+            "points": 10,
+            "explosion": "2"
+        },
+        "ZAM": {
+            "type": "Animator",
+            "speed": 0.8
+        }
+    }
+}

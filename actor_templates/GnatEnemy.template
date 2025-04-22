@@ -1,0 +1,28 @@
+{
+    "name": "Gnat",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "trigger_width": 0.125,
+            "trigger_height": 0.125,
+            "gravity_scale": 0
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/gnat/gnat_0",
+            "x_scale": 6.25,
+            "y_scale": 6.25,
+            "sorting_order": -7
+        },
+        "XManager": {
+            "type": "GnatEnemy"
+        },
+        "YHM": {
+            "type": "HealthManager",
+            "health": 1,
+            "points": 1,
+            "explosion": "0"
+        }
+    }
+}

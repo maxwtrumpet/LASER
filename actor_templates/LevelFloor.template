@@ -1,0 +1,17 @@
+{
+    "name": "Floor",
+    "components": {
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "background/level_floor",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "x_position_offset": 8.35,
+            "y_position_offset": -1,
+            "sorting_order": 1
+        },
+        "Manager": {
+            "type": "GeneralManager"
+        }
+    }
+}

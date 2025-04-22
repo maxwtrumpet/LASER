@@ -1,0 +1,75 @@
+{
+    "Camera X Position": 8.35,
+    "Camera Y Position": 4,
+    "Camera Z Position": 1,
+    "Camera X Direction": 8.35,
+    "Camera Y Direction": 4,
+    "Camera Z Direction": 0,
+    "actors": [
+        {
+            "template": "Player"
+        },
+        {
+            "template": "Gun"
+        },
+        {
+            "template": "UI",
+            "components": {
+                "Manager": {
+                    "type": "EnemyManager",
+                    "level": 5
+                }
+            }
+        },
+        {
+            "template": "LevelFloor"
+        },
+        {
+            "template": "LevelBackground",
+            "components": {
+                "1": {
+                    "x_position": -0.15
+                },
+                "2": {
+                    "x_position": 17.85
+                },
+                "Power": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 10.15,
+                    "y_position": 4.44,
+                    "sorting_order": -15
+                },
+                "PowerBase": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_base",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 10.15,
+                    "y_position": 0.48,
+                    "sorting_order": -15
+                },
+                "PowerDamaged": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_damaged",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 4.35,
+                    "y_position": 2.41,
+                    "sorting_order": -15
+                },
+                "PowerBroken": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_broken",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 16.51,
+                    "y_position": 0.09,
+                    "sorting_order": -15
+                }
+            }
+        }
+    ]
+}

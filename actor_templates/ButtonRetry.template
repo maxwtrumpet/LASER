@@ -1,0 +1,27 @@
+{
+    "template": "Button",
+    "name": "ButtonRetry",
+    "components": {
+        "RB2D": {
+            "x_position": 12.1,
+            "y_position": 2.5
+        },
+        "Button": {
+            "sorting_order": 21
+        },
+        "Text": {
+            "text": "Retry",
+            "sorting_order": 22
+        },
+        "Selected": {
+            "sorting_order": 23
+        },
+        "Focus": {
+            "row": 1,
+            "column": 2
+        },
+        "Retry": {
+            "type": "ButtonRetry"
+        }
+    }
+}

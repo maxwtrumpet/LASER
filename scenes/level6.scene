@@ -1,0 +1,64 @@
+{
+    "Camera X Position": 8.35,
+    "Camera Y Position": 4,
+    "Camera Z Position": 1,
+    "Camera X Direction": 8.35,
+    "Camera Y Direction": 4,
+    "Camera Z Direction": 0,
+    "actors": [
+        {
+            "template": "Player"
+        },
+        {
+            "template": "Gun"
+        },
+        {
+            "template": "UI",
+            "components": {
+                "Manager": {
+                    "type": "EnemyManager",
+                    "level": 6
+                }
+            }
+        },
+        {
+            "template": "LevelFloor"
+        },
+        {
+            "template": "LevelBackground",
+            "components": {
+                "1": {
+                    "x_position": 5.55
+                },
+                "2": {
+                    "x_position": 23.55
+                },
+                "Generator1": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/generator",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 3.53,
+                    "sorting_order": -15
+                },
+                "Generator2": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/generator",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 11.71,
+                    "sorting_order": -15
+                },
+                "Power": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 9.36,
+                    "y_position": 2.41,
+                    "sorting_order": -15
+                }
+            }
+        }
+    ]
+}

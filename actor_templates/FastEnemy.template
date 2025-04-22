@@ -1,0 +1,32 @@
+{
+    "name": "Fast",
+    "components": {
+        "RB2D": {
+            "type": "Rigidbody2D",
+            "has_collider": false,
+            "trigger_type": "circle",
+            "trigger_radius": 0.25,
+            "gravity_scale": 0
+        },
+        "SR": {
+            "type": "SpriteRenderer",
+            "sprite": "enemies/fast/fast_0_0",
+            "x_scale": 3.125,
+            "y_scale": 3.125,
+            "sorting_order": -8
+        },
+        "XManager": {
+            "type": "FastEnemy"
+        },
+        "YHM": {
+            "type": "HealthManager",
+            "health": 2,
+            "points": 15,
+            "explosion": "1"
+        },
+        "ZAM": {
+            "type": "Animator",
+            "speed": 0.75
+        }
+    }
+}

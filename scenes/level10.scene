@@ -1,0 +1,82 @@
+{
+    "Camera X Position": 8.35,
+    "Camera Y Position": 4,
+    "Camera Z Position": 1,
+    "Camera X Direction": 8.35,
+    "Camera Y Direction": 4,
+    "Camera Z Direction": 0,
+    "actors": [
+        {
+            "template": "Player"
+        },
+        {
+            "template": "Gun"
+        },
+        {
+            "template": "UI",
+            "components": {
+                "Meter": {
+                    "enabled": false
+                },
+                "Backdrop": {
+                    "enabled": false
+                },
+                "Progress": {
+                    "enabled": false
+                },
+                "Manager": {
+                    "type": "EndlessManager"
+                }
+            }
+        },
+        {
+            "template": "LevelFloor"
+        },
+        {
+            "template": "LevelBackground",
+            "components": {
+                "1": {
+                    "x_position": -2.05
+                },
+                "2": {
+                    "x_position": 15.95
+                },
+                 "Transformer": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/transformer",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 13.82,
+                    "y_position": 0.24,
+                    "sorting_order": -15
+                },
+                "PowerBroken": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_broken",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 8.22,
+                    "y_position": 2,
+                    "sorting_order": -15
+                },
+                "PowerBase": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/power_base",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 8.35,
+                    "y_position": 0.48,
+                    "sorting_order": -15
+                },
+                "Generator": {
+                    "type": "SpriteRenderer",
+                    "sprite": "decoration/generator",
+                    "x_scale": 3.125,
+                    "y_scale": 3.125,
+                    "x_position": 4.67,
+                    "sorting_order": -15
+                }
+            }
+        }
+    ]
+}

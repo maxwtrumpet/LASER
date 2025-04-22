@@ -1,0 +1,92 @@
+{
+    "template": "InfoMenu",
+    "components": {
+        "Title": {
+            "text": "How to Play"
+        },
+        "Info1": {
+            "type": "TextRenderer",
+            "text": "Destroy enemy invaders to protect your base!",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.03,
+            "y_position_offset": 3.19,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info2": {
+            "type": "TextRenderer",
+            "text": "Spin the left stick / scroll the mouse wheel to",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.15,
+            "y_position_offset": 2.44,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info3": {
+            "type": "TextRenderer",
+            "text": "charge your energy beam and use the right",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.55,
+            "y_position_offset": 1.69,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info4": {
+            "type": "TextRenderer",
+            "text": "stick / W & D to aim. A higher charge deals",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.78,
+            "y_position_offset": 0.94,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info5": {
+            "type": "TextRenderer",
+            "text": "more damage but is slower to move. To shoot,",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.14,
+            "y_position_offset": 0.19,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info6": {
+            "type": "TextRenderer",
+            "text": "press the right trigger / space. Press start /",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -0.19,
+            "y_position_offset": -0.56,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        },
+        "Info7": {
+            "type": "TextRenderer",
+            "text": "escape to pause the game. Good luck!",
+            "size": 60,
+            "font": "Editia",
+            "x_position_offset": -1.6,
+            "y_position_offset": -1.31,
+            "r": 209,
+            "g": 209,
+            "b": 209,
+            "sorting_order": 201
+        }
+    }
+}

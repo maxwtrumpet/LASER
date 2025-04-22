@@ -1,0 +1,14 @@
+{
+    "name": "StaticData",
+    "components": {
+        "Music": {
+            "type": "MusicManager"
+        },
+        "Level": {
+            "type": "LevelData"
+        },
+        "Controller": {
+            "type": "ControllerManager"
+        }
+    }
+}

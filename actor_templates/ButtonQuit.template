@@ -1,0 +1,20 @@
+{
+    "template": "Button",
+    "name": "ButtonQuit",
+    "components": {
+        "RB2D": {
+            "x_position": -5.5,
+            "y_position": -3
+        },
+        "Text": {
+            "text": "Quit"
+        },
+        "Focus": {
+            "row": 2,
+            "column": 1
+        },
+        "Quit": {
+            "type": "ButtonQuit"
+        }
+    }
+}
