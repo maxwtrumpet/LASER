@@ -18,13 +18,13 @@ CutsceneManager = {
             self.trs[index].text = value
             self.trs[index].y_position = ((length - 1) / 2 + 1 - index) * 1.5
         end
-        local played = io.open(Application.FullPath("resources/.data/.played"),"r")
+        local played = io.open(Application.FullPath("resources/.data/played"),"r")
         if played ~= nil then
             io.close(played)
             Scene.Load("menu")
             return
         end
-        played = io.open(Application.FullPath("resources/.data/.played"),"w")
+        played = io.open(Application.FullPath("resources/.data/played"),"w")
         io.close(played)
         local sd = Actor.Instantiate("StaticData")
         Actor.DontDestroy(sd)

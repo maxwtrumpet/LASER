@@ -73,11 +73,11 @@ HealthManager = {
                 ui:GetComponent("EnemyManager").enabled = false
             else
                 manager.enabled = false
-                local file = io.open(Application.FullPath("resources/.data/.10"),"r")
+                local file = io.open(Application.FullPath("resources/.data/10"),"r")
                 local time = math.max(math.floor(manager.cur_time/60),tonumber(file:read()))
                 local points = math.max(manager.kill_points,tonumber(file:read()))
                 io.close(file)
-                file = io.open(Application.FullPath("resources/.data/.10"),"w")
+                file = io.open(Application.FullPath("resources/.data/10"),"w")
                 file:write(tostring(time) .. "\n" .. tostring(points))
                 io.close(file)
             end

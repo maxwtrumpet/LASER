@@ -18,10 +18,10 @@ EnemyManager = {
         end
         self.score.text = "Score: " .. self.kill_points
         if self.cur_time >= self.next_spawn and self.enemy_count == 0 then
-            local file = io.open(Application.FullPath("resources/.data/." .. self.level),"r")
+            local file = io.open(Application.FullPath("resources/.data/" .. self.level),"r")
             if self.kill_points > tonumber(file:read()) then
                 io.close(file)
-                file = io.open(Application.FullPath("resources/.data/." .. self.level),"w")
+                file = io.open(Application.FullPath("resources/.data/" .. self.level),"w")
                 file:write(tostring(self.kill_points))
                 io.close(file)
             end
