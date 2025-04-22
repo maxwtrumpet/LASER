@@ -228,7 +228,6 @@ public class Controller : MonoBehaviour
             // Get the beam manager component. Set it's goal thickness, grow time, and damage based on the charge level.
             BeamManager bm = cur_beam.GetComponent<BeamManager>();
             bm.goal_thickness = guides[1].transform.localPosition.y * 2.0f;
-            bm.grow_time = (charge_1 - cur_tint) / charge_1 * 0.2f + 0.05f;
             if (cur_tint == 0.0f) bm.damage = 7;
             else if (cur_tint < charge_3) bm.damage = 4;
             else if (cur_tint < charge_2) bm.damage = 2;

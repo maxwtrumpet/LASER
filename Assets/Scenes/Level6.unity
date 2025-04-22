@@ -937,7 +937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: confirmed_appearances.Array.data[4].row.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3613624447912544222, guid: 41755429d516049eaaf462e58b893159, type: 3}
       propertyPath: confirmed_appearances.Array.data[1].row.Array.data[0]

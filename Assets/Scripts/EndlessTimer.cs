@@ -63,7 +63,7 @@ public class EndlessTimer : MonoBehaviour
         else if (prev_time < 210 && time_elapsed >= 210)
         {
             EventBus.Publish(new MusicEvent("F", 1.0f));
-            EventBus.Publish(new MusicEvent("Ab Resolve", 0.0f));
+            EventBus.Publish(new MusicEvent("Ab Resolve", 1.0f));
             EventBus.Publish(new MusicEvent("Ab Stay", 0.0f));
         }
         else if (prev_time < 180 && time_elapsed >= 180)

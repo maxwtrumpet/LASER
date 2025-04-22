@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal_thickness: 2
-  lifetime: 0.25
+  grow_time: 0
   damage: 0
   frames:
   - {fileID: 2800000, guid: c2f07a45c9c144a2dab4a515693f9945, type: 3}

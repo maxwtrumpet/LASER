@@ -111,7 +111,7 @@ public class ButtonController : MonoBehaviour
         if (controls.Gameplay.Select.WasPressedThisFrame())
         {
             EventBus.Publish(select);
-            EventBus.Publish<ButtonPress>(new ButtonPress(buttons[row].row[column]));
+            EventBus.Publish(new ButtonPress(buttons[row].row[column]));
         }
     }
 
