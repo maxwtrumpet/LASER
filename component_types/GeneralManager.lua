@@ -3,7 +3,7 @@ GeneralManager = {
     OnUpdate = function (self)
         Application.HideCursor()
         Input.SetMousePosition(Vector2(0,0))
-        if Input.IsKeyJustDown("escape") then
+        if Input.IsKeyJustDown("escape") or Input.IsButtonJustDown("menu") then
             Event.Publish("ButtonPress", {})
             Actor.Instantiate("ButtonMenu")
             Actor.Instantiate("ButtonResume")

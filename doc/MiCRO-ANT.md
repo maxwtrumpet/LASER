@@ -10,6 +10,7 @@ This file, located as `resources/game.config`, modifies certain aspects of the g
 
 * `"Initial Scene"`: the initial scene as a string with no .scene extension. Looks in `resources/scenes`.
 * `"Smooth Audio Transitions"`: A boolean notating whether or not the audio transitions smoothly between scenes. Defaults to true.
+* `"Joystick Dead Zone"`: What magnitude below which joystick inputs will be ignored. Joystick deltas range from -32768 to 32767. Defaults to 8000.
 
 ### Rendering Config
 
@@ -438,11 +439,13 @@ This is used to detect all kinds of keyboard, mouse, and controller inputs.
 * `GetMouseScrollDelta()`: Returns a float measuring how much the mouse wheel was scrolled.
 * `NumControllersAvailable()`: Returns the number of game controllers connected at the time of game launch.
 * `ActivateControllers(int number)`: Activates the given number of game controllers. Cannot be more than the number of game controllers connected at game launch.
-* `IsJoyconDown(string key)`: Returns whether or not the given joycon button was pressed this frame.
-* `IsJoyconJustDown(string key)`: Returns whether or not the given joycon button was just pressed this frame.
-* `IsJoyconJustUp(string key)`: Returns whether or not the given joycon button was just released this frame.
+* `IsButtonDown(string key)`: Returns whether or not the given button was pressed this frame. Also includes joystick presses and cardinal directions.
+* `IsButtonJustDown(string key)`: Returns whether or not the given button was just pressed this frame. Also includes joystick presses and cardinal directions.
+* `IsButtonJustUp(string key)`: Returns whether or not the given button was just released this frame. Also includes joystick presses and cardinal directions.
 * `GetPrimaryJoystickDelta()`: Returns a Vector2 measuring how much the primary joystick was pushed this frame.
+* `GetPrimaryJoystickPosition()`: Returns a Vector2 measuring the current primary joystick location.
 * `GetSecondaryJoystickDelta()`: Returns a Vector2 measuring how much the secondary joystick was pushed this frame.
+* `GetSecondaryJoystickPosition()`: Returns a Vector2 measuring the current secondary joystick location.
 
 ### The Physics Namespace
 

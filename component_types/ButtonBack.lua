@@ -4,7 +4,7 @@ ButtonBack = {
     column = 0,
 
     OnUpdate = function (self)
-        if Input.IsKeyJustDown("space") then
+        if Input.IsKeyJustDown("space") or Input.IsButtonJustDown("button down") then
             Event.Publish("ButtonPress",{})
             Actor.Instantiate("ButtonLevels")
             Actor.Instantiate("ButtonEndless")

@@ -6,6 +6,9 @@
         },
         "Level": {
             "type": "LevelData"
+        },
+        "Controller": {
+            "type": "ControllerManager"
         }
     }
 }

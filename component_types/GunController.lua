@@ -6,7 +6,18 @@ GunController = {
     cannon = "event:/effects/cannon",
     blank_vector = Vector3(0,0,0),
     previous_scroll = 0,
+    previous_left_stick = Vector2(0,0),
     beam_counter = 1,
+
+    To2Pi = function (self, point)
+        local angle = math.atan(point.y,point.x)
+        if point.x < 0 then
+            angle = angle + math.pi
+        elseif point.y < 0 then
+            angle = angle + math.pi * 2
+        end
+        return angle
+    end,
 
     OnStart = function (self)
         self.rb2d = self.actor:GetComponent("Rigidbody2D")
@@ -24,14 +35,24 @@ GunController = {
     end,
 
     OnUpdate = function (self)
-        if Input.IsKeyDown("w") or Input.IsKeyDown("d") then
+        local right_stick = Input.GetSecondaryJoystickPosition()
+        if right_stick.x < 0 then
+            right_stick.x = 0
+        end
+        right_stick.y = -right_stick.y
+        if right_stick.y < 0 then
+            right_stick.y = 0
+        end
+        if Input.IsKeyDown("w") or Input.IsKeyDown("d") or right_stick.x ~= 0 or right_stick.y ~= 0 then
             local current_angle = self.rb2d:GetRotation()
             local desired_angle = nil
             local final_angle = current_angle
             if Input.IsKeyDown("w") then
                 desired_angle = 90
-            else
+            elseif Input.IsKeyDown("d") then
                 desired_angle = 0
+            else
+                desired_angle = math.atan(right_stick.y,right_stick.x) * 180 / math.pi
             end
             local factor = (0.005 + self.cur_charge / 100) * 180 / math.pi
             if math.abs(current_angle - desired_angle) > factor then
@@ -52,8 +73,23 @@ GunController = {
         if scroll == 0 and self.previous_scroll > 0.05 then
             scroll = self.previous_scroll / 2
         end
-        if scroll > 0 then
-            self.cur_charge = self.cur_charge - 0.008
+        local left_stick = Input.GetPrimaryJoystickPosition()
+        local angle_delta = 0
+        if (self.previous_left_stick.x ~= 0 or self.previous_left_stick.y ~= 0) and
+           (left_stick.x ~= 0 or left_stick.y ~= 0) then
+            local prev_angle = self:To2Pi(self.previous_left_stick)
+            local new_angle = self:To2Pi(left_stick)
+            if prev_angle < math.pi / 2 and new_angle > math.pi * 3 / 2 then
+                prev_angle = prev_angle + math.pi * 2
+            end
+            angle_delta = new_angle - prev_angle
+        end
+        if scroll > 0 or (angle_delta > 0 and angle_delta < math.pi / 2) then
+            if scroll > 0 then
+                self.cur_charge = self.cur_charge - 0.008
+            else
+                self.cur_charge = self.cur_charge - angle_delta / 33
+            end
             if self.cur_charge < 0 then
                 self.cur_charge = 0
             end
@@ -72,7 +108,8 @@ GunController = {
             end
         end
         self.previous_scroll = scroll
-        if self.cur_charge < 0.75 and Input.IsKeyJustDown("space") then
+        self.previous_left_stick = left_stick
+        if self.cur_charge < 0.75 and (Input.IsKeyJustDown("space") or Input.IsButtonJustDown("right trigger")) then
 
             local cur_beam = Actor.Instantiate("Beam"):GetComponent("Rigidbody2D")
             local angle = self.rb2d:GetRotation()
