@@ -14,7 +14,7 @@
         },
         "AM": {
             "type": "Animator",
-            "speed": 0.90909090909
+            "speed": 0.75
         },
         "EX": {
             "type": "Explosion",
